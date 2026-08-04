@@ -66,7 +66,7 @@ th { background: #eef1f6; font-size: 12px; text-transform: uppercase;
   font-size: 11px; background: #eef1f6; color: var(--texto-suave);
   padding: 1px 7px; border-radius: 3px;
 }
-/* página de demanda */
+/* página de proposta */
 .ficha {
   background: var(--branco); border: 1px solid var(--borda); border-radius: 6px;
   padding: 8px 28px 24px;
@@ -97,7 +97,7 @@ p code, li code, td code { background: #eef1f6; padding: 1px 5px; border-radius:
 .copiar:hover { color: var(--azul); border-color: var(--azul); }
 .copiar.ok { color: var(--ok-t); border-color: var(--ok-t); }
 
-/* abas da demanda */
+/* abas da proposta */
 .abas {
   display: flex; gap: 4px; border-bottom: 1px solid var(--borda); margin: 4px 0 26px;
 }
