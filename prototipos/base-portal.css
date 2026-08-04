@@ -1,0 +1,243 @@
+/* ===========================================================================
+   Base visual do Portal de Serviços da SPU — Patrimônio de Todos
+   ---------------------------------------------------------------------------
+   Base comum dos protótipos de demanda, conforme item 11 das orientações.
+   Reproduz o suficiente da página para contextualizar cada mudança; NÃO é
+   reprodução fiel nem funcional do Portal.
+
+   ATENÇÃO — as cores abaixo foram aproximadas a partir de captura de tela.
+   O Portal usa os tokens do Padrão Digital de Governo (--blue-warm-vivid-50,
+   --blue-warm-vivid-60, --blue-vivid-80, entre outros), observados no HTML da
+   própria página. Qualquer implementação deve usar os tokens, não estes
+   valores. As tipografias oficiais (Rawline / Raleway) também não estão aqui.
+   =========================================================================== */
+
+:root {
+  --portal-azul-topo: #1258bd;
+  --portal-azul-meio: #0f4aa8;
+  --portal-azul-base: #0b2a63;
+  --portal-azul-escuro: #101f3f;
+  --portal-azul-link: #1351b4;
+  --portal-texto: #333333;
+  --portal-cinza-borda: #cccccc;
+  --portal-branco: #ffffff;
+
+  --portal-fonte: "Rawline", "Raleway", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* --- moldura de viewport ------------------------------------------------- */
+
+.pv-wrap {
+  width: calc(1366px * var(--pv-escala));
+  height: calc(768px * var(--pv-escala));
+  border: 1px solid var(--portal-cinza-borda);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--portal-branco);
+}
+
+.pv {
+  width: 1366px;
+  height: 768px;
+  overflow: hidden;
+  transform: scale(var(--pv-escala));
+  transform-origin: top left;
+  font-family: var(--portal-fonte);
+  color: var(--portal-texto);
+  position: relative;
+}
+
+/* --- cabeçalho gov.br ---------------------------------------------------- */
+
+.pt-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 32px;
+  border-bottom: 1px solid var(--portal-cinza-borda);
+  background: var(--portal-branco);
+}
+
+.pt-header__marca {
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--portal-azul-link);
+  letter-spacing: -0.5px;
+}
+
+.pt-header__sistema {
+  font-size: 14px;
+  color: #555;
+}
+
+.pt-header__acoes {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pt-btn-entrar {
+  border: 1px solid var(--portal-azul-link);
+  color: var(--portal-azul-link);
+  border-radius: 100px;
+  padding: 6px 18px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* --- banner de busca ----------------------------------------------------- */
+
+.pt-banner {
+  background-image: linear-gradient(
+    180deg,
+    var(--portal-azul-topo) 0,
+    var(--portal-azul-meio) 40%,
+    var(--portal-azul-base) 110%
+  );
+  color: var(--portal-branco);
+  position: relative;
+}
+
+.pt-banner__conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 32px;
+}
+
+.pt-banner__texto {
+  flex: 1;
+  min-width: 0;
+}
+
+.pt-banner h2 {
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.pt-banner h2.forte {
+  font-weight: 700;
+}
+
+/* campo de busca */
+
+.pt-busca {
+  display: flex;
+  align-items: center;
+  background: var(--portal-branco);
+  border-radius: 4px;
+  height: 40px;
+  padding: 0 12px;
+  max-width: 520px;
+}
+
+.pt-busca__placeholder {
+  flex: 1;
+  color: #767676;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.pt-busca__lupa {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--portal-azul-link);
+  border-radius: 50%;
+  position: relative;
+}
+
+.pt-busca__lupa::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  bottom: -4px;
+  width: 8px;
+  height: 2px;
+  background: var(--portal-azul-link);
+  transform: rotate(45deg);
+}
+
+/* faixa de chamada do login, largura total */
+
+.pt-faixa-login {
+  background: var(--portal-azul-escuro);
+  color: var(--portal-branco);
+  text-align: center;
+  font-size: 19px;
+  line-height: 1.35;
+  padding: 16px 32px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pt-faixa-login strong {
+  font-weight: 800;
+}
+
+/* --- grade de categorias ------------------------------------------------- */
+
+.pt-categorias {
+  padding: 24px 32px 0;
+  text-align: center;
+}
+
+.pt-categorias h3 {
+  font-size: 26px;
+  font-weight: 400;
+  margin: 0 0 8px;
+  color: #1c1c1c;
+}
+
+.pt-categorias__grade {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pt-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+}
+
+.pt-card__icone {
+  width: 52px;
+  height: 46px;
+  border-radius: 6px;
+  background: var(--portal-azul-link);
+}
+
+.pt-card__rotulo {
+  color: var(--portal-azul-link);
+  font-size: 15px;
+  line-height: 1.35;
+  max-width: 220px;
+}
+
+/* --- anotações do protótipo ---------------------------------------------- */
+
+.pv__medida {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-bottom-left-radius: 4px;
+  letter-spacing: 0.3px;
+}

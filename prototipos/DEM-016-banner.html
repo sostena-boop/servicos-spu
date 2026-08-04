@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEM-016 — Banner da página inicial do Portal de Serviços</title>
+<link rel="stylesheet" href="base-portal.css">
+<style>
+  /* escala das molduras: menor por padrão, para os dois painéis caberem lado a
+     lado mesmo quando o protótipo é exibido embutido na página da demanda */
+  :root { --pv-escala: 0.36; }
+  @media (min-width: 1300px) { :root { --pv-escala: 0.44; } }
+  @media (min-width: 1600px) { :root { --pv-escala: 0.5; } }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 32px 24px 64px;
+    background: #f2f4f7;
+    color: #1c1c1c;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+  }
+
+  .doc { max-width: 1440px; margin: 0 auto; }
+
+  .doc__id {
+    font-size: 13px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: #5a6b85;
+  }
+  .doc h1 { font-size: 26px; margin: 4px 0 8px; font-weight: 700; }
+  .doc__linha { color: #4a5568; max-width: 70ch; margin: 0 0 8px; }
+
+
+  .comparativo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .painel { flex: 0 0 auto; }
+
+  .painel__titulo { margin-bottom: 12px; }
+  .painel__tag {
+    display: inline-block;
+    font-size: 15px; font-weight: 800; letter-spacing: 0.6px;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 4px;
+  }
+  .painel__titulo h2 {
+    font-size: 15px; margin: 8px 0 0; font-weight: 600; color: #3d4759;
+  }
+  .tag--hoje { background: #f7d9d9; color: #8c1c1b; }
+  .tag--prop { background: #d3ecda; color: #14562a; }
+
+  .painel__nota {
+    font-size: 13px; color: #4a5568; margin-top: 10px;
+    width: calc(1366px * var(--pv-escala));
+  }
+
+  /* --- variantes do banner desta demanda --- */
+
+  .banner--atual { height: 484px; }
+  .banner--atual h2 { font-size: 40px; }
+  .banner--atual h2.forte { font-size: 44px; margin-top: 14px; }
+  .banner--atual .pt-busca { margin-top: 28px; }
+
+  .banner--proposto { height: 224px; }
+  .banner--proposto .pt-banner__conteudo { gap: 28px; }
+  .banner--proposto h2 { font-size: 30px; }
+  .banner--proposto .pt-busca { margin-top: 16px; max-width: 620px; }
+  .banner--proposto .chamada-login {
+    margin-top: 12px; font-size: 14px; color: #dbe7fb; max-width: 620px;
+  }
+  .banner--proposto .chamada-login strong { font-weight: 800; color: #fff; }
+  .banner--proposto .chamada-login a { color: #fff; text-decoration: underline; }
+
+  .mudancas {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+  }
+  .mudanca {
+    background: #fff; border: 1px solid #dde2ea; border-radius: 6px;
+    padding: 16px 18px;
+  }
+  .mudanca h3 { font-size: 15px; margin: 0 0 6px; }
+  .mudanca p { font-size: 14px; margin: 0; color: #4a5568; }
+  .mudanca__ganho {
+    display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 700;
+    color: #1c6b33; background: #e3f3e7; padding: 2px 8px; border-radius: 3px;
+  }
+
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <p class="doc__linha">
+    Comparativo do que o usuário enxerga sem rolar a página, em tela de notebook
+    (1366 &times; 768). As duas molduras abaixo mostram exatamente a primeira dobra:
+    tudo o que aparece nelas está visível na abertura; o que não aparece exige rolagem.
+  </p>
+
+  <div class="comparativo">
+
+    <!-- ================= COMO É HOJE ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--hoje">Como é hoje</span>
+        <h2>Banner ocupa 616 px dos 768 disponíveis</h2>
+      </div>
+
+      <div class="pv-wrap">
+        <div class="pv">
+          <div class="pv__medida">banner + faixa: 560 px</div>
+
+          <header class="pt-header">
+            <span class="pt-header__marca">gov.br</span>
+            <span class="pt-header__sistema">Patrimônio de Todos</span>
+            <span class="pt-header__acoes"><span class="pt-btn-entrar">Entrar</span></span>
+          </header>
+
+          <section class="pt-banner banner--atual">
+            <div class="pt-banner__conteudo">
+              <svg width="380" height="380" viewBox="0 0 380 380" aria-label="Ilustração representativa" role="img">
+                <circle cx="150" cy="150" r="110" fill="#2aa3a3" opacity="0.85"/>
+                <rect x="60" y="230" width="120" height="110" rx="8" fill="#1f9e63"/>
+                <circle cx="188" cy="120" r="46" fill="#3b2b26"/>
+                <rect x="140" y="165" width="98" height="90" rx="14" fill="#f28d2e"/>
+                <rect x="196" y="228" width="150" height="86" rx="6" fill="#2c2c2c"/>
+                <rect x="206" y="236" width="130" height="66" rx="3" fill="#8f9aa6"/>
+                <rect x="186" y="314" width="170" height="12" rx="6" fill="#1a1a1a"/>
+              </svg>
+              <div class="pt-banner__texto">
+                <h2>Bem-vindo!</h2>
+                <h2 class="forte">Encontre os Serviços<br>da SPU</h2>
+                <div class="pt-busca">
+                  <span class="pt-busca__placeholder">O que você procura?</span>
+                  <span class="pt-busca__lupa"></span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="pt-faixa-login">
+            Entre com <strong>gov.br</strong> no portal <strong>SPU</strong> e tenha acesso a
+            benefícios exclusivos ao acompanhar seus pedidos.
+          </div>
+
+          <section class="pt-categorias">
+            <h3>Categorias de serviços</h3>
+            <div class="pt-categorias__grade">
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Serviços Financeiros</span></div>
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Certidões, Declarações</span></div>
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Transferência de Titularidade, Laudêmio e CAT</span></div>
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Alterar Dados Cadastrais, Unificação e Desmembramento</span></div>
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Consultar Propriedade de Imóvel da União</span></div>
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Regularização, Uso de Imóvel ou Espelho D'água</span></div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <p class="painel__nota">
+        Sobram <strong>152 px</strong> para o conteúdo. Aparece o título
+        "Categorias de serviços" e o topo da primeira linha de cartões. Para ver
+        qualquer serviço por inteiro é preciso rolar.
+      </p>
+    </div>
+
+    <!-- ================= COMO FICARIA ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--prop">Como ficaria</span>
+        <h2>Banner ocupa 280 px dos 768 disponíveis</h2>
+      </div>
+
+      <div class="pv-wrap">
+        <div class="pv">
+          <div class="pv__medida">banner: 224 px</div>
+
+          <header class="pt-header">
+            <span class="pt-header__marca">gov.br</span>
+            <span class="pt-header__sistema">Patrimônio de Todos</span>
+            <span class="pt-header__acoes"><span class="pt-btn-entrar">Entrar</span></span>
+          </header>
+
+          <section class="pt-banner banner--proposto">
+            <div class="pt-banner__conteudo">
+              <svg width="150" height="150" viewBox="0 0 380 380" aria-label="Ilustração representativa" role="img">
+                <circle cx="150" cy="150" r="110" fill="#2aa3a3" opacity="0.85"/>
+                <rect x="60" y="230" width="120" height="110" rx="8" fill="#1f9e63"/>
+                <circle cx="188" cy="120" r="46" fill="#3b2b26"/>
+                <rect x="140" y="165" width="98" height="90" rx="14" fill="#f28d2e"/>
+                <rect x="196" y="228" width="150" height="86" rx="6" fill="#2c2c2c"/>
+                <rect x="206" y="236" width="130" height="66" rx="3" fill="#8f9aa6"/>
+                <rect x="186" y="314" width="170" height="12" rx="6" fill="#1a1a1a"/>
+              </svg>
+              <div class="pt-banner__texto">
+                <h2 class="forte">Encontre os Serviços da SPU</h2>
+                <div class="pt-busca">
+                  <span class="pt-busca__placeholder">O que você procura?</span>
+                  <span class="pt-busca__lupa"></span>
+                </div>
+                <p class="chamada-login">
+                  Entre com <strong>gov.br</strong> para acompanhar seus pedidos.
+                  <a href="#">Entrar</a>
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="pt-categorias">
+            <h3>Categorias de serviços</h3>
+            <div class="pt-categorias__grade">
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Serviços Financeiros</span></div>
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Certidões, Declarações</span></div>
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Transferência de Titularidade, Laudêmio e CAT</span></div>
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Alterar Dados Cadastrais, Unificação e Desmembramento</span></div>
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Consultar Propriedade de Imóvel da União</span></div>
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Regularização, Uso de Imóvel ou Espelho D'água</span></div>
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Imóveis para Entes Públicos e Entidades sem Fins Lucrativos</span></div>
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Demarcação de Áreas e Notificação de Imóveis Atingidos</span></div>
+              <div class="pt-card"><span class="pt-card__icone"></span><span class="pt-card__rotulo">Regularização Fundiária e Programas Habitacionais</span></div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <p class="painel__nota">
+        Sobram <strong>488 px</strong> para o conteúdo. Aparecem duas linhas
+        inteiras de categorias e o início da terceira — o usuário vê que existem
+        serviços organizados por assunto sem precisar rolar.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="mudancas">
+    <div class="mudanca">
+      <h3>1. Ilustração reduzida</h3>
+      <p>Hoje ela é declarada com 466 px de altura e é o que determina o tamanho
+      do bloco. Passa a elemento lateral de apoio, sem comandar a altura da seção.</p>
+      <span class="mudanca__ganho">−260 px</span>
+    </div>
+    <div class="mudanca">
+      <h3>2. Faixa de login sai do banner</h3>
+      <p>A chamada do gov.br deixa de ser uma faixa escura em largura total e vira
+      uma linha discreta abaixo da busca. A informação permanece; a banda inteira
+      desaparece.</p>
+      <span class="mudanca__ganho">−76 px</span>
+    </div>
+    <div class="mudanca">
+      <h3>3. Um título em vez de dois</h3>
+      <p>"Bem-vindo!" sai. Fica "Encontre os Serviços da SPU", que é a instrução
+      que orienta a tarefa.</p>
+      <span class="mudanca__ganho">−50 px</span>
+    </div>
+    <div class="mudanca">
+      <h3>4. Busca ganha destaque</h3>
+      <p>Com menos elementos disputando espaço, o campo de busca fica mais largo e
+      passa a ser o elemento dominante da seção — que é a função da tela.</p>
+      <span class="mudanca__ganho">sem custo de altura</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
