@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROP-024 — Emissão de certidões e declarações pelo analista</title>
+<link rel="stylesheet" href="base-portal.css">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 24px 56px; background: #f2f4f7; color: #1c1c1c;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .doc { max-width: 1400px; margin: 0 auto; }
+  .doc__linha { color: #4a5568; max-width: 78ch; margin: 0 0 8px; }
+  .doc h2.secao {
+    font-size: 19px; margin: 40px 0 6px; padding-top: 22px; border-top: 1px solid #dde2ea;
+  }
+  .doc h2.secao:first-of-type { border-top: 0; padding-top: 0; margin-top: 26px; }
+  .comparativo { display: grid; grid-template-columns: 1fr; gap: 28px; margin-top: 16px; }
+  @media (min-width: 1120px) { .comparativo { grid-template-columns: 1fr 1fr; } }
+  .painel__titulo { margin-bottom: 12px; }
+  .painel__tag {
+    display: inline-block; font-size: 15px; font-weight: 800; letter-spacing: .6px;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 4px;
+  }
+  .painel__titulo h3 { font-size: 15px; margin: 8px 0 0; font-weight: 600; color: #3d4759; }
+  .tag--hoje { background: #f7d9d9; color: #8c1c1b; }
+  .tag--prop { background: #d3ecda; color: #14562a; }
+
+  .prop { font-size: 10px; font-weight: 800; background: #d3ecda; color: #14562a;
+    padding: 2px 7px; border-radius: 3px; }
+
+  /* editor de texto da certidão */
+  .editor { border: 1px solid #8c9099; border-radius: 3px; margin: 0 14px 12px; background: #fff; }
+  .editor__barra {
+    border-bottom: 1px solid #e6e9ee; padding: 6px 10px; font-size: 12px; color: #4a5568;
+    display: flex; gap: 14px; align-items: center;
+  }
+  .editor__barra b { font-weight: 700; }
+  .editor__corpo { padding: 14px; font-size: 12.5px; line-height: 1.7; color: #2b3648; }
+  .auto {
+    background: #e5eefc; border-bottom: 1px dashed #7aa5e8; padding: 0 2px; border-radius: 2px;
+  }
+  .selo {
+    border: 1px solid #cfd6e0; border-radius: 4px; background: #f8fafc;
+    margin: 0 14px 12px; padding: 10px 14px; font-size: 12px; color: #4a5568;
+  }
+  .selo code { font-size: 11.5px; color: #1c1c1c; }
+
+  .mudancas { margin-top: 32px; display: grid; gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+  .mudanca { background: #fff; border: 1px solid #dde2ea; border-radius: 6px; padding: 16px 18px; }
+  .mudanca h3 { font-size: 15px; margin: 0 0 6px; }
+  .mudanca p { font-size: 14px; margin: 0; color: #4a5568; }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <p class="doc__linha">
+    Emitir um documento que ateste o que foi apurado na análise, vinculá-lo ao requerimento
+    e entregá-lo ao requerente. O caso que dá o exemplo: o requerente pede um imóvel e a
+    busca no cadastro não retorna nenhum que atenda.
+  </p>
+  <p class="doc__linha">
+    O que se certifica não é que o imóvel não existe. É <b>o que o sistema mostrou, naquela
+    data, com aqueles parâmetros</b> — e é isso que faz do documento uma certidão.
+  </p>
+
+  <h2 class="secao">1. O analista emite o documento</h2>
+
+  <div class="comparativo">
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--hoje">Como é hoje</span>
+        <h3>Fora do sistema, e cada um do seu jeito</h3>
+      </div>
+      <div class="ms-tela">
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Documentos do requerimento</div>
+          <div class="ms-item">
+            <span class="ms-doc">▤</span>
+            <span class="ms-item__nome">certidao_indisponibilidade_final_v2_assinado.pdf</span>
+            <span class="ms-item__acoes"><span class="ms-lapis">⤓</span></span>
+          </div>
+          <p class="ms-nota">
+            O servidor redige em editor de texto fora do sistema, imprime ou assina, digitaliza
+            e anexa. Não há modelo comum: cada unidade tem a sua versão, e cada servidor a
+            adapta como sabe.
+          </p>
+          <p class="ms-nota" style="padding-top:0">
+            O documento não tem número, não tem como ser conferido, e o que ele diz só se
+            descobre abrindo o arquivo. Para a maior parte dos casos, nem se emite —
+            o requerente recebe a decisão sem o documento que a sustenta.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--prop">Como ficaria</span>
+        <h3>Escolher um modelo, ajustar o texto, emitir</h3>
+      </div>
+      <div class="ms-tela">
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Emitir documento <span class="ms-novo">novo</span></div>
+
+          <div class="ms-linha2">
+            <div>
+              <span class="ms-campo__rotulo">Tipo <b>(Obrigatório)</b></span>
+              <div class="ms-select-wrap"><div class="ms-select">Certidão</div></div>
+            </div>
+            <div>
+              <span class="ms-campo__rotulo">Modelo</span>
+              <div class="ms-select-wrap"><div class="ms-select">Indisponibilidade de imóvel</div></div>
+            </div>
+          </div>
+          <p class="ms-nota" style="padding:0 14px 8px">
+            Ou <b>iniciar em branco</b> e redigir do zero.
+          </p>
+
+          <div class="editor">
+            <div class="editor__barra">
+              <b>Texto do documento</b>
+              <span style="margin-left:auto; color:#7aa5e8">▨ trecho preenchido pelo sistema</span>
+            </div>
+            <div class="editor__corpo">
+              <p style="text-align:center; font-weight:700; margin:0 0 12px">
+                CERTIDÃO DE INDISPONIBILIDADE DE IMÓVEL
+              </p>
+              <p style="margin:0 0 10px">
+                Certifico, para os devidos fins, que em consulta ao cadastro de imóveis da
+                União mantido pela Secretaria do Patrimônio da União, realizada em
+                <span class="auto">10/08/2026</span>, não foi localizado imóvel disponível
+                para destinação que atenda aos parâmetros informados no requerimento
+                <span class="auto">PR01934/2026</span>, a saber:
+                <span class="auto">município de Guaratuba/PR</span>,
+                <span class="auto">uso habitacional</span>,
+                <span class="auto">área de terreno entre 5.000 m² e 10.000 m²</span>.
+              </p>
+              <p style="margin:0">
+                <span class="auto">Guaratuba/PR</span>, <span class="auto">10 de agosto de 2026</span>.
+              </p>
+            </div>
+          </div>
+          <p class="ms-nota" style="padding:0 14px 10px">
+            O texto vem do modelo, com os dados do requerimento já preenchidos, e
+            <b>pode ser editado livremente</b>. Surgindo um caso que o modelo não previu,
+            o servidor ajusta ali mesmo.
+          </p>
+
+          <div class="ms-acoes" style="text-align:right">
+            <span class="ms-botao ms-botao--claro">Salvar rascunho</span>
+            <span class="ms-botao">Emitir e enviar ao interessado</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="secao">2. O que o requerente recebe</h2>
+
+  <div class="comparativo">
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--hoje">Como é hoje</span>
+        <h3>Na maior parte das vezes, nada</h3>
+      </div>
+      <div class="ms-tela">
+        <div class="ms-bloco" style="border-top-color:#8c9099">
+          <div class="ms-bloco__titulo">Requerimento PR01934/2026</div>
+          <div class="ms-campo">
+            <span class="ms-etiqueta ms-etiqueta--nao">Indeferido</span>
+            <div style="font-size:13px; margin-top:10px">
+              Seu requerimento foi concluído em 12/06/2026.
+            </div>
+          </div>
+        </div>
+        <p class="ms-nota">
+          Sem documento que ateste o que foi apurado, o requerente não tem o que apresentar
+          a terceiros — nem como saber que houve de fato uma busca no cadastro.
+        </p>
+      </div>
+    </div>
+
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--prop">Como ficaria</span>
+        <h3>Documento no requerimento, com código de conferência</h3>
+      </div>
+      <div class="ms-tela">
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Requerimento PR01934/2026 — documentos emitidos <span class="ms-novo">novo</span></div>
+          <table class="ms-tabela">
+            <thead>
+              <tr><th>Documento</th><th>Emitido em</th><th>Responsável</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Certidão de indisponibilidade de imóvel</b><br>
+                  <span style="color:#6b7686">nº 2026/PR/000481</span></td>
+                <td>10/08/2026</td>
+                <td>Servidor responsável pela análise</td>
+                <td><span class="ms-doc">⤓</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="selo">
+            <b>Código de autenticidade</b><br>
+            <code>a3f9-21c7-8e04-bb56</code><br>
+            <span>Confira a autenticidade deste documento na ferramenta de verificação da SPU.</span>
+          </div>
+        </div>
+        <p class="ms-nota">
+          O mesmo documento fica no histórico do requerimento, do lado do servidor, com data
+          e responsável — e não pode mais ser alterado.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="secao">3. O catálogo de modelos</h2>
+  <p class="doc__linha">
+    É aqui que está a diferença de custo. Caso novo não vira pedido ao fornecedor: vira
+    modelo novo, criado pela própria equipe.
+  </p>
+
+  <div class="ms-tela" style="margin-top:16px">
+    <div class="ms-bloco">
+      <div class="ms-bloco__titulo">Modelos de documento <span class="ms-novo">novo</span></div>
+      <table class="ms-tabela">
+        <thead><tr><th>Modelo</th><th>Tipo</th><th>Situação</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>Indisponibilidade de imóvel</td><td>Certidão</td>
+              <td><span class="ms-etiqueta ms-etiqueta--ok">Em uso</span></td><td><span class="ms-lapis">✎</span></td></tr>
+          <tr><td>Disponibilidade de imóvel</td><td>Certidão</td>
+              <td><span class="ms-etiqueta ms-etiqueta--ok">Em uso</span></td><td><span class="ms-lapis">✎</span></td></tr>
+          <tr><td>Recusa de oferta pelo interessado</td><td>Certidão</td>
+              <td><span class="ms-etiqueta ms-etiqueta--ok">Em uso</span></td><td><span class="ms-lapis">✎</span></td></tr>
+          <tr><td>Situação cadastral do imóvel</td><td>Declaração</td>
+              <td><span class="ms-etiqueta ms-etiqueta--ok">Em uso</span></td><td><span class="ms-lapis">✎</span></td></tr>
+          <tr><td>Documento em branco</td><td>Certidão ou declaração</td>
+              <td><span class="ms-etiqueta ms-etiqueta--neutra">Sempre disponível</span></td><td></td></tr>
+        </tbody>
+      </table>
+      <div class="ms-campo"><span class="ms-botao ms-botao--claro">Novo modelo +</span></div>
+      <p class="ms-nota">
+        Alterar um modelo vale para os documentos emitidos daqui em diante. Os já emitidos
+        permanecem exatamente como foram.
+      </p>
+    </div>
+  </div>
+
+  <div class="mudancas">
+    <div class="mudanca">
+      <h3>1. Uma tela resolve uma classe de necessidades</h3>
+      <p>Em vez de um pedido por tipo de certidão, um pedido só — e o catálogo de modelos
+      fica sob controle da SPU. Caso novo não depende do fornecedor.</p>
+    </div>
+    <div class="mudanca">
+      <h3>2. Certidão e declaração são coisas distintas</h3>
+      <p>Certidão atesta fato constante de registro; declaração é manifestação da
+      administração. O sistema precisa dos dois, e não deve chamar tudo de certidão.</p>
+    </div>
+    <div class="mudanca">
+      <h3>3. Documento emitido não se edita</h3>
+      <p>Correção se faz emitindo outro, que referencia e substitui o anterior. Se o
+      documento pudesse mudar depois de emitido, o código de autenticidade não certificaria
+      nada.</p>
+    </div>
+    <div class="mudanca">
+      <h3>4. O preenchimento automático é bônus</h3>
+      <p>Trazer data, número do requerimento e parâmetros da busca reduz erro e retrabalho,
+      mas não é condição para a primeira versão funcionar.</p>
+    </div>
+  </div>
+
+  <div class="mudanca" style="margin-top:20px; border-left:3px solid #b8860b; background:#fdf8ec">
+    <h3>O que ainda não está decidido</h3>
+    <p>Se o documento precisa valer fora da SPU — caso em que entra assinatura eletrônica,
+    porque o código de autenticidade prova integridade, não autoria. Se a emissão é sempre
+    por ação do analista ou se o sistema a oferece quando o fato ocorre. E se emitir a
+    certidão de indisponibilidade encerra o requerimento ou apenas acompanha a decisão.</p>
+  </div>
+
+</div>
+</body>
+</html>
