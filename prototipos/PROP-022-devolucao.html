@@ -197,6 +197,108 @@
 
   </div>
 
+
+  <h2 style="font-size:19px; margin:44px 0 6px; padding-top:24px; border-top:1px solid #dde2ea">
+    Ofertar imóvel é um componente da devolução
+  </h2>
+  <p class="doc__linha">
+    Quando o imóvel pedido está indisponível, a SPU oferece alternativa. Isso não precisa de
+    fluxo próprio: é mais um componente que o analista acrescenta à devolução — e a resposta
+    do requerente volta pelo mesmo mecanismo das outras perguntas.
+  </p>
+
+  <div class="comparativo">
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--hoje">Como é hoje</span>
+        <h2>Oferta e recusa resolvidas em PDF</h2>
+      </div>
+      <div class="ms-tela">
+        <div class="ms-bloco" style="border-top-color:#8c9099">
+          <div class="ms-bloco__titulo">Imóvel do requerimento</div>
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">RIP informado pelo requerente</span>
+            <div class="ms-input" style="color:#3d4759">7519 0001234-56</div>
+          </div>
+          <p class="ms-nota">Nada liga esse número a um imóvel do cadastro.</p>
+        </div>
+        <div class="ms-bloco" style="border-top-color:#8c9099">
+          <div class="ms-bloco__titulo">Documentos</div>
+          <div class="ms-item">
+            <span class="ms-doc">▤</span>
+            <span class="ms-item__nome">Ofício de oferta de imóvel 2026.pdf</span>
+          </div>
+          <div class="ms-item">
+            <span class="ms-doc">▤</span>
+            <span class="ms-item__nome">Manifestação de recusa — assinada.pdf</span>
+          </div>
+          <p class="ms-nota">
+            A prática existe — o serviço até distribui o modelo de manifestação de recusa.
+            Mas fica em documento: não se sabe, sem abrir os arquivos, o que foi ofertado
+            nem o que o requerente respondeu.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--prop">Como ficaria</span>
+        <h2>Um componente a mais na devolução</h2>
+      </div>
+      <div class="ms-tela">
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Imóvel vinculado ao requerimento <span class="ms-novo">novo</span></div>
+          <div class="ms-cartao">
+            <div class="ms-cartao__topo">
+              <span class="ms-cartao__rip">7519 0001234-56</span>
+              <span class="ms-etiqueta ms-etiqueta--nao">Já destinado — indisponível</span>
+            </div>
+            <div class="ms-cartao__grade">
+              <div><b>Endereço:</b> Rua Bolívia, 32 — Nereidas</div>
+              <div><b>Regime atual:</b> Cessão de uso</div>
+            </div>
+          </div>
+          <p class="ms-nota" style="padding:0 14px 10px">
+            Os dados vêm do Módulo de Cadastro, pela consulta por RIP. É aqui que se percebe
+            que o imóvel pedido não está disponível — e é daí que nasce a oferta.
+          </p>
+        </div>
+
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Perguntas ao requerente</div>
+          <div class="ms-item">
+            <span class="ms-item__nome"><b>Data de início da ocupação</b><br>
+              <span style="color:#6b7686">Data · obrigatória</span></span>
+            <span class="ms-item__acoes"><span class="ms-lapis">✎</span></span>
+          </div>
+          <div class="ms-item" style="background:#f2faf5">
+            <span class="ms-item__nome"><b>Oferta de imóvel</b> <span class="ms-novo">componente novo</span><br>
+              <span style="color:#6b7686">RIP 7519 0007788-01 — Av. Atlântica, 1.240<br>
+              resposta: Aceitar ou Recusar, com observações</span></span>
+            <span class="ms-item__acoes"><span class="ms-lapis">✎</span></span>
+          </div>
+          <div class="ms-campo">
+            <span class="ms-botao ms-botao--claro">Adicionar pergunta +</span>
+            <span class="ms-botao ms-botao--claro">Ofertar imóvel +</span>
+          </div>
+          <p class="ms-nota">
+            A oferta entra na mesma devolução, junto das demais perguntas. Um envio só ao
+            requerente, e a resposta volta estruturada como as outras.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mudanca" style="margin-top:20px; border-left:3px solid #b8860b; background:#fdf8ec">
+    <h3>A tela de resposta do requerente ainda é hipótese</h3>
+    <p>Rádio com <b>Aceitar</b> e <b>Recusar</b>, mais campo <b>Observações</b>. Falta definir
+    se as observações são obrigatórias, se o campo aparece sempre ou só na recusa, e se a
+    manifestação no Portal substitui a assinatura do modelo em PDF — esta última passa pela
+    área jurídica, porque a recusa tem efeito no processo.</p>
+  </div>
+
   <div class="mudancas">
     <div class="mudanca">
       <h3>1. O pedido deixa de ser ambíguo</h3>
