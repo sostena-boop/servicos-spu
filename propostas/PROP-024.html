@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROP-024 — Emissão de certidões e declarações pelo analista</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+<header class="topo">
+  <div class="topo__interno">
+    <a class="topo__marca" href="../index.html">
+      <span class="topo__orgao">SPU · Escritório de Processos</span>
+      <span class="topo__nome">Propostas de evolução — Portal de Serviços e Módulo de Serviços</span>
+    </a>
+    <nav class="topo__nav">
+      <a href="../index.html" class="ativo">Propostas</a>
+      <a href="../sobre.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+<main class="conteudo">
+<p class="volta"><a href="../index.html">Todas as propostas</a></p>
+<p class="doc-id">PROP-024</p>
+<h1>Emissão de certidões e declarações pelo analista</h1>
+
+<div class="intro"><p>Durante a análise de documentos ou a análise técnica, o servidor precisa emitir um documento que registre um fato ou ato relacionado ao requerimento e encaminhá-lo ao interessado. Não há funcionalidade para redigir, emitir e enviar esse documento dentro do fluxo de análise.</p>
+<p>O caso mais concreto: quando alguém pede um imóvel e não há imóvel a ofertar, é preciso entregar ao requerente um documento que ateste isso. Hoje não existe caminho.</p></div>
+<div class="ficha">
+<h2>Mudança proposta</h2>
+<p>Funcionalidade de emissão de <strong>certidões e declarações</strong>, com editor de texto e banco de modelos.</p>
+<p>O analista poderá:</p>
+<ol><li>escolher um modelo previamente cadastrado e <strong>editar livremente</strong> o conteúdo; ou</li><li>iniciar em branco e redigir do zero.</li></ol>
+<p>O documento emitido deve:</p>
+<ul><li>ficar <strong>vinculado ao requerimento</strong>;</li><li>identificar o <strong>servidor responsável</strong> e a data de emissão;</li><li>receber <strong>identificador único ou hash</strong> para verificação de autenticidade;</li><li>ficar no <strong>histórico do requerimento</strong>;</li><li>ser <strong>encaminhado e disponibilizado ao interessado no Portal</strong>.</li></ul>
+<p>Como possibilidade complementar, o editor poderá preencher automaticamente dados já disponíveis no requerimento, com o analista podendo ajustar. <strong>Não é requisito da primeira versão.</strong></p>
+<h3>Por que modelo editável, e não um fluxo por tipo de certidão</h3>
+<p>Esta é a decisão de desenho central, e ela é deliberada.</p>
+<p>O ideal seria o <strong>próprio requerente emitir</strong> a certidão de disponibilidade ou de indisponibilidade, automaticamente, a partir da consulta ao cadastro. Juarez avalia que isso é mais complexo e mais caro, e pondera a capacidade do prestador de desenvolvimento.</p>
+<p>Daí a escolha: <strong>deixar a emissão com o servidor, apoiada em modelos que ele pode adaptar.</strong> O ganho não é só de custo de construção — é de <strong>autonomia</strong>. Surgindo um caso novo, a equipe cria ou ajusta um modelo; não precisa abrir solicitação de manutenção e esperar o fornecedor. Cada tipo novo de certidão deixa de ser uma demanda de sistema.</p>
+<p>É o oposto do desenho que se costuma pedir: em vez de uma tela por tipo de documento, <strong>uma tela e um catálogo de modelos sob controle da própria SPU</strong>.</p>
+<h3>Direção futura, não pedida agora</h3>
+<p>Emissão automática pelo requerente, a partir da consulta ao cadastro, para os casos em que o fato é apurável pelo sistema — disponibilidade e indisponibilidade de imóvel. Fica registrada como direção; não entra nesta proposta.</p>
+<h2>Justificativa</h2>
+<p>Sem essa funcionalidade, o servidor não tem como entregar ao requerente um documento que ateste o que foi apurado. O caso da indisponibilidade de imóvel é o mais claro: o pedido é indeferido e o requerente recebe a decisão sem o documento que a sustenta.</p>
+<p>O desenho por modelos editáveis reduz a dependência do fornecedor de desenvolvimento — que é o risco principal registrado neste projeto. Uma funcionalidade genérica bem feita substitui uma fila de pedidos específicos que nunca seriam atendidos a tempo.</p>
+<p>E há economia de escopo: <strong>um pedido resolve uma classe inteira de necessidades</strong>, em vez de uma proposta por tipo de certidão.</p>
+</div>
+</main>
+<script src="../site.js"></script>
+</body>
+</html>
