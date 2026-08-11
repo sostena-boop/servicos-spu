@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROP-020 — Consulta ao Módulo de Cadastro pelo RIP</title>
+<link rel="stylesheet" href="base-portal.css">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 24px 56px; background: #f2f4f7; color: #1c1c1c;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .doc { max-width: 1400px; margin: 0 auto; }
+  .doc__linha { color: #4a5568; max-width: 76ch; margin: 0 0 26px; }
+  .comparativo { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  @media (min-width: 1120px) { .comparativo { grid-template-columns: 1fr 1fr; } }
+  .painel__titulo { margin-bottom: 12px; }
+  .painel__tag {
+    display: inline-block; font-size: 15px; font-weight: 800; letter-spacing: .6px;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 4px;
+  }
+  .painel__titulo h2 { font-size: 15px; margin: 8px 0 0; font-weight: 600; color: #3d4759; }
+  .tag--hoje { background: #f7d9d9; color: #8c1c1b; }
+  .tag--prop { background: #d3ecda; color: #14562a; }
+  .mudancas {
+    margin-top: 36px; display: grid; gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
+  .mudanca { background: #fff; border: 1px solid #dde2ea; border-radius: 6px; padding: 16px 18px; }
+  .mudanca h3 { font-size: 15px; margin: 0 0 6px; }
+  .mudanca p { font-size: 14px; margin: 0; color: #4a5568; }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <p class="doc__linha">
+    O RIP na tela de análise do requerimento, hoje e como ficaria. Hoje ele é um número
+    que o requerente digitou e ninguém confere. Na proposta, informar o RIP traz do
+    Módulo de Cadastro os dados do imóvel.
+  </p>
+
+  <div class="comparativo">
+
+    <!-- ================= HOJE ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--hoje">Como é hoje</span>
+        <h2>Um número declarado, sem confirmação</h2>
+      </div>
+
+      <div class="ms-tela">
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Dados da Destinação</div>
+          <div class="ms-linha2">
+            <div>
+              <span class="ms-campo__rotulo">UF</span>
+              <div class="ms-input" style="color:#3d4759">PR</div>
+            </div>
+            <div>
+              <span class="ms-campo__rotulo">Município</span>
+              <div class="ms-input" style="color:#3d4759">Guaratuba</div>
+            </div>
+          </div>
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">RIP se existente (somente número)</span>
+            <div class="ms-input" style="color:#3d4759">7519 0001234-56</div>
+          </div>
+          <p class="ms-nota">
+            O campo é declaratório. Nada diz se o RIP existe, a que imóvel corresponde,
+            onde ele fica, qual a área, se está disponível. Para saber, o servidor sai
+            do sistema e consulta o cadastro por fora.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= PROPOSTA ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--prop">Como ficaria</span>
+        <h2>O mesmo campo, com retorno do Módulo de Cadastro</h2>
+      </div>
+
+      <div class="ms-tela">
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Dados da Destinação</div>
+          <div class="ms-linha2">
+            <div>
+              <span class="ms-campo__rotulo">UF</span>
+              <div class="ms-input" style="color:#3d4759">PR</div>
+            </div>
+            <div>
+              <span class="ms-campo__rotulo">Município</span>
+              <div class="ms-input" style="color:#3d4759">Guaratuba</div>
+            </div>
+          </div>
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">RIP se existente (somente número)</span>
+            <div style="display:flex; gap:8px; align-items:center">
+              <div class="ms-input" style="color:#3d4759">7519 0001234-56</div>
+              <span class="ms-botao" style="white-space:nowrap">Consultar</span>
+            </div>
+          </div>
+
+          <div class="ms-bloco__sub">Imóvel encontrado no cadastro <span class="ms-novo">novo</span></div>
+          <div class="ms-cartao">
+            <div class="ms-cartao__topo">
+              <span class="ms-cartao__rip">7519 0001234-56</span>
+              <span class="ms-etiqueta ms-etiqueta--ok">Disponível para destinação</span>
+            </div>
+            <div class="ms-cartao__grade">
+              <div><b>Endereço:</b> Rua Bolívia, 32 — Nereidas</div>
+              <div><b>Município/UF:</b> Guaratuba/PR</div>
+              <div><b>Área do terreno:</b> 380,00 m²</div>
+              <div><b>Área construída:</b> 96,00 m²</div>
+              <div><b>Natureza:</b> Urbano</div>
+              <div><b>Tipo:</b> Terreno com edificação</div>
+              <div><b>Regime atual:</b> Sem destinação</div>
+              <div><b>Ocupação registrada:</b> Não consta</div>
+            </div>
+          </div>
+          <p class="ms-nota">
+            O servidor confere na própria tela se é o imóvel de que se trata — e se ele
+            está em condição de ser destinado.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mudancas">
+    <div class="mudanca">
+      <h3>1. Deixa de ser palavra do requerente</h3>
+      <p>Um RIP digitado errado hoje só aparece muito à frente, quando alguém tenta
+      trabalhar sobre um imóvel que não é aquele.</p>
+    </div>
+    <div class="mudanca">
+      <h3>2. A disponibilidade fica visível</h3>
+      <p>Saber se o imóvel já tem destinação evita instruir um pedido sobre bem
+      indisponível — retrabalho que só aparece na análise técnica.</p>
+    </div>
+    <div class="mudanca">
+      <h3>3. Habilita vincular e ofertar</h3>
+      <p>Sem saber que imóvel é, não há como vinculá-lo ao requerimento nem ofertá-lo
+      como alternativa. É por isso que esta consulta vem antes.</p>
+    </div>
+    <div class="mudanca">
+      <h3>4. Pode não ser integração</h3>
+      <p>Módulo de Serviços e Módulo de Cadastro estão na mesma plataforma. Se
+      compartilham base, isto é exibir dado que o sistema já alcança — a verificar
+      antes de pedir uma API.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROP-018 — Checklist da análise de documentos</title>
+<link rel="stylesheet" href="base-portal.css">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 24px 56px; background: #f2f4f7; color: #1c1c1c;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .doc { max-width: 1400px; margin: 0 auto; }
+  .doc__linha { color: #4a5568; max-width: 76ch; margin: 0 0 26px; }
+
+  .comparativo { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  @media (min-width: 1120px) { .comparativo { grid-template-columns: 1fr 1fr; } }
+
+  .painel__titulo { margin-bottom: 12px; }
+  .painel__tag {
+    display: inline-block; font-size: 15px; font-weight: 800; letter-spacing: .6px;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 4px;
+  }
+  .painel__titulo h2 { font-size: 15px; margin: 8px 0 0; font-weight: 600; color: #3d4759; }
+  .tag--hoje { background: #f7d9d9; color: #8c1c1b; }
+  .tag--prop { background: #d3ecda; color: #14562a; }
+
+  .mudancas {
+    margin-top: 36px; display: grid; gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
+  .mudanca { background: #fff; border: 1px solid #dde2ea; border-radius: 6px; padding: 16px 18px; }
+  .mudanca h3 { font-size: 15px; margin: 0 0 6px; }
+  .mudanca p { font-size: 14px; margin: 0; color: #4a5568; }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <p class="doc__linha">
+    O checklist da análise de documentos, hoje e como ficaria. A mudança é uma só:
+    além do rádio Sim/Não, o checklist passa a aceitar os mesmos componentes que o
+    editor de formulários já oferece — texto, data, número, escolha, anexo.
+  </p>
+
+  <div class="comparativo">
+
+    <!-- ================= HOJE ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--hoje">Como é hoje</span>
+        <h2>Só "apresentou: sim ou não", com justificativa em texto livre</h2>
+      </div>
+
+      <div class="ms-tela">
+        <div class="ms-tela__titulo">Análise de Documentação</div>
+
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Atesto para os devidos fins que</div>
+          <div class="ms-item">
+            <span class="ms-item__nome">O formulário de requerimento encontra-se devidamente preenchido.</span>
+            <span class="ms-item__acoes">
+              <span class="ms-radio"><i></i>Sim</span>
+              <span class="ms-radio"><i></i>Não</span>
+              <span class="ms-lapis">✎</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Os documentos adicionados no requerimento enviado são considerados válidos para a abertura do processo</div>
+
+          <div class="ms-bloco__sub">Obrigatórios</div>
+          <div class="ms-item">
+            <span class="ms-doc">▤</span>
+            <span class="ms-item__nome">Título Aquisitivo/Documento de Transferência, com páginas numeradas (ex. Escritura Pública, Formal de Partilha, Instrumento Particular com Força de Escritura)</span>
+            <span class="ms-item__acoes">
+              <span class="ms-radio marcado"><i></i>Sim</span>
+              <span class="ms-radio"><i></i>Não</span>
+              <span class="ms-lapis">✎</span>
+            </span>
+          </div>
+          <div class="ms-item">
+            <span class="ms-doc">▤</span>
+            <span class="ms-item__nome">Documento de Identificação com foto (RG, CNH, Carteira de Trabalho, Carteira de Identidade de Estrangeiro, Cartão de Cidadão etc.)</span>
+            <span class="ms-item__acoes">
+              <span class="ms-radio marcado"><i></i>Sim</span>
+              <span class="ms-radio"><i></i>Não</span>
+              <span class="ms-lapis">✎</span>
+            </span>
+          </div>
+
+          <div class="ms-bloco__sub">Complementares</div>
+          <div class="ms-item">
+            <span class="ms-doc">▤</span>
+            <span class="ms-item__nome">Certidão de inteiro teor da matrícula do imóvel, retroagindo a 5 de setembro de 1946</span>
+            <span class="ms-item__acoes">
+              <span class="ms-radio"><i></i>Sim</span>
+              <span class="ms-radio"><i></i>Não</span>
+              <span class="ms-lapis">✎</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="ms-acoes">
+          <span class="ms-campo__rotulo"><b>Anotações Complementares</b> (Obrigatório)</span>
+          <div class="ms-campo" style="padding:0">
+            <div class="ms-textarea" style="color:#8a94a3">Matrícula apresentada retroage apenas a 1974. Título lavrado em 12/03/1998, valor de R$ 85.000,00. Imóvel ocupado desde 2001, uso residencial.</div>
+          </div>
+          <p class="ms-nota" style="padding:8px 0 0">
+            Tudo o que não é "sim ou não" acaba aqui, em texto corrido: datas, valores,
+            classificações. Não é consultável, não vira indicador, não atravessa integração.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= PROPOSTA ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--prop">Como ficaria</span>
+        <h2>O mesmo checklist, com os componentes do formulário</h2>
+      </div>
+
+      <div class="ms-tela">
+        <div class="ms-tela__titulo">Análise de Documentação</div>
+
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Atesto para os devidos fins que</div>
+          <div class="ms-item">
+            <span class="ms-item__nome">O formulário de requerimento encontra-se devidamente preenchido.</span>
+            <span class="ms-item__acoes">
+              <span class="ms-radio"><i></i>Sim</span>
+              <span class="ms-radio"><i></i>Não</span>
+              <span class="ms-lapis">✎</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Os documentos adicionados no requerimento enviado são considerados válidos para a abertura do processo</div>
+
+          <div class="ms-bloco__sub">Obrigatórios</div>
+          <div class="ms-item">
+            <span class="ms-doc">▤</span>
+            <span class="ms-item__nome">Título Aquisitivo/Documento de Transferência, com páginas numeradas</span>
+            <span class="ms-item__acoes">
+              <span class="ms-radio marcado"><i></i>Sim</span>
+              <span class="ms-radio"><i></i>Não</span>
+              <span class="ms-lapis">✎</span>
+            </span>
+          </div>
+          <div class="ms-linha2">
+            <div>
+              <span class="ms-campo__rotulo">Tipo de título <span class="ms-novo">novo</span></span>
+              <div class="ms-select-wrap"><div class="ms-select">Escritura pública</div></div>
+            </div>
+            <div>
+              <span class="ms-campo__rotulo">Data do título <span class="ms-novo">novo</span></span>
+              <div class="ms-input">12/03/1998</div>
+            </div>
+          </div>
+          <div class="ms-linha2">
+            <div>
+              <span class="ms-campo__rotulo">Valor declarado <span class="ms-novo">novo</span></span>
+              <div class="ms-input">R$ 85.000,00</div>
+            </div>
+            <div>
+              <span class="ms-campo__rotulo">Registrado em cartório <span class="ms-novo">novo</span></span>
+              <div class="ms-select-wrap"><div class="ms-select">Sim</div></div>
+            </div>
+          </div>
+
+          <div class="ms-item" style="border-top:1px solid #eef1f5">
+            <span class="ms-doc">▤</span>
+            <span class="ms-item__nome">Documento de Identificação com foto</span>
+            <span class="ms-item__acoes">
+              <span class="ms-radio marcado"><i></i>Sim</span>
+              <span class="ms-radio"><i></i>Não</span>
+              <span class="ms-lapis">✎</span>
+            </span>
+          </div>
+
+          <div class="ms-bloco__sub">Complementares</div>
+          <div class="ms-item">
+            <span class="ms-doc">▤</span>
+            <span class="ms-item__nome">Certidão de inteiro teor da matrícula do imóvel, retroagindo a 5 de setembro de 1946</span>
+            <span class="ms-item__acoes">
+              <span class="ms-radio"><i></i>Sim</span>
+              <span class="ms-radio marcado"><i></i>Não</span>
+              <span class="ms-lapis">✎</span>
+            </span>
+          </div>
+          <div class="ms-linha2">
+            <div>
+              <span class="ms-campo__rotulo">Ano até o qual a matrícula retroage <span class="ms-novo">novo</span></span>
+              <div class="ms-input">1974</div>
+            </div>
+            <div>
+              <span class="ms-campo__rotulo">Número da matrícula <span class="ms-novo">novo</span></span>
+              <div class="ms-input">31.482</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ms-acoes">
+          <span class="ms-campo__rotulo"><b>Anotações Complementares</b> (Obrigatório)</span>
+          <div class="ms-campo" style="padding:0">
+            <div class="ms-textarea" style="color:#8a94a3">Encaminhado para verificação registral.</div>
+          </div>
+          <p class="ms-nota" style="padding:8px 0 0">
+            As anotações voltam a ser o que deveriam: observação do analista. O que é dado
+            fica em campo — consultável, comparável, transportável.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mudancas">
+    <div class="mudanca">
+      <h3>1. A conformidade continua onde está</h3>
+      <p>O rádio Sim/Não não sai. Ele responde bem à pergunta que sabe responder:
+      o documento foi apresentado e é válido.</p>
+    </div>
+    <div class="mudanca">
+      <h3>2. Cada item pode ter campos próprios</h3>
+      <p>Configurados por serviço, na mesma aba onde o checklist já é montado hoje.
+      Data, número, valor, escolha entre alternativas previstas, anexo.</p>
+    </div>
+    <div class="mudanca">
+      <h3>3. Nada de componente novo</h3>
+      <p>São os onze tipos que o editor de formulários já oferece. O sistema já sabe
+      renderizar, validar e gravar cada um deles.</p>
+    </div>
+    <div class="mudanca">
+      <h3>4. As anotações deixam de ser depósito</h3>
+      <p>Hoje elas absorvem tudo o que não cabe num sim ou não. Com campos, voltam a
+      ser observação — e o dado deixa de ficar preso em texto corrido.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

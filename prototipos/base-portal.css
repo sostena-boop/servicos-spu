@@ -241,3 +241,143 @@
   border-bottom-left-radius: 4px;
   letter-spacing: 0.3px;
 }
+
+/* ===========================================================================
+   Componentes de tela do Módulo de Serviços do SPUnet
+   ---------------------------------------------------------------------------
+   Acrescentados em 07/08/2026 para os protótipos da análise de documentos.
+   Reproduzem o suficiente da aparência das telas capturadas em EVIDENCIAS/;
+   não são os componentes reais do sistema.
+   =========================================================================== */
+
+.ms-tela {
+  background: var(--portal-branco);
+  border: 1px solid var(--portal-cinza-borda);
+  border-radius: 4px;
+  font-family: var(--portal-fonte);
+  color: var(--portal-texto);
+  overflow: hidden;
+}
+
+.ms-tela__titulo {
+  text-align: center;
+  color: var(--portal-azul-link);
+  font-size: 20px;
+  font-weight: 600;
+  padding: 16px;
+  border-bottom: 1px solid var(--portal-cinza-borda);
+}
+
+.ms-bloco { border-top: 2px solid var(--portal-azul-link); margin: 16px; }
+
+.ms-bloco__titulo {
+  font-size: 15px;
+  color: #4a5568;
+  padding: 12px 14px;
+  border-bottom: 1px solid #e6e9ee;
+}
+
+.ms-bloco__sub {
+  font-size: 13px; font-weight: 700; color: #1c1c1c;
+  padding: 12px 14px 4px;
+}
+
+/* linha de item do checklist */
+.ms-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 14px; border-bottom: 1px solid #eef1f5;
+}
+.ms-item:last-child { border-bottom: 0; }
+.ms-item__nome { flex: 1; font-size: 13px; line-height: 1.45; }
+.ms-item__acoes { display: flex; align-items: center; gap: 14px; white-space: nowrap; }
+
+.ms-doc { color: var(--portal-azul-link); font-size: 15px; }
+
+.ms-radio { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; }
+.ms-radio i {
+  width: 15px; height: 15px; border-radius: 50%;
+  border: 1.5px solid #d34b4b; display: inline-block;
+}
+.ms-radio.marcado i { border-color: #7aa5e8; background: #7aa5e8; box-shadow: inset 0 0 0 3px #fff; }
+.ms-lapis { color: var(--portal-azul-link); font-size: 14px; }
+
+/* campos */
+.ms-campo { padding: 10px 14px; }
+.ms-campo__rotulo { display: block; font-size: 12px; color: #4a5568; margin-bottom: 4px; }
+.ms-campo__rotulo b { color: #1c1c1c; font-weight: 700; }
+
+.ms-input, .ms-select, .ms-textarea {
+  width: 100%; border: 1px solid #8c9099; border-radius: 3px;
+  padding: 7px 10px; font-size: 13px; background: #fff; color: #3d4759;
+  font-family: inherit;
+}
+.ms-textarea { min-height: 56px; }
+.ms-select { appearance: none; background-image: none; }
+.ms-select::after { content: ""; }
+.ms-select-wrap { position: relative; }
+.ms-select-wrap::after {
+  content: "▾"; position: absolute; right: 10px; top: 7px;
+  color: var(--portal-azul-link); font-size: 12px; pointer-events: none;
+}
+
+.ms-linha2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 14px 8px; }
+
+.ms-acoes { padding: 14px; border-top: 1px solid #eef1f5; }
+.ms-botao {
+  display: inline-block; background: var(--portal-azul-link); color: #fff;
+  border-radius: 100px; padding: 7px 22px; font-size: 13px; font-weight: 600;
+}
+.ms-botao--claro {
+  background: #fff; color: var(--portal-azul-link);
+  border: 1px solid var(--portal-azul-link);
+}
+
+.ms-nota {
+  font-size: 12px; color: #6b7686; padding: 0 14px 12px;
+}
+
+/* etiqueta de "novo" nos protótipos */
+.ms-novo {
+  display: inline-block; background: #d3ecda; color: #14562a;
+  font-size: 10px; font-weight: 800; letter-spacing: .4px;
+  text-transform: uppercase; padding: 2px 7px; border-radius: 3px;
+  margin-left: 6px; vertical-align: middle;
+}
+
+/* --- tabela, etiqueta de situação e cartão de imóvel ---------------------- */
+
+.ms-tabela { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.ms-tabela th {
+  background: #eef1f6; text-align: left; font-weight: 700; color: #4a5568;
+  font-size: 11px; text-transform: uppercase; letter-spacing: .4px;
+  padding: 8px 10px; border-bottom: 1px solid #dde2ea;
+}
+.ms-tabela td { padding: 9px 10px; border-bottom: 1px solid #eef1f5; vertical-align: top; }
+
+.ms-etiqueta {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  padding: 2px 8px; border-radius: 3px; white-space: nowrap;
+}
+.ms-etiqueta--ok { background: #d3ecda; color: #14562a; }
+.ms-etiqueta--nao { background: #f7d9d9; color: #8c1c1b; }
+.ms-etiqueta--espera { background: #fdf1dd; color: #7a5300; }
+.ms-etiqueta--neutra { background: #eceef2; color: #4a5568; }
+
+.ms-cartao {
+  border: 1px solid #cfd6e0; border-radius: 4px; background: #f8fafc;
+  padding: 12px 14px; margin: 0 14px 12px;
+}
+.ms-cartao__topo {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; margin-bottom: 8px;
+}
+.ms-cartao__rip { font-size: 14px; font-weight: 800; color: var(--portal-azul-link); }
+.ms-cartao__grade {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 18px;
+  font-size: 12.5px;
+}
+.ms-cartao__grade b { color: #4a5568; font-weight: 600; }
+.ms-vazio {
+  border: 1px dashed #cfd6e0; border-radius: 4px; margin: 0 14px 12px;
+  padding: 16px 14px; font-size: 12.5px; color: #8a94a3; text-align: center;
+}

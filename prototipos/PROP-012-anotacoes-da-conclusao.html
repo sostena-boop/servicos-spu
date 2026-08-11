@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROP-012 — Anotações da conclusão enviadas ao requerente</title>
+<link rel="stylesheet" href="base-portal.css">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 24px 56px; background: #f2f4f7; color: #1c1c1c;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .doc { max-width: 1400px; margin: 0 auto; }
+  .doc__linha { color: #4a5568; max-width: 78ch; margin: 0 0 26px; }
+  .comparativo { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  @media (min-width: 1120px) { .comparativo { grid-template-columns: 1fr 1fr; } }
+  .painel__titulo { margin-bottom: 12px; }
+  .painel__tag {
+    display: inline-block; font-size: 15px; font-weight: 800; letter-spacing: .6px;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 4px;
+  }
+  .painel__titulo h2 { font-size: 15px; margin: 8px 0 0; font-weight: 600; color: #3d4759; }
+  .tag--hoje { background: #f7d9d9; color: #8c1c1b; }
+  .tag--prop { background: #d3ecda; color: #14562a; }
+  .lado { font-size: 12px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase;
+    color: #6b7686; margin: 22px 0 8px; }
+  .mudancas {
+    margin-top: 36px; display: grid; gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
+  .mudanca { background: #fff; border: 1px solid #dde2ea; border-radius: 6px; padding: 16px 18px; }
+  .mudanca h3 { font-size: 15px; margin: 0 0 6px; }
+  .mudanca p { font-size: 14px; margin: 0; color: #4a5568; }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <p class="doc__linha">
+    A conclusão do requerimento, hoje e como ficaria. O servidor já escreve o motivo da
+    decisão em "Anotações Complementares" — só que esse texto fica no sistema e não chega
+    a quem pediu. Quando a devolução é por pendência, a anotação chega; na conclusão, não.
+  </p>
+
+  <div class="comparativo">
+
+    <!-- ================= HOJE ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--hoje">Como é hoje</span>
+        <h2>O motivo é escrito, e fica só do lado de dentro</h2>
+      </div>
+
+      <p class="lado">O que o servidor preenche</p>
+      <div class="ms-tela">
+        <div class="ms-bloco" style="border-top-color:#8c9099">
+          <div class="ms-item" style="border-bottom:0">
+            <span class="ms-radio"><i></i></span>
+            <span class="ms-item__nome">Concluir com Deferimento</span>
+          </div>
+          <div class="ms-item" style="border-bottom:0; padding-top:0">
+            <span class="ms-radio marcado"><i></i></span>
+            <span class="ms-item__nome">Concluir com Indeferimento</span>
+          </div>
+          <div class="ms-item" style="border-bottom:0; padding-top:0">
+            <span class="ms-radio"><i></i></span>
+            <span class="ms-item__nome">Cancelar requerimento</span>
+          </div>
+        </div>
+        <div class="ms-campo">
+          <span class="ms-campo__rotulo"><b>Anotações Complementares</b></span>
+          <div class="ms-textarea" style="color:#3d4759">Imóvel objeto do pedido já se encontra destinado por cessão de uso ao Município, conforme processo 04947.001873/2012-52. Não há disponibilidade para nova destinação.</div>
+        </div>
+        <div class="ms-acoes" style="text-align:right">
+          <span class="ms-botao ms-botao--claro">Fechar</span>
+          <span class="ms-botao">Enviar</span>
+        </div>
+      </div>
+
+      <p class="lado">O que o requerente recebe</p>
+      <div class="ms-tela">
+        <div class="ms-bloco" style="border-top-color:#8c9099">
+          <div class="ms-bloco__titulo">Requerimento PR01934/2026</div>
+          <div class="ms-campo">
+            <span class="ms-etiqueta ms-etiqueta--nao">Indeferido</span>
+            <div style="font-size:13px; margin-top:10px">
+              Seu requerimento foi concluído em 12/06/2026.
+            </div>
+          </div>
+        </div>
+        <p class="ms-nota">
+          A decisão chega sem o motivo. Quem quiser saber por que ligue para o 0800,
+          procure a Superintendência ou abra outro requerimento — o texto que explicaria
+          tudo já existe, escrito, do outro lado da tela.
+        </p>
+      </div>
+    </div>
+
+    <!-- ================= PROPOSTA ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--prop">Como ficaria</span>
+        <h2>O mesmo texto, entregue a quem pediu</h2>
+      </div>
+
+      <p class="lado">O que o servidor preenche</p>
+      <div class="ms-tela">
+        <div class="ms-bloco" style="border-top-color:#8c9099">
+          <div class="ms-item" style="border-bottom:0">
+            <span class="ms-radio"><i></i></span>
+            <span class="ms-item__nome">Concluir com Deferimento</span>
+          </div>
+          <div class="ms-item" style="border-bottom:0; padding-top:0">
+            <span class="ms-radio marcado"><i></i></span>
+            <span class="ms-item__nome">Concluir com Indeferimento</span>
+          </div>
+          <div class="ms-item" style="border-bottom:0; padding-top:0">
+            <span class="ms-radio"><i></i></span>
+            <span class="ms-item__nome">Cancelar requerimento</span>
+          </div>
+        </div>
+        <div class="ms-campo">
+          <span class="ms-campo__rotulo">
+            <b>Anotações Complementares</b>
+            <span class="ms-novo">será enviado ao requerente</span>
+          </span>
+          <div class="ms-textarea" style="color:#3d4759">Imóvel objeto do pedido já se encontra destinado por cessão de uso ao Município, conforme processo 04947.001873/2012-52. Não há disponibilidade para nova destinação.</div>
+        </div>
+        <div class="ms-acoes" style="text-align:right">
+          <span class="ms-botao ms-botao--claro">Fechar</span>
+          <span class="ms-botao">Enviar</span>
+        </div>
+      </div>
+
+      <p class="lado">O que o requerente recebe</p>
+      <div class="ms-tela">
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Requerimento PR01934/2026</div>
+          <div class="ms-campo">
+            <span class="ms-etiqueta ms-etiqueta--nao">Indeferido</span>
+            <div style="font-size:13px; margin-top:10px">
+              Seu requerimento foi concluído em 12/06/2026.
+            </div>
+          </div>
+          <div class="ms-cartao">
+            <div class="ms-cartao__topo">
+              <span style="font-size:12px; font-weight:800; color:#4a5568; text-transform:uppercase; letter-spacing:.4px">Motivo da decisão <span class="ms-novo">novo</span></span>
+            </div>
+            <div style="font-size:13px; line-height:1.5">
+              Imóvel objeto do pedido já se encontra destinado por cessão de uso ao
+              Município, conforme processo 04947.001873/2012-52. Não há disponibilidade
+              para nova destinação.
+            </div>
+          </div>
+        </div>
+        <p class="ms-nota">
+          Sem campo novo, sem tela nova, sem texto a mais para o servidor escrever.
+          O que já está escrito passa a ser exibido.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mudancas">
+    <div class="mudanca">
+      <h3>1. É a menor mudança do backlog</h3>
+      <p>Não cria campo, não cria tela, não muda o que o servidor faz. Exibe ao requerente
+      um texto que o sistema já guarda.</p>
+    </div>
+    <div class="mudanca">
+      <h3>2. O canal já existe</h3>
+      <p>Na devolução por pendência a anotação já chega ao requerente, com arquivo de
+      orientação junto. É o mesmo caminho, no outro momento do fluxo.</p>
+    </div>
+    <div class="mudanca">
+      <h3>3. A conta hoje é do atendimento</h3>
+      <p>Quem não sabe por que foi indeferido liga, procura a Superintendência ou pede de
+      novo. O custo do silêncio recai sobre quem atende.</p>
+    </div>
+    <div class="mudanca">
+      <h3>4. Dever de motivação</h3>
+      <p>Decisão administrativa que nega pedido precisa ser motivada, e a motivação
+      precisa alcançar o interessado. Aqui ela já é escrita — só não é entregue.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

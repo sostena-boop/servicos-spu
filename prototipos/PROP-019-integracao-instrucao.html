@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROP-019 — Integração com o Módulo de Instrução de Destinações</title>
+<link rel="stylesheet" href="base-portal.css">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 24px 56px; background: #f2f4f7; color: #1c1c1c;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .doc { max-width: 1400px; margin: 0 auto; }
+  .doc__linha { color: #4a5568; max-width: 78ch; margin: 0 0 26px; }
+  .comparativo { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  @media (min-width: 1120px) { .comparativo { grid-template-columns: 1fr 1fr; } }
+  .painel__titulo { margin-bottom: 12px; }
+  .painel__tag {
+    display: inline-block; font-size: 15px; font-weight: 800; letter-spacing: .6px;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 4px;
+  }
+  .painel__titulo h2 { font-size: 15px; margin: 8px 0 0; font-weight: 600; color: #3d4759; }
+  .tag--hoje { background: #f7d9d9; color: #8c1c1b; }
+  .tag--prop { background: #d3ecda; color: #14562a; }
+  .lado { font-size: 12px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase;
+    color: #6b7686; margin: 22px 0 8px; }
+
+  .quadro {
+    background: #fff; border: 1px solid #dde2ea; border-radius: 6px; padding: 14px;
+  }
+  svg { width: 100%; height: auto; display: block; }
+  .cx { fill: #eef1f6; stroke: #b9c2ce; }
+  .cx-spu { fill: #e5eefc; stroke: #7aa5e8; }
+  .cx-sei { fill: #f1eef7; stroke: #b3a3cf; }
+  .cx-inst { fill: #e3f3e7; stroke: #7cb894; }
+  .cx-mal { fill: #fbeaea; stroke: #dba3a3; }
+  .cx-bem { fill: #d3ecda; stroke: #5aa476; }
+  .rot { font: 700 11px -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #1c1c1c; }
+  .sub { font: 10.5px -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #4a5568; }
+  .seta { stroke: #6b7686; stroke-width: 1.6; fill: none; }
+  .seta-tracejada { stroke: #b06060; stroke-width: 1.6; fill: none; stroke-dasharray: 5 4; }
+  .setarot { font: 700 10px -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #4a5568; }
+  .setarot-mal { fill: #8c1c1b; }
+  .setarot-bem { fill: #14562a; }
+
+  .mudancas {
+    margin-top: 36px; display: grid; gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
+  .mudanca { background: #fff; border: 1px solid #dde2ea; border-radius: 6px; padding: 16px 18px; }
+  .mudanca h3 { font-size: 15px; margin: 0 0 6px; }
+  .mudanca p { font-size: 14px; margin: 0; color: #4a5568; }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <p class="doc__linha">
+    Esta proposta não muda uma tela: muda o caminho que o requerimento faz depois que a
+    análise técnica começa. Por isso o comparativo é de fluxo, e não de interface. O efeito
+    visível aparece no fim: o requerimento que hoje fica aberto esperando alguém fechar.
+  </p>
+
+  <div class="comparativo">
+
+    <!-- ================= HOJE ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--hoje">Como é hoje</span>
+        <h2>Vai para o SEI e não volta</h2>
+      </div>
+
+      <p class="lado">O caminho</p>
+      <div class="quadro">
+        <svg viewBox="0 0 560 300" role="img" aria-label="Fluxo atual: o requerimento vai para o SEI e o retorno é manual">
+          <defs>
+            <marker id="p1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+              <path d="M0,0 L7,3 L0,6 z" fill="#6b7686"/>
+            </marker>
+            <marker id="p1m" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+              <path d="M0,0 L7,3 L0,6 z" fill="#b06060"/>
+            </marker>
+          </defs>
+
+          <rect class="cx-spu" x="14" y="26" width="190" height="62" rx="6"/>
+          <text class="rot" x="28" y="50">Módulo de Serviços</text>
+          <text class="sub" x="28" y="66">Requerimento com a análise</text>
+          <text class="sub" x="28" y="79">de documentos concluída</text>
+
+          <path class="seta" d="M204,57 L340,57" marker-end="url(#p1)"/>
+          <text class="setarot" x="222" y="48">"Iniciar análise técnica"</text>
+
+          <rect class="cx-sei" x="346" y="26" width="200" height="62" rx="6"/>
+          <text class="rot" x="360" y="50">SEI</text>
+          <text class="sub" x="360" y="66">Processo criado; documentos</text>
+          <text class="sub" x="360" y="79">do requerimento enviados</text>
+
+          <path class="seta" d="M446,88 L446,128" marker-end="url(#p1)"/>
+
+          <rect class="cx" x="346" y="132" width="200" height="62" rx="6"/>
+          <text class="rot" x="360" y="156">A instrução acontece aqui</text>
+          <text class="sub" x="360" y="172">Análise técnica, decisão e</text>
+          <text class="sub" x="360" y="185">fundamentação, fora do SPUnet</text>
+
+          <path class="seta-tracejada" d="M346,163 L120,163 L120,208" marker-end="url(#p1m)"/>
+          <text class="setarot setarot-mal" x="128" y="156">nada volta automaticamente</text>
+
+          <rect class="cx-mal" x="14" y="212" width="190" height="66" rx="6"/>
+          <text class="rot" x="28" y="236">Requerimento segue aberto</text>
+          <text class="sub" x="28" y="252">Alguém precisa lembrar de</text>
+          <text class="sub" x="28" y="265">fechar, à mão, com o desfecho</text>
+        </svg>
+      </div>
+
+      <p class="lado">O que se vê na lista de requerimentos</p>
+      <div class="ms-tela">
+        <table class="ms-tabela">
+          <thead><tr><th>Nº Atendimento</th><th>Situação</th><th>Desde</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>PR01934/2026</td>
+              <td><span class="ms-etiqueta ms-etiqueta--espera">Em Análise Técnica</span></td>
+              <td>12/02/2026<br><span style="color:#8c1c1b">há 4 meses</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="ms-nota" style="padding-top:10px">
+          A decisão pode já existir no SEI há semanas. O Módulo de Serviços não sabe, o
+          requerente não é avisado, e o prazo de análise técnica corre.
+        </p>
+      </div>
+    </div>
+
+    <!-- ================= PROPOSTA ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--prop">Como ficaria</span>
+        <h2>O mesmo gatilho, agora com dois destinos e um retorno</h2>
+      </div>
+
+      <p class="lado">O caminho</p>
+      <div class="quadro">
+        <svg viewBox="0 0 560 300" role="img" aria-label="Fluxo proposto: envio ao SEI e ao Módulo de Instrução, com retorno do resultado">
+          <defs>
+            <marker id="p2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+              <path d="M0,0 L7,3 L0,6 z" fill="#6b7686"/>
+            </marker>
+            <marker id="p2b" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+              <path d="M0,0 L7,3 L0,6 z" fill="#3f8a5c"/>
+            </marker>
+          </defs>
+
+          <rect class="cx-spu" x="14" y="26" width="190" height="62" rx="6"/>
+          <text class="rot" x="28" y="50">Módulo de Serviços</text>
+          <text class="sub" x="28" y="66">Requerimento com a análise</text>
+          <text class="sub" x="28" y="79">de documentos concluída</text>
+
+          <path class="seta" d="M204,50 L340,36" marker-end="url(#p2)"/>
+          <path class="seta" d="M204,64 L340,110" marker-end="url(#p2)"/>
+          <text class="setarot" x="216" y="98">um botão, dois destinos</text>
+
+          <rect class="cx-sei" x="346" y="14" width="200" height="44" rx="6"/>
+          <text class="rot" x="360" y="34">SEI — como hoje</text>
+          <text class="sub" x="360" y="49">Processo e documentos</text>
+
+          <rect class="cx-inst" x="346" y="80" width="200" height="70" rx="6"/>
+          <text class="rot" x="360" y="100">Módulo de Instrução</text>
+          <text class="sub" x="360" y="114">plataforma SPUnet Gestão</text>
+          <text class="sub" x="360" y="129">Recebe o requerimento e</text>
+          <text class="sub" x="360" y="142">devolve o nº de destinação</text>
+
+          <path class="seta" d="M446,150 L446,178" marker-end="url(#p2)"/>
+          <text class="setarot" x="452" y="168">ida: imediata</text>
+
+          <rect class="cx-inst" x="346" y="182" width="200" height="48" rx="6"/>
+          <text class="rot" x="360" y="203">Instrução concluída</text>
+          <text class="sub" x="360" y="219">Deferido · Indeferido · Cancelado</text>
+
+          <path class="seta" style="stroke:#3f8a5c" d="M346,206 L120,206 L120,240" marker-end="url(#p2b)"/>
+          <text class="setarot setarot-bem" x="128" y="199">volta: dias ou meses depois</text>
+
+          <rect class="cx-bem" x="14" y="244" width="190" height="50" rx="6"/>
+          <text class="rot" x="28" y="266">Requerimento fecha sozinho</text>
+          <text class="sub" x="28" y="281">com o resultado recebido</text>
+        </svg>
+      </div>
+
+      <p class="lado">O que se vê na lista de requerimentos</p>
+      <div class="ms-tela">
+        <table class="ms-tabela">
+          <thead><tr><th>Nº Atendimento</th><th>Situação</th><th>Desde</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>PR01934/2026</td>
+              <td>
+                <span class="ms-etiqueta ms-etiqueta--nao">Concluído — Indeferido</span>
+                <div style="color:#6b7686; margin-top:4px">Destinação 2026/0142</div>
+              </td>
+              <td>12/06/2026</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="ms-nota" style="padding-top:10px">
+          O desfecho chega ao Módulo de Serviços no momento em que existe. O requerimento
+          fecha, o requerente é notificado e o número de destinação fica guardado ao lado
+          do número do requerimento.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mudancas">
+    <div class="mudanca">
+      <h3>1. O mecanismo já existe</h3>
+      <p>Enviar o requerimento a um sistema externo nesse ponto e receber um identificador
+      de volta é o que já acontece com o SEI. O que se pede é apontar o mesmo mecanismo
+      para mais um destino.</p>
+    </div>
+    <div class="mudanca">
+      <h3>2. Ida e volta são coisas diferentes</h3>
+      <p>A ida é imediata: o servidor clica e espera o número de destinação. A volta vem
+      dias ou meses depois, sem ninguém esperando — não pode ser resposta da mesma
+      chamada.</p>
+    </div>
+    <div class="mudanca">
+      <h3>3. O SEI continua recebendo</h3>
+      <p>A proposta não retira o processo do SEI. Ele permanece enquanto a comunicação
+      oficial com requerente e outros órgãos depender dele.</p>
+    </div>
+    <div class="mudanca">
+      <h3>4. Cada sistema guarda a chave do outro</h3>
+      <p>Não há identificador comum: a instrução guarda o número do requerimento como
+      origem, o Módulo de Serviços guarda o número de destinação. Requerimento e
+      destinação são coisas distintas — nem todo pedido vira destinação.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -58,6 +58,7 @@ th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--bo
 th { background: #eef1f6; font-size: 12px; text-transform: uppercase;
   letter-spacing: .5px; color: var(--texto-suave); }
 .lista { border: 1px solid var(--borda); border-radius: 6px; }
+.col-ordem { font-weight: 800; white-space: nowrap; color: var(--azul); text-align: right; }
 .col-id { font-weight: 700; white-space: nowrap; }
 .col-titulo { min-width: 280px; }
 .col-sistema, .col-tipo { color: var(--texto-suave); }

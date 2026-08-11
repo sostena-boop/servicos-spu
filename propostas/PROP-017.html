@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROP-017 — Arquitetura das categorias de serviços: níveis e classificação múltipla</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+<header class="topo">
+  <div class="topo__interno">
+    <a class="topo__marca" href="../index.html">
+      <span class="topo__orgao">SPU · Escritório de Processos</span>
+      <span class="topo__nome">Propostas de evolução — Portal de Serviços e Módulo de Serviços</span>
+    </a>
+    <nav class="topo__nav">
+      <a href="../index.html" class="ativo">Propostas</a>
+      <a href="../sobre.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+<main class="conteudo">
+<p class="volta"><a href="../index.html">Todas as propostas</a></p>
+<p class="doc-id">PROP-017</p>
+<h1>Arquitetura das categorias de serviços: níveis e classificação múltipla</h1>
+
+<div class="intro"><p>A taxonomia de serviços do Portal tem <strong>um único nível</strong> e admite <strong>uma única classificação por serviço</strong>. Não há subcategorias, e um serviço que faria sentido em dois lugares precisa ficar em um só.</p>
+<p>Isso produz três efeitos observáveis:</p>
+<ol><li><strong>Categorias que acumulam funções demais</strong> — para caber tudo em um nível, os rótulos viram listas: "Transferência de Titularidade, Laudêmio e CAT", "Alterar Dados Cadastrais, Unificação e Desmembramento", "Regularização, Uso de Imóvel ou Espelho D'água".</li><li><strong>Categoria residual</strong> — "Demais Requerimentos" existe porque o que não encaixa em nenhuma das outras precisa de destino.</li><li><strong>Escolha errada pelo cidadão</strong> — sem subdivisão e sem presença múltipla, o usuário procura o serviço na categoria que faz sentido para ele e não o encontra ali.</li></ol>
+<h3>Achado adicional: as categorias misturam eixos de classificação</h3>
+<p>Levantamento das 12 categorias hoje exibidas, com o eixo que cada uma usa:</p>
+<div class="tabela-rolavel"><table><thead><tr><th>Categoria atual</th><th>Eixo de classificação</th></tr></thead><tbody><tr><td>Serviços Financeiros</td><td>Natureza da operação</td></tr><tr><td>Certidões, Declarações</td><td>Tipo de documento emitido</td></tr><tr><td>Transferência de Titularidade, Laudêmio e CAT</td><td>Ato ou instrumento</td></tr><tr><td>Alterar Dados Cadastrais, Unificação e Desmembramento</td><td>Ato sobre o cadastro do imóvel</td></tr><tr><td>Consultar Propriedade de Imóvel da União</td><td>Tipo de serviço (consulta)</td></tr><tr><td>Regularização, Uso de Imóvel ou Espelho D'água</td><td>Finalidade + tipo de bem</td></tr><tr><td>Imóveis para Entes Públicos e Entidades sem Fins Lucrativos</td><td>Perfil do requerente</td></tr><tr><td>Demarcação de Áreas e Notificação de Imóveis Atingidos</td><td>Procedimento de ofício da SPU</td></tr><tr><td>Regularização Fundiária e Programas Habitacionais</td><td>Política pública ou programa</td></tr><tr><td>Imóveis da Extinta Rede Ferroviária Federal RFFSA</td><td>Origem ou regime do bem</td></tr><tr><td>Aquisição de Imóvel da União</td><td>Finalidade</td></tr><tr><td>Demais Requerimentos</td><td>Residual</td></tr></tbody></table></div>
+<p>São pelo menos seis eixos diferentes convivendo no mesmo nível: natureza da operação, tipo de documento, ato, perfil do requerente, política pública e origem do bem.</p>
+<p><strong>Isso muda o diagnóstico.</strong> A necessidade de classificar o mesmo serviço em mais de um lugar não é só uma limitação da ferramenta — é consequência de tentar representar vários eixos numa árvore única. Aprofundar a árvore sem separar os eixos reproduz o problema um nível abaixo.</p>
+<p>Observação à parte: "Demarcação de Áreas e Notificação de Imóveis Atingidos" descreve procedimento iniciado de ofício pela SPU, não requerimento do cidadão. Convive na mesma lista dos serviços solicitáveis. Verificar se está no lugar certo.</p></div>
+</main>
+<script src="../site.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROP-023 — Vincular e ofertar imóveis na análise de documentos</title>
+<link rel="stylesheet" href="base-portal.css">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 24px 56px; background: #f2f4f7; color: #1c1c1c;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .doc { max-width: 1400px; margin: 0 auto; }
+  .doc__linha { color: #4a5568; max-width: 76ch; margin: 0 0 26px; }
+  .comparativo { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  @media (min-width: 1120px) { .comparativo { grid-template-columns: 1fr 1fr; } }
+  .painel__titulo { margin-bottom: 12px; }
+  .painel__tag {
+    display: inline-block; font-size: 15px; font-weight: 800; letter-spacing: .6px;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 4px;
+  }
+  .painel__titulo h2 { font-size: 15px; margin: 8px 0 0; font-weight: 600; color: #3d4759; }
+  .tag--hoje { background: #f7d9d9; color: #8c1c1b; }
+  .tag--prop { background: #d3ecda; color: #14562a; }
+  .mudancas {
+    margin-top: 36px; display: grid; gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
+  .mudanca { background: #fff; border: 1px solid #dde2ea; border-radius: 6px; padding: 16px 18px; }
+  .mudanca h3 { font-size: 15px; margin: 0 0 6px; }
+  .mudanca p { font-size: 14px; margin: 0; color: #4a5568; }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <p class="doc__linha">
+    Vincular o imóvel ao requerimento e ofertar alternativas ao requerente. As duas coisas
+    já acontecem — só que fora do sistema, em documento anexado. A proposta não cria
+    prática nova: estrutura a que existe.
+  </p>
+
+  <div class="comparativo">
+
+    <!-- ================= HOJE ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--hoje">Como é hoje</span>
+        <h2>O imóvel é texto; a oferta e a recusa são PDF</h2>
+      </div>
+
+      <div class="ms-tela">
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Imóvel do requerimento</div>
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">RIP informado pelo requerente</span>
+            <div class="ms-input" style="color:#3d4759">7519 0001234-56</div>
+          </div>
+          <p class="ms-nota">
+            Nada liga esse número a um imóvel do cadastro. O requerimento segue sem que
+            o objeto da destinação esteja identificado no sistema.
+          </p>
+        </div>
+
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Documentos</div>
+          <div class="ms-item">
+            <span class="ms-doc">▤</span>
+            <span class="ms-item__nome">Manifestação de recusa de oferta — assinada.pdf</span>
+            <span class="ms-item__acoes"><span class="ms-lapis">⤓</span></span>
+          </div>
+          <div class="ms-item">
+            <span class="ms-doc">▤</span>
+            <span class="ms-item__nome">Ofício de oferta de imóvel 2026.pdf</span>
+            <span class="ms-item__acoes"><span class="ms-lapis">⤓</span></span>
+          </div>
+          <p class="ms-nota">
+            A oferta e a recusa existem — o serviço até distribui o
+            "Modelo de Manifestação de Recusa de Oferta Imóvel da União" nos arquivos de
+            ajuda. Mas ficam como documento: não se sabe, sem abrir os PDF, quais imóveis
+            foram ofertados, quando, nem o que o requerente respondeu.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= PROPOSTA ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--prop">Como ficaria</span>
+        <h2>Imóvel vinculado, ofertas registradas com o desfecho de cada uma</h2>
+      </div>
+
+      <div class="ms-tela">
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Imóvel do requerimento <span class="ms-novo">novo</span></div>
+          <div class="ms-cartao">
+            <div class="ms-cartao__topo">
+              <span class="ms-cartao__rip">7519 0001234-56</span>
+              <span class="ms-etiqueta ms-etiqueta--nao">Já destinado — indisponível</span>
+            </div>
+            <div class="ms-cartao__grade">
+              <div><b>Endereço:</b> Rua Bolívia, 32 — Nereidas</div>
+              <div><b>Município/UF:</b> Guaratuba/PR</div>
+              <div><b>Área do terreno:</b> 380,00 m²</div>
+              <div><b>Regime atual:</b> Cessão de uso</div>
+            </div>
+          </div>
+          <p class="ms-nota">
+            O imóvel pedido está indisponível. É aqui que a oferta de alternativa começa —
+            e agora o sistema sabe disso antes da análise técnica.
+          </p>
+        </div>
+
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Imóveis ofertados ao requerente <span class="ms-novo">novo</span></div>
+          <table class="ms-tabela">
+            <thead>
+              <tr><th>RIP</th><th>Endereço</th><th>Ofertado em</th><th>Situação</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>7519 0007788-01</td>
+                <td>Av. Atlântica, 1.240 — Centro<br><span style="color:#6b7686">520,00 m² · sem edificação</span></td>
+                <td>12/05/2026</td>
+                <td>
+                  <span class="ms-etiqueta ms-etiqueta--nao">Recusado</span>
+                  <div style="color:#6b7686; margin-top:4px">Área insuficiente para o uso pretendido</div>
+                </td>
+              </tr>
+              <tr>
+                <td>7519 0009012-33</td>
+                <td>Rua das Palmeiras, 88 — Nereidas<br><span style="color:#6b7686">410,00 m² · com edificação</span></td>
+                <td>28/05/2026</td>
+                <td><span class="ms-etiqueta ms-etiqueta--espera">Aguardando manifestação</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="ms-campo">
+            <span class="ms-botao ms-botao--claro">Ofertar outro imóvel +</span>
+          </div>
+          <p class="ms-nota">
+            Cada oferta tem imóvel, data e desfecho. A recusa fica registrada com o motivo,
+            em campo — sem depender de alguém abrir um PDF para descobrir o que aconteceu.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mudancas">
+    <div class="mudanca">
+      <h3>1. Não é prática nova</h3>
+      <p>A oferta com recusa já existe: o próprio serviço distribui o modelo de
+      manifestação de recusa. O que muda é o registro deixar de ser documento.</p>
+    </div>
+    <div class="mudanca">
+      <h3>2. O objeto da destinação fica identificado</h3>
+      <p>Vincular o imóvel é o que permite a instrução receber pronto de que bem se
+      trata, em vez de um número que alguém digitou.</p>
+    </div>
+    <div class="mudanca">
+      <h3>3. A recusa vira dado</h3>
+      <p>Quantas ofertas foram feitas, quais foram recusadas e por quê — hoje isso só
+      existe dentro de PDF, e por isso não vira indicador nem aprendizado.</p>
+    </div>
+    <div class="mudanca">
+      <h3>4. Depende da consulta por RIP</h3>
+      <p>Sem os dados do cadastro não há como mostrar o que se está ofertando. É a
+      PROP-020, e é por isso que ela vem junto.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
