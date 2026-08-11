@@ -64,7 +64,7 @@
 <div class="doc">
 
   <p class="doc__linha">
-    Sete propostas do backlog tratam do <b>mesmo lugar</b>: o editor de formulários do
+    Seis propostas do backlog tratam do <b>mesmo lugar</b>: o editor de formulários do
     Módulo de Serviços, onde a equipe monta os requerimentos que o cidadão preenche.
     Elas aparecem juntas aqui porque são a mesma tela e, provavelmente, uma solicitação só.
   </p>
@@ -79,7 +79,7 @@
     <div class="painel">
       <div class="painel__titulo">
         <span class="painel__tag tag--hoje">Como é hoje</span>
-        <h3>Onze tipos</h3>
+        <h3>Doze tipos</h3>
       </div>
       <div class="ms-tela">
         <div class="ms-bloco">
@@ -94,12 +94,17 @@
             <li>Data</li>
             <li>Arquivo</li>
             <li>Combo UF</li>
+            <li><span>Localização UF/Município</span><span class="prop" style="background:#eceef2; color:#4a5568">já atendida</span></li>
             <li>Telefone</li>
             <li>Email</li>
           </ul>
           <p class="ms-nota" style="padding-top:10px">
             Pergunta de Sim/Não vira Combo. Marcar mais de uma alternativa não existe.
             Valor em dinheiro vira Numérico com Decimal, sem símbolo nem separador.
+          </p>
+          <p class="ms-nota" style="padding-top:0">
+            A localização UF/Município foi implementada depois das capturas de 07/08/2026,
+            que não a mostram. Estava no backlog como PROP-003 e saiu por já ter sido atendida.
           </p>
         </div>
       </div>
@@ -108,7 +113,7 @@
     <div class="painel">
       <div class="painel__titulo">
         <span class="painel__tag tag--prop">Como ficaria</span>
-        <h3>Quinze tipos — quatro acréscimos</h3>
+        <h3>Quinze tipos — três acréscimos</h3>
       </div>
       <div class="ms-tela">
         <div class="ms-bloco">
@@ -121,18 +126,18 @@
             <li class="novo"><span>Rádio <span style="color:#6b7686">— Sim/Não ou poucas alternativas</span></span><span class="prop">PROP-004</span></li>
             <li class="novo"><span>Múltipla seleção <span style="color:#6b7686">— marcar mais de uma</span></span><span class="prop">PROP-015</span></li>
             <li class="novo"><span>Moeda <span style="color:#6b7686">— R$ com separador e centavos</span></span><span class="prop">PROP-013</span></li>
-            <li class="novo"><span>Localização UF/Município <span style="color:#6b7686">— sem cartório</span></span><span class="prop">PROP-003</span></li>
             <li>Componente</li>
             <li>CPF/CNPJ</li>
             <li>Data</li>
             <li>Arquivo</li>
             <li>Combo UF</li>
+            <li>Localização UF/Município</li>
             <li>Telefone</li>
             <li>Email</li>
           </ul>
           <p class="ms-nota" style="padding-top:10px">
-            O componente "Cartório" já faz UF → Município → Cartório. O que se pede é a
-            versão que para no município.
+            Três tipos a mais. Abaixo, no bloco 4, como cada um se comporta na tela do
+            requerente — que é onde a diferença aparece.
           </p>
         </div>
       </div>
@@ -288,11 +293,104 @@
     </div>
   </div>
 
+  <h2 class="secao">4. Como os tipos novos aparecem ao requerente</h2>
+  <p class="doc__linha">
+    A lista de tipos é a visão de quem monta o formulário. Esta é a de quem preenche —
+    e é onde a falta de cada componente cobra o preço.
+  </p>
+
+  <div class="comparativo">
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--hoje">Como é hoje</span>
+        <h3>Tudo improvisado com o que existe</h3>
+      </div>
+      <div class="ms-tela">
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Trecho de um formulário no Portal</div>
+
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">Há imóvel locado para este fim atualmente? <b>(Obrigatório)</b></span>
+            <div class="ms-select-wrap"><div class="ms-select" style="color:#3d4759">Não</div></div>
+          </div>
+          <p class="ms-nota" style="padding:0 14px 10px">
+            Uma pergunta de sim ou não exige abrir a lista para ver que só há duas opções.
+          </p>
+
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">Serviços públicos disponíveis no local</span>
+            <div class="ms-textarea" style="color:#3d4759">Água, energia elétrica e coleta de lixo</div>
+          </div>
+          <p class="ms-nota" style="padding:0 14px 10px">
+            Como não há "marcar mais de uma", a pergunta vira campo de texto. Cada requerente
+            escreve à sua maneira, e a resposta não se agrupa nem se conta.
+          </p>
+
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">Informe o valor mensal da locação</span>
+            <div class="ms-input" style="color:#3d4759">3500.00</div>
+          </div>
+          <p class="ms-nota" style="padding:0 14px 12px">
+            Valor em dinheiro num campo numérico: sem R$, sem separador, e o requerente
+            decide sozinho se usa ponto ou vírgula.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--prop">Como ficaria</span>
+        <h3>Cada pergunta com o componente que lhe cabe</h3>
+      </div>
+      <div class="ms-tela">
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Trecho de um formulário no Portal</div>
+
+          <div class="ms-campo" style="background:#f2faf5">
+            <span class="ms-campo__rotulo">Há imóvel locado para este fim atualmente? <b>(Obrigatório)</b> <span class="prop">PROP-004</span></span>
+            <div style="display:flex; gap:22px; padding-top:4px">
+              <span class="ms-radio"><i></i>Sim</span>
+              <span class="ms-radio marcado"><i></i>Não</span>
+            </div>
+          </div>
+          <p class="ms-nota" style="padding:0 14px 10px">
+            As duas opções à vista, um clique para responder.
+          </p>
+
+          <div class="ms-campo" style="background:#f2faf5">
+            <span class="ms-campo__rotulo">Serviços públicos disponíveis no local <span class="prop">PROP-015</span></span>
+            <div style="padding-top:4px; font-size:13px; line-height:1.9">
+              <div><span class="ms-radio marcado"><i style="border-radius:2px"></i></span> Água encanada</div>
+              <div><span class="ms-radio marcado"><i style="border-radius:2px"></i></span> Energia elétrica</div>
+              <div><span class="ms-radio"><i style="border-radius:2px"></i></span> Rede de esgoto</div>
+              <div><span class="ms-radio marcado"><i style="border-radius:2px"></i></span> Coleta de lixo</div>
+              <div><span class="ms-radio"><i style="border-radius:2px"></i></span> Pavimentação</div>
+            </div>
+          </div>
+          <p class="ms-nota" style="padding:0 14px 10px">
+            Alternativas previstas, marcadas quantas forem. A resposta vira dado que se
+            agrupa e se conta.
+          </p>
+
+          <div class="ms-campo" style="background:#f2faf5">
+            <span class="ms-campo__rotulo">Informe o valor mensal da locação <span class="prop">PROP-013</span></span>
+            <div class="ms-input" style="color:#3d4759">R$ 3.500,00</div>
+          </div>
+          <p class="ms-nota" style="padding:0 14px 12px">
+            Símbolo, separador de milhar e centavos, sem depender de o requerente acertar
+            o formato.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="mudancas">
     <div class="mudanca">
-      <h3>São sete propostas, uma tela</h3>
-      <p>PROP-003, 004, 005, 007, 013, 014 e 015 mudam o mesmo editor. Tratá-las como
-      uma solicitação evita sete negociações separadas sobre o mesmo componente.</p>
+      <h3>São seis propostas, uma tela</h3>
+      <p>PROP-004, 005, 007, 013, 014 e 015 mudam o mesmo editor. Tratá-las como
+      uma solicitação evita seis negociações separadas sobre o mesmo componente.</p>
     </div>
     <div class="mudanca">
       <h3>O ganho é multiplicado</h3>
