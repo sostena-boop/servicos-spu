@@ -29,6 +29,20 @@
 <ol><li><strong>O pedido é ambíguo.</strong> Texto corrido não delimita o que se espera. Ida e volta se repete.</li><li><strong>A resposta não é estruturada.</strong> Volta como texto ou anexo, e não como dado — não é consultável, não vira indicador, não atravessa integração.</li><li><strong>O que se pode pedir fica limitado.</strong> A devolução é hoje pensada em torno de documentos; pedir uma <strong>informação</strong> cabe mal.</li></ol>
 <p>O exemplo real capturado mostra o problema: a anotação da devolução é <em>"Solicitamos RIP do imóvel."</em> — é um dado, não um documento, e chega ao requerente como frase solta.</p></div>
 <section class="secao-proto"><div class="secao-proto__topo"><h2>Como é hoje e como ficaria</h2><a class="botao botao--claro" href="../prototipos/PROP-022-devolucao.html" target="_blank">Abrir em tela cheia</a></div><iframe class="proto" src="../prototipos/PROP-022-devolucao.html" title="Protótipo comparativo da proposta" loading="eager"></iframe></section>
+<div class="ficha">
+<h2>Mudança proposta</h2>
+<p><strong>Permitir que a devolução ao requerente inclua um questionário com perguntas estruturadas</strong>, montado com os mesmos componentes do formulário — pergunta de texto, pergunta de escolha, data, número, anexo — em vez de apenas uma mensagem em texto livre.</p>
+<p>O requerente responde ao questionário no Portal, e <strong>a resposta fica registrada de forma estruturada</strong> no requerimento.</p>
+<p>Dois níveis, com prazos diferentes:</p>
+<div class="tabela-rolavel"><table><thead><tr><th>Nível</th><th>Quem monta</th><th>Quando</th></tr></thead><tbody><tr><td><strong>Questionário do analista</strong></td><td>O próprio servidor, no momento da análise</td><td>É o pedido de agora</td></tr><tr><td><strong>Questionário fixo</strong></td><td>A equipe central, previamente por serviço</td><td>Futuro, sinalizado como direção</td></tr></tbody></table></div>
+<p>O segundo nível reaproveita o ponto de configuração que já existe — a aba "Checklist da Análise de Documentos" do editor de serviço.</p>
+<p><strong>O argumento a usar com a área responsável:</strong> é o mesmo da PROP-018 — estender à devolução um repertório de componentes que o sistema já tem. E resolve, por construção, o que a PROP-011 pedia: podendo perguntar, a devolução deixa de depender de documento.</p>
+<h2>Justificativa</h2>
+<p>Pedido em texto corrido é pedido ambíguo. Três perguntas num parágrafo produzem uma resposta parcial, e cada resposta parcial é uma nova devolução — que consome prazo do requerente, tempo de análise e mais uma rodada de notificação.</p>
+<p>Com perguntas estruturadas, o requerente vê exatamente o que falta, e campo obrigatório não deixa reenviar pela metade. Cada volta evitada é ganho para os dois lados.</p>
+<p>A resposta também muda de natureza: deixa de ser texto num campo livre e passa a ser <strong>dado no requerimento</strong> — consultável, comparável e transportável para a instrução.</p>
+<p>Por fim, resolve por construção o que a PROP-011 pedia: podendo perguntar, a devolução deixa de depender de haver documento a que prendê-la.</p>
+</div>
 </main>
 <script src="../site.js"></script>
 </body>

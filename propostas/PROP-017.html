@@ -33,6 +33,17 @@
 <p>São pelo menos seis eixos diferentes convivendo no mesmo nível: natureza da operação, tipo de documento, ato, perfil do requerente, política pública e origem do bem.</p>
 <p><strong>Isso muda o diagnóstico.</strong> A necessidade de classificar o mesmo serviço em mais de um lugar não é só uma limitação da ferramenta — é consequência de tentar representar vários eixos numa árvore única. Aprofundar a árvore sem separar os eixos reproduz o problema um nível abaixo.</p>
 <p>Observação à parte: "Demarcação de Áreas e Notificação de Imóveis Atingidos" descreve procedimento iniciado de ofício pela SPU, não requerimento do cidadão. Convive na mesma lista dos serviços solicitáveis. Verificar se está no lugar certo.</p></div>
+<div class="ficha">
+<h2>Mudança proposta</h2>
+<p>Ainda em aberto. Duas arquiteturas possíveis, com consequências distintas:</p>
+<p><strong>A. Hierarquia mais profunda com classificação múltipla</strong> Manter a navegação em árvore, acrescentando um ou dois níveis (categoria → subcategoria → subcategoria de segundo nível) e permitindo que um serviço apareça em mais de um nó. É o que a proposta original pede, na forma literal. Vantagem: mudança incremental, próxima do que existe. Risco: com os eixos ainda misturados, a decisão de onde cada serviço aparece continua discricionária, e a manutenção fica mais cara — cada serviço novo exige decidir em quantos nós ele entra.</p>
+<p><strong>B. Classificação por facetas</strong> Separar os eixos em atributos independentes do serviço — por exemplo perfil do requerente, finalidade pretendida, tipo de bem e tipo de ato — e navegar por combinação de filtros em vez de por árvore. O serviço recebe valores em cada eixo; a "presença em vários lugares" passa a ser consequência automática, sem duplicar cadastro. Vantagem: resolve a classificação múltipla na origem e converge com PROP-008 (assistente de escolha do requerimento) e PROP-006 (Receita Federal identifica a natureza jurídica e já filtra o que aquele perfil pode pedir). Risco: afasta-se mais do Portal atual, e por isso é mais difícil de negociar com a SERPRO.</p>
+<p><strong>Modelo intermediário possível:</strong> manter uma árvore curta de dois níveis como caminho de navegação visível, mas assentada sobre um cadastro por facetas. A árvore vira uma visão dos dados, não a estrutura de dados.</p>
+<p>Recomendação preliminar: definir primeiro os eixos de classificação, e só depois decidir a profundidade da árvore. Sem isso, a discussão de "dois ou três níveis" não tem critério para ser resolvida.</p>
+<h2>Justificativa</h2>
+<p>O Portal passará a ser porta única de entrada dos requerimentos de destinação. A escolha errada do requerimento na origem contamina toda a cadeia: gera devolução ao requerente no Módulo de Serviços, atrasa a fase de análise técnica e leva dado inconsistente à carga para o Módulo de Instrução.</p>
+<p>Corrigir a taxonomia na entrada é mais barato que reclassificar depois — e a reclassificação pelo analista, hoje, sequer é possível (frente registrada no <code>PROJETO.md</code>).</p>
+</div>
 </main>
 <script src="../site.js"></script>
 </body>

@@ -27,6 +27,20 @@
 <div class="intro"><p>O requerimento entra pelo Portal, é triado e analisado no Módulo de Serviços, mas a instrução processual acontece fora dele. Hoje não há caminho automático entre os dois: o dado do requerimento não chega estruturado à instrução, e o resultado da instrução não volta para fechar o requerimento.</p>
 <p>Consequência: o requerimento permanece aberto no Módulo de Serviços enquanto a decisão já existe em outro lugar, e o servidor precisa fechar manualmente — quando fecha.</p></div>
 <section class="secao-proto"><div class="secao-proto__topo"><h2>Como é hoje e como ficaria</h2><a class="botao botao--claro" href="../prototipos/PROP-019-integracao-instrucao.html" target="_blank">Abrir em tela cheia</a></div><iframe class="proto" src="../prototipos/PROP-019-integracao-instrucao.html" title="Protótipo comparativo da proposta" loading="eager"></iframe></section>
+<div class="ficha">
+<h2>Mudança proposta</h2>
+<p>Integração por API, em dois sentidos:</p>
+<p><strong>Ida — na entrada da análise técnica.</strong> Quando o servidor aciona "Iniciar análise técnica", a API envia os dados do requerimento ao Módulo de Instrução de Destinações, que <strong>responde com o número de destinação</strong> gerado por ele. O Módulo de Serviços guarda esse número.</p>
+<p><strong>Volta — na conclusão da instrução.</strong> Concluída a instrução, o resultado retorna e o Módulo de Serviços <strong>fecha o requerimento automaticamente</strong>.</p>
+<p>Resultados citados por Juarez: <strong>deferido</strong>, <strong>indeferido</strong>, <strong>cancelado</strong>.</p>
+<p><strong>São dois momentos de natureza diferente</strong>, e isso precisa estar claro na especificação:</p>
+<ul><li>A <strong>ida</strong> é imediata: o servidor clica e espera a resposta com o número de destinação. É chamada síncrona, como já acontece com o SEI.</li><li>A <strong>volta</strong> acontece dias ou meses depois, sem ninguém esperando do outro lado. Não pode ser resposta de chamada — exige o módulo de instrução avisar o Módulo de Serviços quando concluir, ou o Módulo de Serviços consultar periodicamente. Tratar as duas como uma coisa só é o erro mais provável nesta integração.</li></ul>
+<h2>Justificativa</h2>
+<p>Sem retorno, o requerimento fica aberto no Módulo de Serviços depois de a decisão já existir. O requerente não é avisado, o prazo de análise técnica corre e a fila de trabalho da equipe mostra pendências que não são pendências.</p>
+<p>O fechamento manual não resolve: depende de alguém lembrar, e ninguém é notificado de que há o que lembrar.</p>
+<p>Do lado do esforço, <strong>o mecanismo já está implementado</strong>. O mesmo botão que hoje envia o requerimento ao SEI e recebe um número de processo de volta é o que se propõe apontar também ao Módulo de Instrução de Destinações. Não se pede uma capacidade nova, pede-se um destino a mais para uma capacidade existente.</p>
+<p>É também esta integração que dá sentido às demais: o registro estruturado da análise só produz efeito se chegar a quem instrui.</p>
+</div>
 </main>
 <script src="../site.js"></script>
 </body>
