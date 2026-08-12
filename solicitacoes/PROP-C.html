@@ -53,7 +53,8 @@ Requerentes dos serviços da SPU, que passam a receber os documentos pelo Portal
 <pre><code>Todos os serviços do Módulo de Serviços aos quais venham a ser associados modelos de documento, em todas as unidades da SPU, com reflexo no Portal de Serviços.</code></pre>
 <h2>Telas ou campos alterados</h2>
 <pre><code>No Módulo de Serviços:
-- tela nova de cadastro e manutenção de modelos de documento, incluindo a associação a tipos de requerimento;
+- tela nova de cadastro e manutenção de modelos de documento;
+- tela inicial de edição do serviço, que passa a permitir selecionar quais modelos ficam disponíveis para aquele serviço;
 - tela de análise do requerimento, que passa a permitir a emissão de documento;
 - histórico do requerimento, que passa a registrar os documentos emitidos.
 
@@ -67,6 +68,8 @@ PARTE 1 - ADMINISTRACAO DOS MODELOS
 1. Cadastro de modelos de documento, com identificação do tipo - certidão ou declaração - e do texto padronizado.
 
 2. Associação de cada modelo a um ou mais tipos de requerimento. Um mesmo tipo de requerimento pode ter mais de um modelo associado.
+
+2.1. A associação e feita na TELA INICIAL DE EDICAO DO SERVICO, no Módulo de Serviços, onde se selecionam quais certidões e declarações ficam disponíveis para aquele serviço. Não se solicita tela própria para essa finalidade.
 
 3. Inserção, no texto do modelo, de CAMPOS VARIAVEIS, preenchidos automaticamente com dados do requerimento no momento da emissão. As variáveis disponíveis compreendem:
    a) dados do requerimento comuns a todos os serviços - nome e identificação do requerente, número e data do requerimento, serviço solicitado, unidade responsável, data da emissão e servidor emitente;
@@ -86,39 +89,43 @@ PARTE 2 - EMISSAO PELO SERVIDOR
 
 9. Na tela de análise, o servidor escolhe entre os modelos associados àquele tipo de requerimento e disponíveis conforme as condições aplicáveis.
 
-10. O servidor preenche os campos previstos pelo modelo, quando houver.
+10. O servidor registra a JUSTIFICATIVA DA ESCOLHA do modelo. Havendo mais de um modelo disponível para o mesmo requerimento, a escolha e decisão do servidor e deve ser motivada. A justificativa e registro interno, vinculada ao requerimento e ao documento emitido, e não integra o texto do documento.
 
-11. O sistema apresenta PREVIA do documento, com todos os dados já aplicados, antes da emissão.
+11. O servidor preenche os campos previstos pelo modelo, quando houver.
 
-12. Faltando dado obrigatório - variável não resolvida ou campo de preenchimento em branco -, a emissão é bloqueada, com indicação de qual dado falta e onde ele se resolve.
+12. O sistema apresenta PREVIA do documento, com todos os dados já aplicados, antes da emissão.
 
-13. A emissão é sempre confirmada pelo servidor. Não há emissão automática.
+13. Faltando dado obrigatório - variável não resolvida ou campo de preenchimento em branco -, a emissão é bloqueada, com indicação de qual dado falta e onde ele se resolve.
+
+14. A emissão é sempre confirmada pelo servidor. Não há emissão automática.
+
+15. A acao de emitir aparece na tela de análise do requerimento. O momento exato - análise de documentos, análise técnica ou ambos - deve ser definido no refinamento; o mecanismo e o mesmo em qualquer das telas.
 
 PARTE 3 - O DOCUMENTO EMITIDO
 
-14. O documento é armazenado tal como foi emitido, e não reconstruído a partir do modelo no momento da exibição.
+16. O documento é armazenado tal como foi emitido, e não reconstruído a partir do modelo no momento da exibição.
 
-15. O documento registra a versão do modelo que o gerou, o servidor emitente e a data de emissão.
+17. O documento registra a versão do modelo que o gerou, o servidor emitente e a data de emissão.
 
-16. O documento recebe identificação própria e código de verificação de autenticidade.
+18. O documento recebe identificação própria e código de verificação de autenticidade.
 
-17. O documento fica vinculado ao requerimento, consta do seu histórico e é disponibilizado ao interessado no Portal de Serviços.
+19. O documento fica vinculado ao requerimento, consta do seu histórico e é disponibilizado ao interessado no Portal de Serviços.
 
-18. O documento emitido é imutável. A correção se faz por nova emissão, que referencia e substitui a anterior, permanecendo ambas no histórico.
+20. O documento emitido é imutável. A correção se faz por nova emissão, que referencia e substitui a anterior, permanecendo ambas no histórico.
 
-19. As operações de emissão e substituição são registradas para fins de auditoria.
+21. As operações de emissão e substituição são registradas para fins de auditoria.
 
 PARTE 4 - CONDICOES DE DISPONIBILIDADE
 
-20. A disponibilidade de determinados modelos ao servidor depende de fatos registrados no requerimento. São duas condições, e não um mecanismo genérico de regras:
+22. A disponibilidade de determinados modelos ao servidor depende de fatos registrados no requerimento. São duas condições, e não um mecanismo genérico de regras:
    a) registrada expressamente a inexistência de imóvel disponível para oferta, fica disponível o modelo de certidão de indisponibilidade de imóvel;
    b) havendo oferta de imóvel e respondendo o requerente pela recusa, fica disponível o modelo de certidão de recusa de imóvel.
 
-21. Respondendo o requerente pela aceitação, o modelo de certidão de recusa não fica disponível.
+23. Respondendo o requerente pela aceitação, o modelo de certidão de recusa não fica disponível.
 
-22. A condição apenas torna o modelo disponível ao servidor. Não emite documento.
+24. A condição apenas torna o modelo disponível ao servidor. Não emite documento.
 
-23. Modelo sem condição associada fica disponível sempre que o tipo de requerimento o admitir.</code></pre>
+25. Modelo sem condição associada fica disponível sempre que o tipo de requerimento o admitir.</code></pre>
 <h2>Justificativa</h2>
 <pre><code>Sem essa funcionalidade, o servidor não tem como entregar ao requerente documento que ateste o que foi apurado. No caso da indisponibilidade de imóvel, o pedido é indeferido e o requerente recebe a decisão sem o documento que a sustenta.
 

@@ -34,7 +34,8 @@
 <h3>O que a unidade central faz</h3>
 <ul><li>cria e mantém os <strong>modelos</strong> de certidão e de declaração;</li><li>define <strong>quais tipos de requerimento</strong> podem usar cada modelo, podendo vincular mais de um ao mesmo tipo;</li><li>insere no texto do modelo <strong>campos variáveis</strong>, preenchidos com dados do próprio requerimento no momento da emissão;</li><li>define <strong>campos de preenchimento</strong>, que o analista completa ao emitir, quando o modelo previr essa margem;</li><li>define as <strong>condições</strong> que tornam o modelo disponível ao analista.</li></ul>
 <h3>O que o analista faz</h3>
-<ul><li>escolhe um dos modelos autorizados e disponíveis para aquele requerimento;</li><li>preenche os campos que o modelo previr;</li><li>confere a <strong>prévia</strong> do documento já com os dados aplicados;</li><li><strong>emite</strong>, confirmando. A emissão nunca é automática.</li></ul>
+<ul><li>escolhe um dos modelos autorizados e disponíveis para aquele requerimento;</li><li><strong>justifica a escolha</strong> do modelo;</li><li>preenche os campos que o modelo previr;</li><li>confere a <strong>prévia</strong> do documento já com os dados aplicados;</li><li><strong>emite</strong>, confirmando. A emissão nunca é automática.</li></ul>
+<p><strong>A justificativa da escolha é registro do analista, não conteúdo do documento.</strong> Havendo mais de um modelo disponível para o mesmo requerimento, escolher um é decisão — e decisão de servidor se motiva. Fica no requerimento, junto do documento emitido.</p>
 <h3>Campos variáveis: o que pode entrar no texto do modelo</h3>
 <p>Duas origens, e apenas estas:</p>
 <ol><li><strong>Dados do requerimento comuns a todos os serviços</strong> — nome e identificação do requerente, número e data do requerimento, serviço solicitado, unidade responsável, data da emissão, servidor emitente.</li><li><strong>Dados dos componentes padronizados da análise</strong> — o imóvel vinculado ou ofertado, e a resposta do requerente à oferta. São iguais em todos os serviços que os utilizam, porque o componente é o mesmo.</li></ol>
@@ -49,6 +50,12 @@
 <h3>O documento emitido</h3>
 <ul><li>é <strong>armazenado como foi emitido</strong>, e não reconstruído a partir do modelo na hora de exibir;</li><li>registra a <strong>versão do modelo</strong> que o gerou;</li><li>identifica o <strong>servidor emitente</strong> e a data;</li><li>recebe <strong>identificador e código de verificação de autenticidade</strong>;</li><li>fica no <strong>histórico do requerimento</strong> e é disponibilizado ao interessado no Portal;</li><li>é <strong>imutável</strong>. A correção se faz por <strong>nova emissão</strong>, que referencia e substitui a anterior, ficando as duas no histórico.</li></ul>
 <p>Guardar o documento como emitido é o que garante que alterar um modelo não altere nada do que já foi entregue. Se o sistema guardasse apenas a referência ao modelo, qualquer ajuste posterior mudaria retroativamente documento oficial já nas mãos do cidadão.</p>
+<h3>Onde os modelos são vinculados ao serviço</h3>
+<p>O vínculo entre modelo e tipo de requerimento é feito <strong>na tela inicial de edição do serviço</strong>, no Módulo de Serviços — a mesma em que hoje se define o restante da configuração. Ali se seleciona <strong>quais certidões e declarações ficam disponíveis</strong> para aquele serviço.</p>
+<p>Reaproveitar essa tela evita criar um lugar novo de configuração: quem monta o serviço já está ali, e a lista de documentos disponíveis é atributo do serviço como os demais.</p>
+<h3>Onde aparece a ação de emitir</h3>
+<p>Em aberto, e são duas as possibilidades: <strong>na análise de documentos</strong> e <strong>na análise técnica</strong>. Pode ser nas duas — os fatos que liberam cada modelo nascem em momentos diferentes, e a certidão de indisponibilidade tende a nascer na análise de documentos, enquanto documentos ligados ao desfecho tendem a nascer adiante.</p>
+<p>A definição do momento condiciona pouco o resto da proposta: o mecanismo é o mesmo em qualquer das telas.</p>
 <h3>Quem administra</h3>
 <p>Dois papéis, e não uma matriz de perfis:</p>
 <div class="tabela-rolavel"><table><thead><tr><th>Papel</th><th>Pode</th></tr></thead><tbody><tr><td><strong>Redige</strong></td><td>criar e alterar modelos em rascunho</td></tr><tr><td><strong>Publica</strong></td><td>publicar, desativar e associar modelos a tipos de requerimento</td></tr></tbody></table></div>

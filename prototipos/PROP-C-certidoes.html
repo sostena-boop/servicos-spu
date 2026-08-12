@@ -177,6 +177,15 @@
             <div class="ms-input">município de Guaratuba/PR, uso habitacional, área de terreno entre 5.000 m² e 10.000 m²</div>
           </div>
 
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">Justificativa da escolha do modelo <b>(Obrigatório)</b> <span class="ms-novo">novo</span></span>
+            <div class="ms-textarea" style="color:#3d4759">Consulta ao cadastro não retornou imóvel que atendesse aos parâmetros do pedido; indisponibilidade registrada em 10/08/2026.</div>
+          </div>
+          <p class="ms-nota" style="padding:0 14px 10px">
+            Havendo mais de um modelo disponível, escolher um é decisão do servidor — e decisão
+            se motiva. Fica no requerimento, junto do documento. <b>Não entra no texto da certidão.</b>
+          </p>
+
           <div class="bloqueio">
             <b>Enquanto faltar dado obrigatório, a emissão fica bloqueada</b> — com indicação
             de qual campo falta e onde ele se resolve. Documento oficial não sai com lacuna.
@@ -357,6 +366,36 @@
     </div>
   </div>
 
+  <h2 class="secao">4. Onde os modelos são vinculados ao serviço</h2>
+  <p class="doc__linha">
+    Não é tela nova: é a <b>tela inicial de edição do serviço</b>, onde a configuração dele já
+    é feita. Os documentos disponíveis passam a ser mais um atributo do serviço.
+  </p>
+
+  <div class="ms-tela" style="margin-top:16px; max-width:760px">
+    <div class="ms-bloco">
+      <div class="ms-bloco__titulo">Editar serviço — Regularizar Utilização de Imóvel da União</div>
+      <div class="ms-linha2">
+        <div>
+          <span class="ms-campo__rotulo">Nome do serviço</span>
+          <div class="ms-input" style="color:#3d4759">Regularizar Utilização de Imóvel da União</div>
+        </div>
+        <div>
+          <span class="ms-campo__rotulo">Categoria</span>
+          <div class="ms-select-wrap"><div class="ms-select">Regularização</div></div>
+        </div>
+      </div>
+      <div class="ms-campo">
+        <span class="ms-campo__rotulo">Certidões e declarações disponíveis <span class="ms-novo">novo</span></span>
+        <div class="ms-radio">☑ Indisponibilidade de imóvel &nbsp;&nbsp; ☑ Recusa de imóvel &nbsp;&nbsp; ☐ Situação do requerimento</div>
+      </div>
+      <p class="ms-nota">
+        Só os modelos marcados aqui aparecem ao analista naquele serviço — e, dentre eles, só
+        os que as condições liberarem.
+      </p>
+    </div>
+  </div>
+
   <div class="mudancas">
     <div class="mudanca">
       <h3>1. O analista opera, a unidade central configura</h3>
@@ -385,7 +424,10 @@
 
   <div class="mudanca" style="margin-top:20px; border-left:3px solid #b8860b; background:#fdf8ec">
     <h3>O que ainda não está decidido</h3>
-    <p>Quem pode cancelar ou substituir uma certidão já emitida. Se o documento precisa valer
+    <p><b>Em que tela aparece a ação de emitir</b> — na análise de documentos, na análise
+    técnica, ou nas duas. O mecanismo é o mesmo em qualquer delas, mas os fatos que liberam
+    cada modelo nascem em momentos diferentes. Quem pode cancelar ou substituir uma certidão
+    já emitida. Se o documento precisa valer
     fora da SPU — caso em que entra assinatura eletrônica, porque o código de autenticidade
     prova integridade, não autoria. Se a ferramenta de conferência já existente mostra
     "válida", "cancelada" ou "substituída". E se emitir a certidão de indisponibilidade

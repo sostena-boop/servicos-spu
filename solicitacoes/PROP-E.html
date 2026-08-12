@@ -75,7 +75,11 @@ FINALIDADE E LIMITE DA CONSULTA
 
 MEIO TECNICO
 
-9. A consulta pode ser atendida pelo caminho que se mostrar mais simples: acesso interno à base cadastral, se o Módulo de Serviços já dispuser dessa capacidade dentro da plataforma SPUnet, ou consulta aos dados cadastrais disponíveis no Data Lake do Serpro. Esta solicitação pede o resultado, não o meio.
+9. A fonte preferencial dos dados e o DATA LAKE DO SERPRO, onde os dados do Módulo de Cadastro estão replicados. A defasagem de ate um dia e suficiente, pela finalidade declarada nos itens 7 e 8.
+
+10. Admite-se, em alternativa, o acesso interno a base cadastral, caso o Módulo de Serviços ja disponha dessa capacidade dentro da plataforma SPUnet e o atendimento por esse caminho seja mais simples ou mais economico.
+
+11. Nao se solicita a construcao de interface de integracao nova enquanto qualquer das duas alternativas acima atender.
 
 Não é objeto desta solicitação a alteração de dados cadastrais, que permanece exclusivamente no Módulo de Cadastro.</code></pre>
 <h2>Justificativa</h2>
@@ -83,9 +87,11 @@ Não é objeto desta solicitação a alteração de dados cadastrais, que perman
 
 O erro que se evita é barato de evitar e caro de descobrir. Um número digitado errado hoje só aparece semanas depois, na fase em que alguém tenta trabalhar sobre o imóvel - e o retrabalho alcança tudo o que foi feito até ali.
 
-A delimitação da finalidade reduz o custo da solicitação. Como a consulta serve para conferir, e não para decidir disponibilidade, ela não exige dado em tempo real: dispensa-se qualquer exigência de sincronismo, e a funcionalidade pode ser atendida pelo caminho técnico mais simples de que a SPU já disponha.
+A delimitação da finalidade reduz o custo da solicitação. Como a consulta serve para conferir, e não para decidir disponibilidade, ela não exige dado em tempo real: dispensa-se qualquer exigência de sincronismo.
 
-Módulo de Serviços e Módulo de Cadastro integram a mesma plataforma. Se já existir capacidade de consulta interna, o atendimento desta solicitação pode se resumir a exibir na tela de análise um dado que o sistema já alcança.</code></pre>
+É por isso que se adota o Data Lake do Serpro como fonte preferencial. Os dados já estão replicados e disponíveis, e o atendimento não depende de a equipe responsável pelo Módulo de Cadastro construir ou expor coisa alguma - o que costuma ser a parte mais demorada de qualquer integração.
+
+Módulo de Serviços e Módulo de Cadastro integram a mesma plataforma. Se já existir capacidade de consulta interna, o atendimento desta solicitação pode se resumir a exibir na tela de análise um dado que o sistema já alcança, e essa alternativa é preferível por ser ainda mais barata.</code></pre>
 <h2>Impacto sobre outras áreas ou sistemas</h2>
 <pre><code>Nenhuma alteração no Módulo de Cadastro: a operação é somente de leitura.
 
