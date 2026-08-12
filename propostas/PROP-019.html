@@ -32,8 +32,8 @@
 <p>Integração por API, em dois sentidos:</p>
 <p><strong>Ida — na entrada da análise técnica.</strong> Quando o servidor aciona "Iniciar análise técnica", a API envia os dados do requerimento ao Módulo de Instrução de Destinações, que <strong>responde com o número de destinação</strong> gerado por ele. O Módulo de Serviços guarda esse número.</p>
 <p><strong>Volta — na conclusão da instrução.</strong> Concluída a instrução, o resultado retorna e o Módulo de Serviços <strong>fecha o requerimento automaticamente</strong>.</p>
-<p>Resultados citados por Juarez: <strong>deferido</strong>, <strong>indeferido</strong>, <strong>cancelado</strong>.</p>
-<p><strong>São dois momentos de natureza diferente</strong>, e isso precisa estar claro na especificação:</p>
+<p>Resultados previstos: <strong>deferido</strong>, <strong>indeferido</strong>, <strong>cancelado</strong>.</p>
+<p><strong>São dois momentos de natureza diferente:</strong></p>
 <ul><li>A <strong>ida</strong> é imediata: o servidor clica e espera a resposta com o número de destinação. É chamada síncrona, como já acontece com o SEI.</li><li>A <strong>volta</strong> acontece dias ou meses depois, sem ninguém esperando do outro lado. Não pode ser resposta de chamada — exige o módulo de instrução avisar o Módulo de Serviços quando concluir, ou o Módulo de Serviços consultar periodicamente. Tratar as duas como uma coisa só é o erro mais provável nesta integração.</li></ul>
 <h2>Justificativa</h2>
 <p>Sem retorno, o requerimento fica aberto no Módulo de Serviços depois de a decisão já existir. O requerente não é avisado, o prazo de análise técnica corre e a fila de trabalho da equipe mostra pendências que não são pendências.</p>
