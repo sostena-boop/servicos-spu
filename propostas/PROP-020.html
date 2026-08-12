@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PROP-020 — Consulta ao Módulo de Cadastro: informar o RIP e receber os dados do imóvel</title>
+<title>PROP-020 — Consulta cadastral por RIP: conferir o imóvel antes de vincular ou ofertar</title>
 <link rel="stylesheet" href="../estilo.css">
 </head>
 <body>
@@ -22,20 +22,21 @@
 <main class="conteudo">
 <p class="volta"><a href="../index.html">Todas as propostas</a></p>
 <p class="doc-id">PROP-020</p>
-<h1>Consulta ao Módulo de Cadastro: informar o RIP e receber os dados do imóvel</h1>
+<h1>Consulta cadastral por RIP: conferir o imóvel antes de vincular ou ofertar</h1>
 
 <div class="intro"><p>Durante a análise, o servidor precisa saber de que imóvel se trata — para conferir se é o imóvel que se pretende ofertar ao requerente, ou o imóvel que o requerente indicou. Hoje o sistema não busca essa informação: o RIP é apenas um número digitado, sem retorno.</p>
 <p>O formulário do Portal já tem o campo "RIP se existente (somente número)", mas ele é declaratório: nada confirma se o RIP existe, nem a que imóvel corresponde.</p></div>
 <section class="secao-proto"><div class="secao-proto__topo"><h2>Como é hoje e como ficaria</h2><a class="botao botao--claro" href="../prototipos/PROP-020-consulta-rip.html" target="_blank">Abrir em tela cheia</a></div><iframe class="proto" src="../prototipos/PROP-020-consulta-rip.html" title="Protótipo comparativo da proposta" loading="eager"></iframe></section>
 <div class="ficha">
 <h2>Mudança proposta</h2>
-<p>Consulta ao <strong>Módulo de Cadastro</strong>: informado o número do RIP, o sistema retorna os dados do imóvel para conferência pelo servidor.</p>
-<p>Uso pretendido: verificar se é o imóvel que se quer <strong>ofertar ao requerente</strong> — o que liga esta consulta diretamente à PROP-022, que trata de ofertar e vincular imóveis na devolução.</p>
+<p>O analista informa um ou mais RIPs e o sistema retorna os dados cadastrais correspondentes, <strong>para que ele confira se informou os imóveis certos</strong> antes de vinculá-los ao requerimento ou ofertá-los.</p>
+<p><strong>A finalidade é conferência, e apenas ela.</strong> A disponibilidade do imóvel não é determinada por esta consulta: continua sendo apurada pelo analista e, quando for o caso, registrada por ele como fato — é assim que a PROP-022 e a PROP-024 a utilizam.</p>
+<p>Definir a finalidade dessa forma tem uma consequência técnica direta: como não se decide disponibilidade com o que a consulta devolve, <strong>dado replicado com defasagem de até um dia é suficiente</strong>. Endereço, área, natureza e demais características cadastrais não mudam de um dia para o outro; e o campo que mudaria — a situação do imóvel — não é o que esta consulta responde.</p>
 <h2>Justificativa</h2>
-<p>Um RIP informado errado hoje não é percebido em nenhum momento da triagem ou da análise de documentos. O erro aparece adiante, quando alguém tenta trabalhar sobre um imóvel que não é aquele — e a essa altura o requerimento já consumiu prazo e trabalho.</p>
-<p>Saber se o imóvel está disponível evita instruir pedido sobre bem já destinado, que é retrabalho inteiro e previsível.</p>
-<p>E há a dependência: sem os dados do cadastro não há como vincular o imóvel ao requerimento nem ofertar alternativa ao requerente. É por isso que esta consulta vem antes da PROP-022.</p>
-<p><strong>O tamanho do pedido depende de uma verificação:</strong> Módulo de Serviços e Módulo de Cadastro estão na mesma plataforma. Se compartilham base, isto é exibir dado que o sistema já alcança, e não construir integração.</p>
+<p>Um RIP informado errado hoje não é percebido em nenhum momento da triagem ou da análise. Um número tem doze dígitos e é digitado à mão; nada no sistema confirma se corresponde a algum imóvel, nem a qual. O erro aparece adiante, quando alguém tenta trabalhar sobre um imóvel que não é aquele — e a essa altura o requerimento já consumiu prazo e trabalho.</p>
+<p>O efeito é maior quando há oferta: ofertar ao requerente um imóvel que não é o pretendido produz manifestação sobre a coisa errada, e a manifestação fica registrada no processo.</p>
+<p>E há a dependência: sem os dados do cadastro não há como conferir o imóvel que se vai vincular ao requerimento ou ofertar. É por isso que esta consulta vem antes da PROP-022.</p>
+<p><strong>O tamanho do pedido depende de uma verificação:</strong> Módulo de Serviços e Módulo de Cadastro estão na mesma plataforma. Se o Módulo de Serviços já alcança a base cadastral por algum caminho interno, reaproveitá-lo é mais simples do que construir consulta nova.</p>
 </div>
 </main>
 <script src="../site.js"></script>

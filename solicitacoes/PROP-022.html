@@ -78,15 +78,23 @@ PARTE 1 - QUESTIONARIO DE COMPLEMENTACAO
 
 PARTE 2 - VINCULACAO E OFERTA DE IMOVEL
 
-7. Na mesma tela de devolução, o servidor deve poder vincular ao requerimento o imóvel de que trata o pedido, identificado pelo RIP.
+A oferta de imóvel é um componente padronizado, e não uma pergunta redigida pelo servidor.
 
-8. O servidor deve poder ofertar ao requerente um ou mais imóveis alternativos, também identificados pelo RIP, acompanhados dos dados que permitam ao requerente decidir.
+7. Deve ser possível definir previamente, por configuração, quais tipos de requerimento admitem oferta de imóvel. O componente só fica disponível ao servidor nesses tipos.
 
-9. A resposta do requerente à oferta - aceitar ou recusar, com observações - é apenas mais um conjunto de perguntas estruturadas do questionário, respondido pelo mesmo caminho das demais. Não requer mecanismo próprio.
+8. Na mesma tela de devolução, o servidor deve poder vincular ao requerimento o imóvel de que trata o pedido, identificado pelo RIP, e ofertar um ou mais imóveis alternativos, também identificados pelo RIP, acompanhados dos dados que permitam ao requerente decidir.
 
-10. O aceite e a recusa ficam registrados no requerimento de forma estruturada, com data e autor.
+9. Ao adicionar um imóvel à oferta, o sistema deve incluir automaticamente na devolução a pergunta padronizada ao requerente. O texto e as opções são definidos pelo sistema, e não pelo servidor.
 
-A Parte 2 pressupõe que o Módulo de Serviços possa obter do Módulo de Cadastro, a partir do RIP, os dados do imóvel a serem exibidos.
+10. O requerente deve poder registrar uma única resposta entre "Aceitar" e "Recusar". O componente visual utilizado - rádio, lista de seleção ou outro - fica a critério da solução técnica; a regra a ser garantida é a resposta única.
+
+11. Não havendo imóvel adicionado, nem o componente nem a pergunta são exibidos ao requerente.
+
+12. O aceite e a recusa ficam registrados no requerimento de forma estruturada, com data e autor, e constam do histórico.
+
+13. O servidor deve poder registrar expressamente que NAO HA IMOVEL DISPONIVEL para oferta, como informação estruturada. Esse registro não se confunde com a ausência de oferta: ausência de oferta não permite concluir que não há imóvel disponível.
+
+A Parte 2 pressupõe que o Módulo de Serviços possa obter, a partir do RIP, os dados cadastrais do imóvel a serem exibidos para conferência.
 
 O que não muda: o campo "Anotações Complementares" permanece disponível, assim como o anexo de arquivos de orientação sobre a pendência e a marcação de documentos adicionais. A notificação ao requerente e o registro no histórico do requerimento permanecem como estão.</code></pre>
 <h2>Justificativa</h2>
@@ -97,6 +105,8 @@ A resposta também muda de natureza. Deixa de ser texto num campo livre e passa 
 O custo de implementação é de extensão, não de criação. Os tipos de campo já existem no Módulo de Serviços e já são renderizados no Portal, porque são os mesmos com que os formulários de solicitação são montados. O que se pede é empregá-los em outro ponto do mesmo fluxo.
 
 Quanto à oferta de imóvel, ela já é praticada, mas por fora do sistema, mediante documento em PDF. Trazê-la para o Portal não cria procedimento novo: registra o que já acontece, no momento em que já se está falando com o requerente, e produz registro estruturado do aceite e da recusa, hoje inexistente.
+
+A padronização do componente de oferta tem razão técnica, e não apenas de uniformidade. Uma pergunta redigida livremente pelo servidor produz resposta estruturada, mas sem significado para o sistema: fica gravado "Recusar" sem que se saiba que aquilo é a resposta a uma oferta de imóvel. Padronizado o componente, a resposta passa a ter significado conhecido e pode ser utilizada por outras funcionalidades - entre elas a emissão de certidão de recusa, objeto de proposta distinta.
 
 A escolha de reunir as duas coisas na mesma tela é deliberada: a devolução é o momento em que há interlocução com o requerente, e é nele que a oferta faz sentido. Duas telas para o mesmo diálogo significariam duas notificações e duas esperas.</code></pre>
 <h2>Impacto sobre outras áreas ou sistemas</h2>

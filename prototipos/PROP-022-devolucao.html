@@ -199,12 +199,13 @@
 
 
   <h2 style="font-size:19px; margin:44px 0 6px; padding-top:24px; border-top:1px solid #dde2ea">
-    Ofertar imóvel é um componente da devolução
+    Ofertar imóvel é um componente padronizado da devolução
   </h2>
   <p class="doc__linha">
-    Quando o imóvel pedido está indisponível, a SPU oferece alternativa. Isso não precisa de
-    fluxo próprio: é mais um componente que o analista acrescenta à devolução — e a resposta
-    do requerente volta pelo mesmo mecanismo das outras perguntas.
+    Quando o imóvel pedido não está disponível, a SPU oferece alternativa. Isso não precisa de
+    fluxo próprio: é um componente que o analista acrescenta à devolução. Mas <b>não é uma
+    pergunta que ele escreve</b> — é padronizado, habilitado por serviço, e a pergunta ao
+    requerente entra sozinha quando um imóvel é adicionado.
   </p>
 
   <div class="comparativo">
@@ -252,7 +253,7 @@
           <div class="ms-cartao">
             <div class="ms-cartao__topo">
               <span class="ms-cartao__rip">7519 0001234-56</span>
-              <span class="ms-etiqueta ms-etiqueta--nao">Já destinado — indisponível</span>
+              <span class="ms-etiqueta ms-etiqueta--neutra">Cadastro · atualizado em 10/08/2026</span>
             </div>
             <div class="ms-cartao__grade">
               <div><b>Endereço:</b> Rua Bolívia, 32 — Nereidas</div>
@@ -260,8 +261,17 @@
             </div>
           </div>
           <p class="ms-nota" style="padding:0 14px 10px">
-            Os dados vêm do Módulo de Cadastro, pela consulta por RIP. É aqui que se percebe
-            que o imóvel pedido não está disponível — e é daí que nasce a oferta.
+            Os dados vêm da consulta por RIP e servem para o analista <b>conferir se é o
+            imóvel certo</b>. A disponibilidade não vem daí: é apurada por ele.
+          </p>
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">Registro do analista <span class="ms-novo">novo</span></span>
+            <div class="ms-radio">◉ Não há imóvel disponível para oferta &nbsp;&nbsp; ○ Há imóvel a ofertar</div>
+          </div>
+          <p class="ms-nota" style="padding:0 14px 10px">
+            Fato estruturado, e não dedução. Ausência de oferta não é o mesmo que
+            inexistência de imóvel disponível — o analista pode simplesmente não ter chegado
+            lá. É este registro que libera a certidão de indisponibilidade.
           </p>
         </div>
 
@@ -273,9 +283,9 @@
             <span class="ms-item__acoes"><span class="ms-lapis">✎</span></span>
           </div>
           <div class="ms-item" style="background:#f2faf5">
-            <span class="ms-item__nome"><b>Oferta de imóvel</b> <span class="ms-novo">componente novo</span><br>
+            <span class="ms-item__nome"><b>Oferta de imóvel</b> <span class="ms-novo">componente padronizado</span><br>
               <span style="color:#6b7686">RIP 7519 0007788-01 — Av. Atlântica, 1.240<br>
-              resposta: Aceitar ou Recusar, com observações</span></span>
+              pergunta incluída automaticamente · resposta única: Aceitar ou Recusar</span></span>
             <span class="ms-item__acoes"><span class="ms-lapis">✎</span></span>
           </div>
           <div class="ms-campo">
@@ -283,8 +293,14 @@
             <span class="ms-botao ms-botao--claro">Ofertar imóvel +</span>
           </div>
           <p class="ms-nota">
-            A oferta entra na mesma devolução, junto das demais perguntas. Um envio só ao
-            requerente, e a resposta volta estruturada como as outras.
+            O analista adiciona o imóvel; <b>a pergunta ao requerente entra sozinha</b>, com
+            texto e opções definidos pelo sistema. Sem imóvel adicionado, nem o componente
+            nem a pergunta aparecem para o requerente.
+          </p>
+          <p class="ms-nota" style="padding-top:0">
+            Padronizada, a resposta tem significado conhecido: o sistema sabe que aquele
+            "Recusar" é a recusa de uma oferta de imóvel. É o que permite liberar a certidão
+            de recusa. Escrita à mão pelo analista, seria só um texto a mais no requerimento.
           </p>
         </div>
       </div>
@@ -292,11 +308,12 @@
   </div>
 
   <div class="mudanca" style="margin-top:20px; border-left:3px solid #b8860b; background:#fdf8ec">
-    <h3>A tela de resposta do requerente ainda é hipótese</h3>
-    <p>Rádio com <b>Aceitar</b> e <b>Recusar</b>, mais campo <b>Observações</b>. Falta definir
-    se as observações são obrigatórias, se o campo aparece sempre ou só na recusa, e se a
-    manifestação no Portal substitui a assinatura do modelo em PDF — esta última passa pela
-    área jurídica, porque a recusa tem efeito no processo.</p>
+    <h3>O componente visual da resposta ainda não está definido</h3>
+    <p>Rádio, lista ou outro: fica a critério de quem implementa. <b>A regra é o que
+    importa</b> — uma única resposta possível entre Aceitar e Recusar, gravada com data e
+    autor. Falta definir se é exigida justificativa quando o requerente recusa, e se a
+    manifestação no Portal substitui a assinatura do modelo em PDF hoje usado — esta última
+    passa pela área jurídica, porque a recusa tem efeito no processo.</p>
   </div>
 
   <div class="mudancas">

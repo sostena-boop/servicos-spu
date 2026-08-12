@@ -29,16 +29,24 @@
 <section class="secao-proto"><div class="secao-proto__topo"><h2>Como é hoje e como ficaria</h2><a class="botao botao--claro" href="../prototipos/PROP-019-integracao-instrucao.html" target="_blank">Abrir em tela cheia</a></div><iframe class="proto" src="../prototipos/PROP-019-integracao-instrucao.html" title="Protótipo comparativo da proposta" loading="eager"></iframe></section>
 <div class="ficha">
 <h2>Mudança proposta</h2>
-<p>Integração por API, em dois sentidos:</p>
-<p><strong>Ida — na entrada da análise técnica.</strong> Quando o servidor aciona "Iniciar análise técnica", a API envia os dados do requerimento ao Módulo de Instrução de Destinações, que <strong>responde com o número de destinação</strong> gerado por ele. O Módulo de Serviços guarda esse número.</p>
-<p><strong>Volta — na conclusão da instrução.</strong> Concluída a instrução, o resultado retorna e o Módulo de Serviços <strong>fecha o requerimento automaticamente</strong>.</p>
-<p>Resultados previstos: <strong>deferido</strong>, <strong>indeferido</strong>, <strong>cancelado</strong>.</p>
-<p><strong>São dois momentos de natureza diferente:</strong></p>
-<ul><li>A <strong>ida</strong> é imediata: o servidor clica e espera a resposta com o número de destinação. É chamada síncrona, como já acontece com o SEI.</li><li>A <strong>volta</strong> acontece dias ou meses depois, sem ninguém esperando do outro lado. Não pode ser resposta de chamada — exige o módulo de instrução avisar o Módulo de Serviços quando concluir, ou o Módulo de Serviços consultar periodicamente. Tratar as duas como uma coisa só é o erro mais provável nesta integração.</li></ul>
+<p><strong>Duas operações de natureza distinta, com mecanismos distintos.</strong> Tratá-las como uma integração só é o erro mais provável aqui.</p>
+<h3>Ida — envio na entrada da análise técnica, por API</h3>
+<p>Quando o servidor aciona "Iniciar análise técnica", os dados do requerimento são enviados ao Módulo de Instrução de Destinações, que <strong>responde com o número de destinação</strong> gerado por ele. O Módulo de Serviços guarda esse número.</p>
+<p>É chamada imediata: o servidor clica e espera a resposta. É também <strong>o mesmo mecanismo que já existe</strong> — o mesmo botão hoje envia o requerimento ao SEI e recebe de volta um número de processo.</p>
+<p>Envio não é operação de leitura, e por isso não cabe em réplica de dados: a ida exige integração direta.</p>
+<h3>Volta — resultado da instrução, por leitura periódica</h3>
+<p>Concluída a instrução, o resultado precisa chegar ao Módulo de Serviços para <strong>fechar o requerimento</strong>. Resultados previstos: <strong>deferido</strong>, <strong>indeferido</strong>, <strong>cancelado</strong>.</p>
+<p>A volta acontece dias ou meses depois, sem ninguém esperando do outro lado. Não é resposta de chamada. O desenho adotado é a <strong>leitura periódica dos dados do Módulo de Instrução no Data Lake do Serpro</strong>, onde eles ficam disponíveis com defasagem de até um dia.</p>
+<p>O Módulo de Serviços lê periodicamente, identifica os resultados que ainda não processou e conclui os requerimentos correspondentes.</p>
+<p><strong>O que essa leitura precisa garantir:</strong></p>
+<ul><li>identificar quais resultados <strong>ainda não foram processados</strong>, e não reprocessar os já aplicados;</li><li><strong>impedir que o mesmo resultado conclua o requerimento mais de uma vez</strong>;</li><li>relacionar corretamente o resultado ao requerimento, pelo identificador acordado;</li><li>tratar <strong>carga atrasada ou falha</strong>, sem concluir requerimento com dado incompleto;</li><li>registrar falhas de forma rastreável e permitir <strong>reprocessamento sem duplicar</strong>.</li></ul>
+<p>Nada disso precisa ser construído pela plataforma que hospeda o Módulo de Instrução: é trabalho dentro do Módulo de Serviços.</p>
 <h2>Justificativa</h2>
 <p>Sem retorno, o requerimento fica aberto no Módulo de Serviços depois de a decisão já existir. O requerente não é avisado, o prazo de análise técnica corre e a fila de trabalho da equipe mostra pendências que não são pendências.</p>
 <p>O fechamento manual não resolve: depende de alguém lembrar, e ninguém é notificado de que há o que lembrar.</p>
-<p>Do lado do esforço, <strong>o mecanismo já está implementado</strong>. O mesmo botão que hoje envia o requerimento ao SEI e recebe um número de processo de volta é o que se propõe apontar também ao Módulo de Instrução de Destinações. Não se pede uma capacidade nova, pede-se um destino a mais para uma capacidade existente.</p>
+<p>Do lado do esforço, <strong>o mecanismo da ida já está implementado</strong>. O mesmo botão que hoje envia o requerimento ao SEI e recebe um número de processo de volta é o que se propõe apontar também ao Módulo de Instrução de Destinações. Não se pede uma capacidade nova, pede-se um destino a mais para uma capacidade existente.</p>
+<p><strong>A volta por leitura periódica troca uma dependência externa por trabalho próprio, e é o ponto que mais reduz o risco desta proposta.</strong> Se o resultado tivesse de ser avisado pelo Módulo de Instrução, seria preciso que outra equipe, em outra plataforma, construísse algo para o Módulo de Serviços — e essa é a parte de qualquer integração que não depende de quem pede. Lendo os dados já replicados, tudo o que é preciso fazer fica dentro do Módulo de Serviços.</p>
+<p>O que se paga por isso é <strong>latência de até um dia</strong> entre a decisão e o fechamento do requerimento. É escolha consciente, e aceitável diante da situação atual: hoje o requerimento fica aberto indefinidamente, até alguém lembrar de fechá-lo à mão.</p>
 <p>É também esta integração que dá sentido às demais: o registro estruturado da análise só produz efeito se chegar a quem instrui.</p>
 </div>
 </main>
