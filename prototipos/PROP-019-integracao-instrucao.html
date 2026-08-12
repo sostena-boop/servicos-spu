@@ -62,6 +62,11 @@
     análise técnica começa. Por isso o comparativo é de fluxo, e não de interface. O efeito
     visível aparece no fim: o requerimento que hoje fica aberto esperando alguém fechar.
   </p>
+  <p class="doc__linha">
+    <b>Repare que os dois fluxos abaixo são iguais — menos por uma seta.</b> A ida já
+    funciona: o Módulo de Instrução busca diariamente os requerimentos que entraram em
+    análise técnica. O que falta é a volta.
+  </p>
 
   <div class="comparativo">
 
@@ -69,12 +74,12 @@
     <div class="painel">
       <div class="painel__titulo">
         <span class="painel__tag tag--hoje">Como é hoje</span>
-        <h2>Vai para o SEI e não volta</h2>
+        <h2>O requerimento vai, e o resultado não volta</h2>
       </div>
 
       <p class="lado">O caminho</p>
       <div class="quadro">
-        <svg viewBox="0 0 560 300" role="img" aria-label="Fluxo atual: o requerimento vai para o SEI e o retorno é manual">
+        <svg viewBox="0 0 560 300" role="img" aria-label="Fluxo atual: o requerimento é recolhido pela carga diária e o resultado não volta">
           <defs>
             <marker id="p1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
               <path d="M0,0 L7,3 L0,6 z" fill="#6b7686"/>
@@ -86,31 +91,35 @@
 
           <rect class="cx-spu" x="14" y="26" width="190" height="62" rx="6"/>
           <text class="rot" x="28" y="50">Módulo de Serviços</text>
-          <text class="sub" x="28" y="66">Requerimento com a análise</text>
-          <text class="sub" x="28" y="79">de documentos concluída</text>
+          <text class="sub" x="28" y="66">Requerimento entra em</text>
+          <text class="sub" x="28" y="79">análise técnica</text>
 
-          <path class="seta" d="M204,57 L340,57" marker-end="url(#p1)"/>
-          <text class="setarot" x="222" y="48">"Iniciar análise técnica"</text>
+          <path class="seta" d="M204,50 L340,36" marker-end="url(#p1)"/>
+          <path class="seta" d="M204,64 L340,110" marker-end="url(#p1)"/>
+          <text class="setarot" x="212" y="98">carga diária — já existe</text>
 
-          <rect class="cx-sei" x="346" y="26" width="200" height="62" rx="6"/>
-          <text class="rot" x="360" y="50">SEI</text>
-          <text class="sub" x="360" y="66">Processo criado; documentos</text>
-          <text class="sub" x="360" y="79">do requerimento enviados</text>
+          <rect class="cx-sei" x="346" y="14" width="200" height="44" rx="6"/>
+          <text class="rot" x="360" y="34">SEI</text>
+          <text class="sub" x="360" y="49">Processo e documentos</text>
 
-          <path class="seta" d="M446,88 L446,128" marker-end="url(#p1)"/>
+          <rect class="cx-inst" x="346" y="80" width="200" height="70" rx="6"/>
+          <text class="rot" x="360" y="100">Módulo de Instrução</text>
+          <text class="sub" x="360" y="114">plataforma SPUnet Gestão</text>
+          <text class="sub" x="360" y="129">busca os requerimentos em</text>
+          <text class="sub" x="360" y="142">análise técnica e os carrega</text>
 
-          <rect class="cx" x="346" y="132" width="200" height="62" rx="6"/>
-          <text class="rot" x="360" y="156">A instrução acontece aqui</text>
-          <text class="sub" x="360" y="172">Análise técnica, decisão e</text>
-          <text class="sub" x="360" y="185">fundamentação, fora do SPUnet</text>
+          <path class="seta" d="M446,150 L446,178" marker-end="url(#p1)"/>
 
-          <path class="seta-tracejada" d="M346,163 L120,163 L120,208" marker-end="url(#p1m)"/>
-          <text class="setarot setarot-mal" x="128" y="156">nada volta automaticamente</text>
+          <rect class="cx-inst" x="346" y="182" width="200" height="48" rx="6"/>
+          <text class="rot" x="360" y="203">Instrução concluída</text>
+          <text class="sub" x="360" y="219">Deferido · Indeferido · Cancelado</text>
 
-          <rect class="cx-mal" x="14" y="212" width="190" height="66" rx="6"/>
-          <text class="rot" x="28" y="236">Requerimento segue aberto</text>
-          <text class="sub" x="28" y="252">Alguém precisa lembrar de</text>
-          <text class="sub" x="28" y="265">fechar, à mão, com o desfecho</text>
+          <path class="seta-tracejada" d="M346,206 L120,206 L120,240" marker-end="url(#p1m)"/>
+          <text class="setarot setarot-mal" x="128" y="199">o resultado não volta</text>
+
+          <rect class="cx-mal" x="14" y="244" width="190" height="50" rx="6"/>
+          <text class="rot" x="28" y="266">Requerimento segue aberto</text>
+          <text class="sub" x="28" y="281">até alguém fechar à mão</text>
         </svg>
       </div>
 
@@ -127,8 +136,8 @@
           </tbody>
         </table>
         <p class="ms-nota" style="padding-top:10px">
-          A decisão pode já existir no SEI há semanas. O Módulo de Serviços não sabe, o
-          requerente não é avisado, e o prazo de análise técnica corre.
+          A decisão pode já existir há semanas. O Módulo de Serviços não sabe, o requerente
+          não é avisado, e o prazo de análise técnica corre.
         </p>
       </div>
     </div>
@@ -137,12 +146,12 @@
     <div class="painel">
       <div class="painel__titulo">
         <span class="painel__tag tag--prop">Como ficaria</span>
-        <h2>O mesmo gatilho, agora com dois destinos e um retorno</h2>
+        <h2>O mesmo caminho, agora com volta</h2>
       </div>
 
       <p class="lado">O caminho</p>
       <div class="quadro">
-        <svg viewBox="0 0 560 300" role="img" aria-label="Fluxo proposto: envio ao SEI e ao Módulo de Instrução, com retorno do resultado">
+        <svg viewBox="0 0 560 300" role="img" aria-label="Fluxo proposto: mesma ida, com o resultado lido de volta pelo Módulo de Serviços">
           <defs>
             <marker id="p2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
               <path d="M0,0 L7,3 L0,6 z" fill="#6b7686"/>
@@ -154,32 +163,31 @@
 
           <rect class="cx-spu" x="14" y="26" width="190" height="62" rx="6"/>
           <text class="rot" x="28" y="50">Módulo de Serviços</text>
-          <text class="sub" x="28" y="66">Requerimento com a análise</text>
-          <text class="sub" x="28" y="79">de documentos concluída</text>
+          <text class="sub" x="28" y="66">Requerimento entra em</text>
+          <text class="sub" x="28" y="79">análise técnica</text>
 
           <path class="seta" d="M204,50 L340,36" marker-end="url(#p2)"/>
           <path class="seta" d="M204,64 L340,110" marker-end="url(#p2)"/>
-          <text class="setarot" x="216" y="98">um botão, dois destinos</text>
+          <text class="setarot" x="212" y="98">carga diária — sem mudança</text>
 
           <rect class="cx-sei" x="346" y="14" width="200" height="44" rx="6"/>
-          <text class="rot" x="360" y="34">SEI — como hoje</text>
+          <text class="rot" x="360" y="34">SEI</text>
           <text class="sub" x="360" y="49">Processo e documentos</text>
 
           <rect class="cx-inst" x="346" y="80" width="200" height="70" rx="6"/>
           <text class="rot" x="360" y="100">Módulo de Instrução</text>
           <text class="sub" x="360" y="114">plataforma SPUnet Gestão</text>
-          <text class="sub" x="360" y="129">Recebe o requerimento e</text>
-          <text class="sub" x="360" y="142">devolve o nº de destinação</text>
+          <text class="sub" x="360" y="129">busca os requerimentos em</text>
+          <text class="sub" x="360" y="142">análise técnica e os carrega</text>
 
           <path class="seta" d="M446,150 L446,178" marker-end="url(#p2)"/>
-          <text class="setarot" x="452" y="168">ida: imediata</text>
 
           <rect class="cx-inst" x="346" y="182" width="200" height="48" rx="6"/>
           <text class="rot" x="360" y="203">Instrução concluída</text>
           <text class="sub" x="360" y="219">Deferido · Indeferido · Cancelado</text>
 
           <path class="seta" style="stroke:#3f8a5c" d="M346,206 L120,206 L120,240" marker-end="url(#p2b)"/>
-          <text class="setarot setarot-bem" x="128" y="199">volta: dias ou meses depois</text>
+          <text class="setarot setarot-bem" x="128" y="199">rotina lê o resultado — até 1 dia</text>
 
           <rect class="cx-bem" x="14" y="244" width="190" height="50" rx="6"/>
           <text class="rot" x="28" y="266">Requerimento fecha sozinho</text>
@@ -196,16 +204,14 @@
               <td>PR01934/2026</td>
               <td>
                 <span class="ms-etiqueta ms-etiqueta--nao">Concluído — Indeferido</span>
-                <div style="color:#6b7686; margin-top:4px">Destinação 2026/0142</div>
               </td>
               <td>12/06/2026</td>
             </tr>
           </tbody>
         </table>
         <p class="ms-nota" style="padding-top:10px">
-          O desfecho chega ao Módulo de Serviços no momento em que existe. O requerimento
-          fecha, o requerente é notificado e o número de destinação fica guardado ao lado
-          do número do requerimento.
+          O desfecho chega ao Módulo de Serviços no dia seguinte ao da decisão. O
+          requerimento fecha e o requerente é notificado, sem que ninguém precise lembrar.
         </p>
       </div>
     </div>
@@ -214,27 +220,26 @@
 
   <div class="mudancas">
     <div class="mudanca">
-      <h3>1. O mecanismo já existe</h3>
-      <p>Enviar o requerimento a um sistema externo nesse ponto e receber um identificador
-      de volta é o que já acontece com o SEI. O que se pede é apontar o mesmo mecanismo
-      para mais um destino.</p>
+      <h3>1. O mecanismo já existe e já roda</h3>
+      <p>Todo dia o Módulo de Instrução recolhe os requerimentos que entraram em análise
+      técnica. Não se pede um caminho novo entre os dois módulos: pede-se que o caminho
+      existente tenha volta.</p>
     </div>
     <div class="mudanca">
-      <h3>2. Ida e volta são coisas diferentes</h3>
-      <p>A ida é imediata: o servidor clica e espera o número de destinação. A volta vem
-      dias ou meses depois, sem ninguém esperando — não pode ser resposta da mesma
-      chamada.</p>
+      <h3>2. Nada é exigido do outro lado</h3>
+      <p>A leitura do resultado é feita pelo Módulo de Serviços, sobre dados já replicados.
+      Nenhuma equipe da outra plataforma precisa construir coisa alguma.</p>
     </div>
     <div class="mudanca">
-      <h3>3. O SEI continua recebendo</h3>
-      <p>A proposta não retira o processo do SEI. Ele permanece enquanto a comunicação
-      oficial com requerente e outros órgãos depender dele.</p>
+      <h3>3. Um dia de atraso, no lugar de meses</h3>
+      <p>O fechamento não é instantâneo: depende da carga. É a mesma latência que a ida já
+      pratica — e substitui um requerimento que hoje fica aberto até alguém reparar.</p>
     </div>
     <div class="mudanca">
-      <h3>4. Cada sistema guarda a chave do outro</h3>
-      <p>Não há identificador comum: a instrução guarda o número do requerimento como
-      origem, o Módulo de Serviços guarda o número de destinação. Requerimento e
-      destinação são coisas distintas — nem todo pedido vira destinação.</p>
+      <h3>4. O identificador é o que precisa ser confirmado</h3>
+      <p>Sem chamada de ida e volta, a ligação entre o resultado e o requerimento tem de
+      estar no próprio dado. Se o registro da instrução não guarda a chave do requerimento,
+      é isso que precisa ser resolvido primeiro.</p>
     </div>
   </div>
 
