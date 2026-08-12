@@ -2,101 +2,12 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PROP-020 — Texto para a Solicitação de Manutenção</title>
-<link rel="stylesheet" href="../estilo.css">
+<meta name="redirecionamento" content="1">
+<meta http-equiv="refresh" content="0; url=PROP-E.html">
+<link rel="canonical" href="PROP-E.html">
+<title>Endereço alterado</title>
 </head>
 <body>
-<header class="topo">
-  <div class="topo__interno">
-    <a class="topo__marca" href="../index.html">
-      <span class="topo__orgao">SPU · Escritório de Processos</span>
-      <span class="topo__nome">Propostas de evolução — Portal de Serviços e Módulo de Serviços</span>
-    </a>
-    <nav class="topo__nav">
-      <a href="../index.html" class="ativo">Propostas</a>
-      <a href="../sobre.html">Sobre</a>
-    </nav>
-  </div>
-</header>
-<main class="conteudo">
-<p class="volta"><a href="../index.html">Todas as propostas</a></p>
-<p class="doc-id">PROP-020</p>
-<h1>Consulta cadastral por RIP: conferir o imóvel antes de vincular ou ofertar</h1>
-<nav class="abas"><a class="aba" href="../propostas/PROP-020.html">Proposta e protótipo</a><a class="aba aba--ativa" href="../solicitacoes/PROP-020.html">Texto para a Solicitação</a></nav>
-<div class="ficha">
-<p>Conteúdo preparado para ser revisado e copiado para o formulário oficial de Solicitação de Manutenção de Sistemas da SPU.</p>
-<p>Cada campo abaixo vem em bloco próprio, para cópia direta.</p>
-<hr>
-<h2>Título</h2>
-<pre><code>Conferir o imóvel informado: consultar os dados cadastrais a partir do RIP, na análise do requerimento - Módulo de Serviços do SPUnet</code></pre>
-<h2>Motivação</h2>
-<pre><code>Durante a análise, o servidor precisa saber de que imóvel se trata - para conferir se é o imóvel indicado pelo requerente ou o imóvel que se pretende ofertar. O RIP é hoje apenas um número digitado: o formulário do Portal tem o campo "RIP se existente (somente número)", declaratório, e nada no sistema confirma se aquele número corresponde a algum imóvel, nem a qual.
-
-São doze dígitos informados à mão, e ninguém confere. Um RIP errado não é percebido em nenhum momento da triagem ou da análise: o erro aparece adiante, quando alguém tenta trabalhar sobre um imóvel que não é aquele - e a essa altura o requerimento já consumiu prazo e trabalho.
-
-O efeito é maior quando há oferta de imóvel ao requerente: ofertar o imóvel errado produz manifestação do interessado sobre coisa diversa, e essa manifestação fica registrada no processo administrativo.
-
-Hoje, para conferir, o servidor precisa sair do sistema e consultar o cadastro por outro caminho.</code></pre>
-<h2>Sistema impactado</h2>
-<pre><code>Módulo de Serviços da plataforma SPUnet.
-
-Origem dos dados: cadastro de imóveis da União, mantido no Módulo de Cadastro, da mesma plataforma SPUnet, cujos dados também estão replicados no Data Lake do Serpro.</code></pre>
-<h2>Público impactado</h2>
-<pre><code>Servidores da SPU que analisam requerimentos no Módulo de Serviços, nas superintendências estaduais.
-
-Não há alteração no que se pede ao requerente.</code></pre>
-<h2>Abrangência</h2>
-<pre><code>Serviços do Módulo de Serviços cujo requerimento envolva imóvel identificado por RIP, em todas as unidades da SPU.</code></pre>
-<h2>Telas ou campos alterados</h2>
-<pre><code>Tela de análise do requerimento no Módulo de Serviços, no ponto em que o RIP é informado ou conferido.
-
-O campo "RIP se existente (somente número)", do formulário do Portal, não é alterado por esta solicitação.</code></pre>
-<h2>Descrição detalhada</h2>
-<pre><code>Solicita-se que, informado um ou mais números de RIP na análise do requerimento, o Módulo de Serviços apresente ao servidor os dados cadastrais correspondentes, para conferência.
-
-1. O servidor informa um ou mais RIPs e aciona a consulta.
-
-2. O sistema apresenta, para cada RIP, os dados que permitam identificar o imóvel com segurança - entre eles endereço, município e UF, áreas, natureza e regime de utilização atual. O conjunto exato deve ser definido no refinamento com a área responsável pelo cadastro.
-
-3. A tela informa a data e a hora da última atualização dos dados apresentados.
-
-4. O servidor é alertado quando os dados apresentados estiverem desatualizados além do limite definido.
-
-5. RIP inexistente, inativo ou informado de forma inválida produz resposta clara ao servidor, e não ausência de resposta.
-
-6. Indisponibilidade da consulta produz mensagem ao servidor, com indicação de que a informação não pôde ser obtida naquele momento.
-
-FINALIDADE E LIMITE DA CONSULTA
-
-7. A finalidade da consulta é a CONFERENCIA do imóvel informado, e não a apuração de sua disponibilidade para destinação. A disponibilidade continua sendo apurada pelo servidor e registrada por ele.
-
-8. Em consequência do item anterior, dados replicados com defasagem de até um dia são suficientes para esta funcionalidade.
-
-MEIO TECNICO
-
-9. A consulta pode ser atendida pelo caminho que se mostrar mais simples: acesso interno à base cadastral, se o Módulo de Serviços já dispuser dessa capacidade dentro da plataforma SPUnet, ou consulta aos dados cadastrais disponíveis no Data Lake do Serpro. Esta solicitação pede o resultado, não o meio.
-
-Não é objeto desta solicitação a alteração de dados cadastrais, que permanece exclusivamente no Módulo de Cadastro.</code></pre>
-<h2>Justificativa</h2>
-<pre><code>A conferência do imóvel é condição para duas coisas que dependem dela: vincular o imóvel ao requerimento e ofertar imóvel ao requerente. Sem saber a que imóvel corresponde o RIP, nenhuma das duas pode ser feita com segurança.
-
-O erro que se evita é barato de evitar e caro de descobrir. Um número digitado errado hoje só aparece semanas depois, na fase em que alguém tenta trabalhar sobre o imóvel - e o retrabalho alcança tudo o que foi feito até ali.
-
-A delimitação da finalidade reduz o custo da solicitação. Como a consulta serve para conferir, e não para decidir disponibilidade, ela não exige dado em tempo real: dispensa-se qualquer exigência de sincronismo, e a funcionalidade pode ser atendida pelo caminho técnico mais simples de que a SPU já disponha.
-
-Módulo de Serviços e Módulo de Cadastro integram a mesma plataforma. Se já existir capacidade de consulta interna, o atendimento desta solicitação pode se resumir a exibir na tela de análise um dado que o sistema já alcança.</code></pre>
-<h2>Impacto sobre outras áreas ou sistemas</h2>
-<pre><code>Nenhuma alteração no Módulo de Cadastro: a operação é somente de leitura.
-
-Nenhum impacto sobre o SEI, sobre o Portal de Serviços ou sobre requerimentos em andamento.
-
-Deve ser observado o regime de acesso e de tratamento de dados aplicável, especialmente se a consulta for atendida por réplica de dados.</code></pre>
-<h2>Anexo sugerido</h2>
-<pre><code>Comparativo visual "como é hoje / como ficaria", em arquivo HTML, mostrando o campo RIP na tela de análise nas duas situações.</code></pre>
-<hr>
-</div>
-</main>
-<script src="../site.js"></script>
+<p>Esta página mudou de endereço. <a href="PROP-E.html">Ir para o novo endereço</a>.</p>
 </body>
 </html>

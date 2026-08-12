@@ -2,103 +2,12 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PROP-019 — Texto para a Solicitação de Manutenção</title>
-<link rel="stylesheet" href="../estilo.css">
+<meta name="redirecionamento" content="1">
+<meta http-equiv="refresh" content="0; url=PROP-D.html">
+<link rel="canonical" href="PROP-D.html">
+<title>Endereço alterado</title>
 </head>
 <body>
-<header class="topo">
-  <div class="topo__interno">
-    <a class="topo__marca" href="../index.html">
-      <span class="topo__orgao">SPU · Escritório de Processos</span>
-      <span class="topo__nome">Propostas de evolução — Portal de Serviços e Módulo de Serviços</span>
-    </a>
-    <nav class="topo__nav">
-      <a href="../index.html" class="ativo">Propostas</a>
-      <a href="../sobre.html">Sobre</a>
-    </nav>
-  </div>
-</header>
-<main class="conteudo">
-<p class="volta"><a href="../index.html">Todas as propostas</a></p>
-<p class="doc-id">PROP-019</p>
-<h1>Retorno do resultado da instrução para fechar o requerimento</h1>
-<nav class="abas"><a class="aba" href="../propostas/PROP-019.html">Proposta e protótipo</a><a class="aba aba--ativa" href="../solicitacoes/PROP-019.html">Texto para a Solicitação</a></nav>
-<div class="ficha">
-<p>Conteúdo preparado para ser revisado e copiado para o formulário oficial de Solicitação de Manutenção de Sistemas da SPU.</p>
-<p>Cada campo abaixo vem em bloco próprio, para cópia direta.</p>
-<hr>
-<h2>Título</h2>
-<pre><code>Fechar automaticamente o requerimento com o resultado da instrução, mediante leitura periódica dos dados do Módulo de Instrução de Destinações - Módulo de Serviços do SPUnet</code></pre>
-<h2>Motivação</h2>
-<pre><code>Quando o requerimento entra na fase de análise técnica, o Módulo de Instrução de Destinações já o recolhe por rotina diária e o carrega para instrução. Esse caminho existe, funciona e não é objeto desta solicitação.
-
-O que não existe é o caminho de volta. Concluída a instrução - com deferimento, indeferimento ou cancelamento -, o resultado permanece onde foi produzido. O Módulo de Serviços não fica sabendo.
-
-Em consequência, o requerimento permanece aberto no Módulo de Serviços depois de a decisão já existir. O prazo de análise técnica continua correndo, a fila de trabalho das unidades exibe pendências que não são pendências, o requerente acompanha pelo Portal um pedido que consta em análise quando já foi decidido, e o encerramento depende de um servidor lembrar de fazê-lo manualmente.
-
-É um caminho de mão única: o requerimento sai e o resultado não volta.</code></pre>
-<h2>Sistema impactado</h2>
-<pre><code>Módulo de Serviços da plataforma SPUnet.
-
-Origem dos dados a serem lidos: Módulo de Instrução de Destinações, da plataforma SPUnet Gestão, cujos dados estão replicados no Data Lake do Serpro.</code></pre>
-<h2>Público impactado</h2>
-<pre><code>Servidores da SPU que operam o Módulo de Serviços nas superintendências estaduais, e servidores responsáveis pela instrução.
-
-Indiretamente, os requerentes, que dependem do encerramento do requerimento para serem informados do desfecho.</code></pre>
-<h2>Abrangência</h2>
-<pre><code>Todos os requerimentos que alcancem a fase de análise técnica, em todas as unidades da SPU.</code></pre>
-<h2>Telas ou campos alterados</h2>
-<pre><code>Não há alteração de tela como objeto principal. A mudança é de processamento.
-
-Efeitos visíveis:
-- situação do requerimento na lista e na tela de acompanhamento, que passa a exibir o desfecho sem intervenção manual;
-- histórico do requerimento, que registra o encerramento automático e a origem do resultado;
-- identificação do registro correspondente na instrução, gravada no requerimento.</code></pre>
-<h2>Descrição detalhada</h2>
-<pre><code>Solicita-se que o Módulo de Serviços passe a ler periodicamente os resultados produzidos pelo Módulo de Instrução de Destinações, disponíveis no Data Lake do Serpro, e a encerrar automaticamente os requerimentos correspondentes.
-
-1. Rotina periódica no Módulo de Serviços, que lê os registros de conclusão de instrução disponíveis no Data Lake.
-
-2. Cada resultado lido é associado ao requerimento de origem pelo identificador acordado, e o identificador do registro de instrução é gravado no requerimento.
-
-3. Identificado o resultado de um requerimento ainda aberto, o requerimento é encerrado com o desfecho correspondente: deferido, indeferido ou cancelado.
-
-4. A rotina identifica quais resultados ainda não foram processados e não reprocessa os já aplicados.
-
-5. O mesmo resultado não pode encerrar o requerimento mais de uma vez, ainda que seja lido em execuções sucessivas.
-
-6. Carga atrasada, incompleta ou com falha não encerra requerimento. A ocorrência é registrada de forma rastreável.
-
-7. É possível reprocessar uma execução com falha sem duplicar registros nem gerar encerramento em duplicidade.
-
-8. O encerramento automático é registrado no histórico do requerimento, com data, origem do resultado e indicação de que não houve intervenção manual.
-
-9. O encerramento manual pelo servidor permanece disponível, para os casos em que o resultado não chegue.
-
-Não é objeto desta solicitação:
-- qualquer alteração na rotina de ida, pela qual o Módulo de Instrução recolhe os requerimentos em análise técnica;
-- qualquer desenvolvimento na plataforma SPUnet Gestão ou no Módulo de Instrução de Destinações;
-- o envio do requerimento ao SEI, que permanece como está.</code></pre>
-<h2>Justificativa</h2>
-<pre><code>O mecanismo solicitado não é novo nem hipotético: é o mesmo que já opera entre os dois módulos, diariamente, no sentido da ida. Não se pede a criação de um caminho, pede-se que o caminho existente tenha volta.
-
-Todo o desenvolvimento fica dentro do Módulo de Serviços. Não é exigida construção alguma da plataforma que hospeda o Módulo de Instrução de Destinações - o que elimina a dependência que costuma inviabilizar integrações entre sistemas de equipes distintas.
-
-A latência é conhecida e aceita. O encerramento ocorrerá com defasagem de até um dia em relação à decisão, que é a mesma defasagem já praticada pela rotina de ida. Compara-se com a situação atual, em que o requerimento permanece aberto por tempo indeterminado, até que alguém repare.
-
-O ganho é direto sobre a gestão e sobre o cidadão: a fila de trabalho passa a refletir o que de fato está pendente, os indicadores de prazo deixam de computar requerimentos já decididos, e o requerente é informado do desfecho do seu pedido.</code></pre>
-<h2>Impacto sobre outras áreas ou sistemas</h2>
-<pre><code>Nenhum impacto sobre o SEI, sobre o Portal de Serviços ou sobre a rotina de carga já existente entre os módulos.
-
-Nenhuma alteração é requerida no Módulo de Instrução de Destinações nem na plataforma SPUnet Gestão.
-
-Requerimentos já encerrados manualmente não são afetados.</code></pre>
-<h2>Anexo sugerido</h2>
-<pre><code>Comparativo de fluxo "como é hoje / como ficaria", em arquivo HTML, mostrando o caminho do requerimento a partir da entrada em análise técnica e o efeito na lista de requerimentos.</code></pre>
-<hr>
-</div>
-</main>
-<script src="../site.js"></script>
+<p>Esta página mudou de endereço. <a href="PROP-D.html">Ir para o novo endereço</a>.</p>
 </body>
 </html>

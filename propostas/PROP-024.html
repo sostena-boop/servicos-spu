@@ -2,67 +2,12 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PROP-024 — Emissão de certidões e declarações a partir de modelos administrados centralmente</title>
-<link rel="stylesheet" href="../estilo.css">
+<meta name="redirecionamento" content="1">
+<meta http-equiv="refresh" content="0; url=PROP-C.html">
+<link rel="canonical" href="PROP-C.html">
+<title>Endereço alterado</title>
 </head>
 <body>
-<header class="topo">
-  <div class="topo__interno">
-    <a class="topo__marca" href="../index.html">
-      <span class="topo__orgao">SPU · Escritório de Processos</span>
-      <span class="topo__nome">Propostas de evolução — Portal de Serviços e Módulo de Serviços</span>
-    </a>
-    <nav class="topo__nav">
-      <a href="../index.html" class="ativo">Propostas</a>
-      <a href="../sobre.html">Sobre</a>
-    </nav>
-  </div>
-</header>
-<main class="conteudo">
-<p class="volta"><a href="../index.html">Todas as propostas</a></p>
-<p class="doc-id">PROP-024</p>
-<h1>Emissão de certidões e declarações a partir de modelos administrados centralmente</h1>
-<nav class="abas"><a class="aba aba--ativa" href="../propostas/PROP-024.html">Proposta e protótipo</a><a class="aba" href="../solicitacoes/PROP-024.html">Texto para a Solicitação</a></nav>
-<div class="intro"><p>Durante a análise de documentos ou a análise técnica, o servidor precisa emitir um documento que registre um fato ou ato relacionado ao requerimento e encaminhá-lo ao interessado. Não há funcionalidade para gerar, emitir e enviar esse documento dentro do fluxo de análise.</p>
-<p>O caso mais concreto: quando alguém pede um imóvel e não há imóvel a ofertar, é preciso entregar ao requerente um documento que ateste isso. Hoje não existe caminho.</p>
-<p>Há um segundo problema, que não se resolve apenas criando a funcionalidade. Certidão é documento oficial, com efeito perante terceiros. Se cada analista redigir o texto do seu jeito, o mesmo ato passa a ter tantas redações quantas forem as unidades — e a fundamentação, que é o que sustenta o documento, varia com quem escreveu.</p></div>
-<section class="secao-proto"><div class="secao-proto__topo"><h2>Como é hoje e como ficaria</h2><a class="botao botao--claro" href="../prototipos/PROP-024-certidoes.html" target="_blank">Abrir em tela cheia</a></div><iframe class="proto" src="../prototipos/PROP-024-certidoes.html" title="Protótipo comparativo da proposta" loading="eager"></iframe></section>
-<div class="ficha">
-<h2>Mudança proposta</h2>
-<p>Funcionalidade de emissão de <strong>certidões e declarações</strong> a partir de <strong>modelos padronizados</strong>, criados e administrados pela unidade central. O analista não redige o documento: escolhe entre os modelos autorizados para aquele tipo de requerimento, confere a prévia e emite.</p>
-<h3>O que a unidade central faz</h3>
-<ul><li>cria e mantém os <strong>modelos</strong> de certidão e de declaração;</li><li>define <strong>quais tipos de requerimento</strong> podem usar cada modelo, podendo vincular mais de um ao mesmo tipo;</li><li>insere no texto do modelo <strong>campos variáveis</strong>, preenchidos com dados do próprio requerimento no momento da emissão;</li><li>define <strong>campos de preenchimento</strong>, que o analista completa ao emitir, quando o modelo previr essa margem;</li><li>define as <strong>condições</strong> que tornam o modelo disponível ao analista.</li></ul>
-<h3>O que o analista faz</h3>
-<ul><li>escolhe um dos modelos autorizados e disponíveis para aquele requerimento;</li><li>preenche os campos que o modelo previr;</li><li>confere a <strong>prévia</strong> do documento já com os dados aplicados;</li><li><strong>emite</strong>, confirmando. A emissão nunca é automática.</li></ul>
-<h3>Campos variáveis: o que pode entrar no texto do modelo</h3>
-<p>Duas origens, e apenas estas:</p>
-<ol><li><strong>Dados do requerimento comuns a todos os serviços</strong> — nome e identificação do requerente, número e data do requerimento, serviço solicitado, unidade responsável, data da emissão, servidor emitente.</li><li><strong>Dados dos componentes padronizados da análise</strong> — o imóvel vinculado ou ofertado, e a resposta do requerente à oferta. São iguais em todos os serviços que os utilizam, porque o componente é o mesmo.</li></ol>
-<p><strong>Não entram campos dos formulários de cada serviço.</strong> Eles variam por serviço, mudam quando alguém edita o formulário e exigiriam mapear campo a campo os serviços publicados — trabalho de catálogo que se refaz a cada formulário novo. Onde for necessário um dado assim, o modelo prevê um <strong>campo de preenchimento</strong> e o analista o informa na emissão, sob conferência.</p>
-<h3>Emissão incompleta é bloqueada</h3>
-<p>O modelo declara quais campos são obrigatórios. Faltando qualquer um — variável não resolvida ou campo de preenchimento em branco —, <strong>a emissão é bloqueada</strong>, com indicação de qual dado falta e onde ele se resolve. Documento oficial não pode sair com lacuna silenciosa.</p>
-<h3>Condições de disponibilidade</h3>
-<p>Duas, nomeadas, e não um mecanismo genérico de regras:</p>
-<div class="tabela-rolavel"><table><thead><tr><th>Condição</th><th>Efeito</th></tr></thead><tbody><tr><td><strong>Indisponibilidade registrada</strong> — o analista registrou expressamente que não há imóvel a ofertar</td><td>libera o modelo de certidão de indisponibilidade de imóvel</td></tr><tr><td><strong>Oferta recusada</strong> — houve oferta e o requerente respondeu "Recusar"</td><td>libera o modelo de certidão de recusa de imóvel</td></tr></tbody></table></div>
-<p>Se o requerente aceitar, o modelo de recusa <strong>não fica disponível</strong>. A condição apenas libera o modelo; a emissão continua sendo ato do analista, com conferência da prévia.</p>
-<p>São dois fatos de natureza diferente, e o texto de cada certidão precisa refletir isso: <strong>indisponibilidade</strong> é fato registrado pelo servidor antes de qualquer manifestação do requerente; <strong>recusa</strong> é resposta do próprio requerente, com data e autor, depois de uma oferta.</p>
-<h3>O documento emitido</h3>
-<ul><li>é <strong>armazenado como foi emitido</strong>, e não reconstruído a partir do modelo na hora de exibir;</li><li>registra a <strong>versão do modelo</strong> que o gerou;</li><li>identifica o <strong>servidor emitente</strong> e a data;</li><li>recebe <strong>identificador e código de verificação de autenticidade</strong>;</li><li>fica no <strong>histórico do requerimento</strong> e é disponibilizado ao interessado no Portal;</li><li>é <strong>imutável</strong>. A correção se faz por <strong>nova emissão</strong>, que referencia e substitui a anterior, ficando as duas no histórico.</li></ul>
-<p>Guardar o documento como emitido é o que garante que alterar um modelo não altere nada do que já foi entregue. Se o sistema guardasse apenas a referência ao modelo, qualquer ajuste posterior mudaria retroativamente documento oficial já nas mãos do cidadão.</p>
-<h3>Quem administra</h3>
-<p>Dois papéis, e não uma matriz de perfis:</p>
-<div class="tabela-rolavel"><table><thead><tr><th>Papel</th><th>Pode</th></tr></thead><tbody><tr><td><strong>Redige</strong></td><td>criar e alterar modelos em rascunho</td></tr><tr><td><strong>Publica</strong></td><td>publicar, desativar e associar modelos a tipos de requerimento</td></tr></tbody></table></div>
-<p>Revisão e aprovação são etapas do trabalho da unidade central e cabem no estado do modelo — rascunho ou publicado —, sem exigir perfil próprio no sistema.</p>
-<h3>Direção futura, não pedida agora</h3>
-<p>Emissão automática pelo próprio requerente, para os casos em que o fato é apurável pelo sistema. Fica registrada como direção; não entra nesta proposta.</p>
-<h2>Justificativa</h2>
-<p>Sem essa funcionalidade, o servidor não tem como entregar ao requerente um documento que ateste o que foi apurado. O caso da indisponibilidade de imóvel é o mais claro: o pedido é indeferido e o requerente recebe a decisão sem o documento que a sustenta.</p>
-<p><strong>Modelos administrados centralmente resolvem o que a funcionalidade sozinha não resolve.</strong> O mesmo ato passa a ter uma única redação em todas as unidades, com fundamentação escrita uma vez por quem responde por ela. É o oposto de trinta redações do mesmo documento, e é a diferença entre um documento oficial e um texto assinado por um servidor.</p>
-<p><strong>A autonomia continua sendo o ganho principal, e não é reduzida por isso.</strong> Caso novo se resolve criando um modelo dentro da SPU, sem abrir solicitação de manutenção e sem esperar o fornecedor. O que muda é quem, dentro da SPU, cria — não se voltou a depender de quem constrói o sistema.</p>
-<p><strong>Campos variáveis são o que fazem o modelo padronizado funcionar.</strong> Sem eles, texto fixo obrigaria o analista a completar tudo à mão, e a padronização se perderia na digitação. Com eles, o texto é sempre o mesmo e os dados são sempre os do requerimento.</p>
-<p>E há economia de escopo: <strong>um pedido resolve uma classe inteira de necessidades</strong>, em vez de uma proposta por tipo de certidão.</p>
-</div>
-</main>
-<script src="../site.js"></script>
+<p>Esta página mudou de endereço. <a href="PROP-C.html">Ir para o novo endereço</a>.</p>
 </body>
 </html>

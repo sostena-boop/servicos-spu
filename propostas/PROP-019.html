@@ -2,53 +2,12 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PROP-019 — Retorno do resultado da instrução para fechar o requerimento</title>
-<link rel="stylesheet" href="../estilo.css">
+<meta name="redirecionamento" content="1">
+<meta http-equiv="refresh" content="0; url=PROP-D.html">
+<link rel="canonical" href="PROP-D.html">
+<title>Endereço alterado</title>
 </head>
 <body>
-<header class="topo">
-  <div class="topo__interno">
-    <a class="topo__marca" href="../index.html">
-      <span class="topo__orgao">SPU · Escritório de Processos</span>
-      <span class="topo__nome">Propostas de evolução — Portal de Serviços e Módulo de Serviços</span>
-    </a>
-    <nav class="topo__nav">
-      <a href="../index.html" class="ativo">Propostas</a>
-      <a href="../sobre.html">Sobre</a>
-    </nav>
-  </div>
-</header>
-<main class="conteudo">
-<p class="volta"><a href="../index.html">Todas as propostas</a></p>
-<p class="doc-id">PROP-019</p>
-<h1>Retorno do resultado da instrução para fechar o requerimento</h1>
-<nav class="abas"><a class="aba aba--ativa" href="../propostas/PROP-019.html">Proposta e protótipo</a><a class="aba" href="../solicitacoes/PROP-019.html">Texto para a Solicitação</a></nav>
-<div class="intro"><p><strong>O caminho de ida já existe, e funciona.</strong> Quando o requerimento entra em análise técnica, o Módulo de Instrução de Destinações o recolhe por carga diária e o carrega para instrução. O dado sai do Módulo de Serviços e chega ao seu destino sem que ninguém precise fazer nada.</p>
-<p><strong>O que não existe é o caminho de volta.</strong> Concluída a instrução, o resultado — deferido, indeferido, cancelado — fica onde foi produzido. O Módulo de Serviços não fica sabendo.</p>
-<p>Consequência: o requerimento permanece aberto no Módulo de Serviços enquanto a decisão já existe em outro lugar. O prazo corre, a fila de trabalho mostra pendências que não são pendências, o requerente não é avisado, e o fechamento depende de um servidor lembrar de fazê-lo à mão — quando faz.</p>
-<p>É um caminho de mão única: sai e não volta.</p></div>
-<section class="secao-proto"><div class="secao-proto__topo"><h2>Como é hoje e como ficaria</h2><a class="botao botao--claro" href="../prototipos/PROP-019-integracao-instrucao.html" target="_blank">Abrir em tela cheia</a></div><iframe class="proto" src="../prototipos/PROP-019-integracao-instrucao.html" title="Protótipo comparativo da proposta" loading="eager"></iframe></section>
-<div class="ficha">
-<h2>Mudança proposta</h2>
-<p><strong>Leitura periódica do resultado da instrução, para fechar o requerimento automaticamente.</strong></p>
-<p>O Módulo de Serviços passa a ler, por rotina própria, os resultados produzidos pelo Módulo de Instrução de Destinações, disponíveis no Data Lake do Serpro com defasagem de até um dia. Identificado o resultado de um requerimento ainda aberto, o requerimento é <strong>concluído automaticamente</strong>, com o desfecho correspondente.</p>
-<p>Resultados previstos: <strong>deferido</strong>, <strong>indeferido</strong>, <strong>cancelado</strong>.</p>
-<p><strong>O que a leitura precisa garantir:</strong></p>
-<ul><li><strong>relacionar corretamente</strong> o resultado ao requerimento de origem, pelo identificador acordado;</li><li>identificar quais resultados <strong>ainda não foram processados</strong>, sem reprocessar os já aplicados;</li><li><strong>impedir que o mesmo resultado conclua o requerimento mais de uma vez</strong>;</li><li>tratar <strong>carga atrasada ou falha</strong>, sem concluir requerimento com dado incompleto;</li><li>registrar falhas de forma rastreável e permitir <strong>reprocessamento sem duplicar</strong>.</li></ul>
-<p><strong>O que não é pedido aqui.</strong> Nenhuma alteração na ida, que já funciona. Nenhuma chamada síncrona, nenhuma fila, nenhum aviso do Módulo de Instrução. <strong>Nada é exigido da plataforma que hospeda o Módulo de Instrução</strong> — todo o trabalho fica dentro do Módulo de Serviços.</p>
-<h3>O identificador é o ponto que decide</h3>
-<p>Sem chamada de ida e volta, não há troca de identificadores no ato. A ligação entre o requerimento e o registro da instrução tem de ser <strong>reconstruída a partir do que está no dado lido</strong>.</p>
-<p>Se o registro do Módulo de Instrução guarda a chave do requerimento de origem, a ligação é imediata. Se não guarda, ela precisa ser estabelecida de outra forma antes que qualquer coisa aqui funcione. <strong>É a primeira pergunta a fazer</strong>, e a que pode mudar o tamanho de tudo.</p>
-<h2>Justificativa</h2>
-<p>Sem retorno, o requerimento fica aberto no Módulo de Serviços depois de a decisão já existir. O requerente não é avisado, o prazo de análise técnica corre e a fila de trabalho da equipe mostra pendências que não são pendências.</p>
-<p>O fechamento manual não resolve: depende de alguém lembrar, e ninguém é notificado de que há o que lembrar.</p>
-<p><strong>O argumento decisivo é a simetria.</strong> O mecanismo pedido não é novo nem hipotético: é o mesmo que já opera entre os dois módulos, todos os dias, no sentido da ida. Não se pede que se invente um caminho, pede-se que o caminho existente tenha volta.</p>
-<p><strong>E nada é exigido de quem está do outro lado.</strong> Se o resultado tivesse de ser avisado pelo Módulo de Instrução, seria preciso que outra equipe, em outra plataforma, construísse algo — e essa é a parte de qualquer integração que não depende de quem pede. Lendo dados já replicados, todo o trabalho fica dentro do Módulo de Serviços.</p>
-<p>O que se paga por isso é <strong>latência de até um dia</strong> entre a decisão e o fechamento. É escolha consciente, e aceitável diante da situação atual: hoje o requerimento fica aberto indefinidamente. É também a mesma latência que a ida já pratica sem que isso tenha sido problema.</p>
-<p>Por fim, o fechamento automático é o que fecha o ciclo do requerimento para o cidadão: hoje ele acompanha pelo Portal um pedido que consta em análise depois de decidido.</p>
-</div>
-</main>
-<script src="../site.js"></script>
+<p>Esta página mudou de endereço. <a href="PROP-D.html">Ir para o novo endereço</a>.</p>
 </body>
 </html>

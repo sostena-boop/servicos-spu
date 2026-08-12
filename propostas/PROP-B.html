@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROP-B — Devolução ao requerente com questionário estruturado</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+<header class="topo">
+  <div class="topo__interno">
+    <a class="topo__marca" href="../index.html">
+      <span class="topo__orgao">SPU · Escritório de Processos</span>
+      <span class="topo__nome">Propostas de evolução — Portal de Serviços e Módulo de Serviços</span>
+    </a>
+    <nav class="topo__nav">
+      <a href="../index.html" class="ativo">Propostas</a>
+      <a href="../sobre.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+<main class="conteudo">
+<p class="volta"><a href="../index.html">Todas as propostas</a></p>
+<p class="doc-id">PROP-B</p>
+<h1>Devolução ao requerente com questionário estruturado</h1>
+<nav class="abas"><a class="aba aba--ativa" href="../propostas/PROP-B.html">Proposta e protótipo</a><a class="aba" href="../solicitacoes/PROP-B.html">Texto para a Solicitação</a></nav>
+<div class="intro"><p>Quando falta alguma coisa, o servidor devolve o requerimento com uma <strong>mensagem em texto livre</strong>: "favor complementar tal coisa". O requerente lê e responde como entender — anexando documento, escrevendo em campo de texto, ou não respondendo o que se queria.</p>
+<p>Três consequências:</p>
+<ol><li><strong>O pedido é ambíguo.</strong> Texto corrido não delimita o que se espera. Ida e volta se repete.</li><li><strong>A resposta não é estruturada.</strong> Volta como texto ou anexo, e não como dado — não é consultável, não vira indicador, não atravessa integração.</li><li><strong>O que se pode pedir fica limitado.</strong> A devolução é hoje pensada em torno de documentos; pedir uma <strong>informação</strong> cabe mal.</li></ol>
+<p>O exemplo real capturado mostra o problema: a anotação da devolução é <em>"Solicitamos RIP do imóvel."</em> — é um dado, não um documento, e chega ao requerente como frase solta.</p></div>
+<section class="secao-proto"><div class="secao-proto__topo"><h2>Como é hoje e como ficaria</h2><a class="botao botao--claro" href="../prototipos/PROP-B-devolucao.html" target="_blank">Abrir em tela cheia</a></div><iframe class="proto" src="../prototipos/PROP-B-devolucao.html" title="Protótipo comparativo da proposta" loading="eager"></iframe></section>
+<div class="ficha">
+<h2>Mudança proposta</h2>
+<p><strong>Permitir que a devolução ao requerente inclua um questionário com perguntas estruturadas</strong>, montado com os mesmos componentes do formulário — pergunta de texto, pergunta de escolha, data, número, anexo — em vez de apenas uma mensagem em texto livre.</p>
+<p>O requerente responde ao questionário no Portal, e <strong>a resposta fica registrada de forma estruturada</strong> no requerimento.</p>
+<p>Dois níveis, com prazos diferentes:</p>
+<div class="tabela-rolavel"><table><thead><tr><th>Nível</th><th>Quem monta</th><th>Quando</th></tr></thead><tbody><tr><td><strong>Questionário do analista</strong></td><td>O próprio servidor, no momento da análise</td><td>É o pedido de agora</td></tr><tr><td><strong>Questionário fixo</strong></td><td>A equipe central, previamente por serviço</td><td>Futuro, sinalizado como direção</td></tr></tbody></table></div>
+<p>O segundo nível reaproveita o ponto de configuração que já existe — a aba "Checklist da Análise de Documentos" do editor de serviço.</p>
+<p>É o mesmo caso da PROP-A: estender à devolução um repertório de componentes que o sistema já tem.</p>
+<h2>Justificativa</h2>
+<p>Pedido em texto corrido é pedido ambíguo. Três perguntas num parágrafo produzem uma resposta parcial, e cada resposta parcial é uma nova devolução — que consome prazo do requerente, tempo de análise e mais uma rodada de notificação.</p>
+<p>Com perguntas estruturadas, o requerente vê exatamente o que falta, e campo obrigatório não deixa reenviar pela metade. Cada volta evitada é ganho para os dois lados.</p>
+<p>A resposta também muda de natureza: deixa de ser texto num campo livre e passa a ser <strong>dado no requerimento</strong> — consultável, comparável e transportável para a instrução.</p>
+<p>Por fim, a mudança resolve por construção uma limitação da devolução: podendo perguntar, ela deixa de depender de haver documento a que prender a pendência.</p>
+<h3>Ofertar imóvel é um componente padronizado da devolução</h3>
+<p>A oferta de imóvel não é fluxo próprio nem pergunta montada livremente pelo analista: é um <strong>componente padronizado</strong>, com comportamento definido pelo sistema.</p>
+<p><strong>A unidade central define previamente quais tipos de requerimento admitem oferta de imóvel.</strong> Só nesses serviços o componente fica disponível ao analista.</p>
+<p>Funcionamento:</p>
+<ol><li>Havendo imóvel a ofertar, o analista <strong>adiciona ou vincula o imóvel</strong> ao requerimento, identificando-o pelo RIP.</li><li>Ao adicionar o imóvel, <strong>o sistema inclui automaticamente na devolução a pergunta padronizada</strong> ao requerente. O analista não a escreve.</li><li>O requerente responde <strong>uma única coisa entre Aceitar e Recusar</strong>, e a resposta fica registrada no requerimento com data e autor.</li><li><strong>Não havendo imóvel adicionado, nem o componente nem a pergunta aparecem</strong> para o requerente.</li></ol>
+<p>O componente visual da resposta — rádio, lista ou outro — fica a critério de quem implementa. <strong>A regra é o que importa:</strong> uma resposta possível entre Aceitar e Recusar, registrada como dado.</p>
+<p><strong>Por que padronizado, e não uma pergunta como as outras.</strong> Uma pergunta escrita pelo analista produz resposta estruturada, mas sem significado para o sistema: fica gravado "Recusar" sem que nada saiba que aquilo é a resposta a uma oferta de imóvel. Padronizado, o mesmo dado tem significado conhecido — e é isso que permite que a emissão da certidão de recusa dependa dele.</p>
+<h3>Registrar que não há imóvel a ofertar</h3>
+<p>O caso em que <strong>não há imóvel</strong> também precisa ser registrado, e como fato estruturado, no mesmo bloco. Ausência de oferta não é a mesma coisa que inexistência de imóvel disponível: o analista pode simplesmente não ter chegado lá. Sem registro expresso, não se pode deduzir uma coisa da outra.</p>
+<p><strong>A vinculação do imóvel ao requerimento também fica aqui</strong>, pelo mesmo motivo que a oferta: é o momento em que há interlocução com o requerente. Aproveita-se a tela, que é a mesma.</p>
+<p>Os dados do imóvel vêm da <strong>PROP-E</strong>, consulta por RIP, de que esta proposta depende.</p>
+</div>
+</main>
+<script src="../site.js"></script>
+</body>
+</html>

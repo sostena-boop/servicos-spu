@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROP-B — Devolução ao requerente com questionário estruturado</title>
+<link rel="stylesheet" href="base-portal.css">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 24px 56px; background: #f2f4f7; color: #1c1c1c;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .doc { max-width: 1400px; margin: 0 auto; }
+  .doc__linha { color: #4a5568; max-width: 76ch; margin: 0 0 26px; }
+
+  .comparativo { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  @media (min-width: 1120px) { .comparativo { grid-template-columns: 1fr 1fr; } }
+
+  .painel__titulo { margin-bottom: 12px; }
+  .painel__tag {
+    display: inline-block; font-size: 15px; font-weight: 800; letter-spacing: .6px;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 4px;
+  }
+  .painel__titulo h2 { font-size: 15px; margin: 8px 0 0; font-weight: 600; color: #3d4759; }
+  .tag--hoje { background: #f7d9d9; color: #8c1c1b; }
+  .tag--prop { background: #d3ecda; color: #14562a; }
+
+  .lado { font-size: 12px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase;
+    color: #6b7686; margin: 22px 0 8px; }
+
+  .mudancas {
+    margin-top: 36px; display: grid; gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
+  .mudanca { background: #fff; border: 1px solid #dde2ea; border-radius: 6px; padding: 16px 18px; }
+  .mudanca h3 { font-size: 15px; margin: 0 0 6px; }
+  .mudanca p { font-size: 14px; margin: 0; color: #4a5568; }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <p class="doc__linha">
+    A devolução do requerimento ao requerente, hoje e como ficaria. Cada coluna mostra
+    as duas pontas: em cima, o que o servidor preenche na análise; embaixo, o que o
+    requerente recebe no Portal.
+  </p>
+
+  <div class="comparativo">
+
+    <!-- ================= HOJE ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--hoje">Como é hoje</span>
+        <h2>Uma frase em texto livre, e o requerente que interprete</h2>
+      </div>
+
+      <p class="lado">O que o servidor preenche</p>
+      <div class="ms-tela">
+        <div class="ms-bloco" style="border-top-color:#8c9099">
+          <div class="ms-item" style="border-bottom:0">
+            <span class="ms-radio marcado"><i></i></span>
+            <span class="ms-item__nome">Retornar pendência para o Interessado</span>
+          </div>
+          <div class="ms-item" style="border-bottom:0; padding-top:0">
+            <span class="ms-radio"><i></i></span>
+            <span class="ms-item__nome">Cancelar requerimento</span>
+          </div>
+        </div>
+        <div class="ms-campo">
+          <span class="ms-campo__rotulo"><b>Anotações Complementares</b></span>
+          <div class="ms-textarea" style="color:#3d4759">Solicitamos RIP do imóvel. Informar também se há edificação e desde quando o imóvel é ocupado. Anexar planta, se houver.</div>
+        </div>
+        <div class="ms-campo">
+          <span class="ms-campo__rotulo">Arquivos de orientação sobre a pendência</span>
+          <div class="ms-input" style="border-style:dashed; color:#1351b4">Selecione os arquivos</div>
+        </div>
+        <div class="ms-acoes" style="text-align:right">
+          <span class="ms-botao ms-botao--claro">Fechar</span>
+          <span class="ms-botao">Enviar</span>
+        </div>
+      </div>
+
+      <p class="lado">O que o requerente recebe</p>
+      <div class="ms-tela">
+        <div class="ms-bloco" style="border-top-color:#8c9099">
+          <div class="ms-bloco__titulo">Pendência — requerimento PR01934/2026</div>
+          <div class="ms-campo">
+            <div style="font-size:13px; line-height:1.5">
+              Solicitamos RIP do imóvel. Informar também se há edificação e desde quando
+              o imóvel é ocupado. Anexar planta, se houver.
+            </div>
+          </div>
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">Sua resposta</span>
+            <div class="ms-textarea" style="color:#a6adb8">Escreva aqui…</div>
+          </div>
+        </div>
+        <p class="ms-nota">
+          Três perguntas num parágrafo só, e um campo de texto para responder as três.
+          O requerente responde uma, esquece outra, e o requerimento volta a ir e vir.
+        </p>
+      </div>
+    </div>
+
+    <!-- ================= PROPOSTA ================= -->
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--prop">Como ficaria</span>
+        <h2>Um questionário montado na hora, com os componentes do formulário</h2>
+      </div>
+
+      <p class="lado">O que o servidor preenche</p>
+      <div class="ms-tela">
+        <div class="ms-bloco" style="border-top-color:#8c9099">
+          <div class="ms-item" style="border-bottom:0">
+            <span class="ms-radio marcado"><i></i></span>
+            <span class="ms-item__nome">Retornar pendência para o Interessado</span>
+          </div>
+          <div class="ms-item" style="border-bottom:0; padding-top:0">
+            <span class="ms-radio"><i></i></span>
+            <span class="ms-item__nome">Cancelar requerimento</span>
+          </div>
+        </div>
+
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Perguntas ao requerente <span class="ms-novo">novo</span></div>
+
+          <div class="ms-item">
+            <span class="ms-item__nome"><b>RIP do imóvel</b><br>
+              <span style="color:#6b7686">Número · obrigatória</span></span>
+            <span class="ms-item__acoes"><span class="ms-lapis">✎</span><span class="ms-lapis">🗑</span></span>
+          </div>
+          <div class="ms-item">
+            <span class="ms-item__nome"><b>O imóvel possui edificação?</b><br>
+              <span style="color:#6b7686">Escolha · Sim / Não · obrigatória</span></span>
+            <span class="ms-item__acoes"><span class="ms-lapis">✎</span><span class="ms-lapis">🗑</span></span>
+          </div>
+          <div class="ms-item">
+            <span class="ms-item__nome"><b>Data de início da ocupação</b><br>
+              <span style="color:#6b7686">Data · obrigatória</span></span>
+            <span class="ms-item__acoes"><span class="ms-lapis">✎</span><span class="ms-lapis">🗑</span></span>
+          </div>
+          <div class="ms-item">
+            <span class="ms-item__nome"><b>Planta do imóvel</b><br>
+              <span style="color:#6b7686">Arquivo · opcional</span></span>
+            <span class="ms-item__acoes"><span class="ms-lapis">✎</span><span class="ms-lapis">🗑</span></span>
+          </div>
+
+          <div class="ms-campo">
+            <span class="ms-botao ms-botao--claro">Adicionar pergunta +</span>
+          </div>
+        </div>
+
+        <div class="ms-campo">
+          <span class="ms-campo__rotulo"><b>Anotações Complementares</b></span>
+          <div class="ms-textarea" style="color:#3d4759">Responder as perguntas acima para prosseguirmos com a análise.</div>
+        </div>
+        <div class="ms-acoes" style="text-align:right">
+          <span class="ms-botao ms-botao--claro">Fechar</span>
+          <span class="ms-botao">Enviar</span>
+        </div>
+      </div>
+
+      <p class="lado">O que o requerente recebe</p>
+      <div class="ms-tela">
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Pendência — requerimento PR01934/2026</div>
+          <div class="ms-campo">
+            <div style="font-size:13px">Responder as perguntas abaixo para prosseguirmos com a análise.</div>
+          </div>
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">RIP do imóvel <b>(Obrigatório)</b></span>
+            <div class="ms-input" style="color:#a6adb8">0000000-00.0</div>
+          </div>
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">O imóvel possui edificação? <b>(Obrigatório)</b></span>
+            <div class="ms-select-wrap"><div class="ms-select" style="color:#a6adb8">Selecione</div></div>
+          </div>
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">Data de início da ocupação <b>(Obrigatório)</b></span>
+            <div class="ms-input" style="color:#a6adb8">__/__/____</div>
+          </div>
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">Planta do imóvel</span>
+            <div class="ms-input" style="border-style:dashed; color:#1351b4">Selecione o arquivo</div>
+          </div>
+        </div>
+        <p class="ms-nota">
+          Cada pergunta tem seu campo, seu tipo e sua obrigatoriedade. O requerente sabe
+          exatamente o que falta, e a resposta volta como dado.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <h2 style="font-size:19px; margin:44px 0 6px; padding-top:24px; border-top:1px solid #dde2ea">
+    Ofertar imóvel é um componente padronizado da devolução
+  </h2>
+  <p class="doc__linha">
+    Quando o imóvel pedido não está disponível, a SPU oferece alternativa. Isso não precisa de
+    fluxo próprio: é um componente que o analista acrescenta à devolução. Mas <b>não é uma
+    pergunta que ele escreve</b> — é padronizado, habilitado por serviço, e a pergunta ao
+    requerente entra sozinha quando um imóvel é adicionado.
+  </p>
+
+  <div class="comparativo">
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--hoje">Como é hoje</span>
+        <h2>Oferta e recusa resolvidas em PDF</h2>
+      </div>
+      <div class="ms-tela">
+        <div class="ms-bloco" style="border-top-color:#8c9099">
+          <div class="ms-bloco__titulo">Imóvel do requerimento</div>
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">RIP informado pelo requerente</span>
+            <div class="ms-input" style="color:#3d4759">7519 0001234-56</div>
+          </div>
+          <p class="ms-nota">Nada liga esse número a um imóvel do cadastro.</p>
+        </div>
+        <div class="ms-bloco" style="border-top-color:#8c9099">
+          <div class="ms-bloco__titulo">Documentos</div>
+          <div class="ms-item">
+            <span class="ms-doc">▤</span>
+            <span class="ms-item__nome">Ofício de oferta de imóvel 2026.pdf</span>
+          </div>
+          <div class="ms-item">
+            <span class="ms-doc">▤</span>
+            <span class="ms-item__nome">Manifestação de recusa — assinada.pdf</span>
+          </div>
+          <p class="ms-nota">
+            A prática existe — o serviço até distribui o modelo de manifestação de recusa.
+            Mas fica em documento: não se sabe, sem abrir os arquivos, o que foi ofertado
+            nem o que o requerente respondeu.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="painel">
+      <div class="painel__titulo">
+        <span class="painel__tag tag--prop">Como ficaria</span>
+        <h2>Um componente a mais na devolução</h2>
+      </div>
+      <div class="ms-tela">
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Imóvel vinculado ao requerimento <span class="ms-novo">novo</span></div>
+          <div class="ms-cartao">
+            <div class="ms-cartao__topo">
+              <span class="ms-cartao__rip">7519 0001234-56</span>
+              <span class="ms-etiqueta ms-etiqueta--neutra">Cadastro · atualizado em 10/08/2026</span>
+            </div>
+            <div class="ms-cartao__grade">
+              <div><b>Endereço:</b> Rua Bolívia, 32 — Nereidas</div>
+              <div><b>Regime atual:</b> Cessão de uso</div>
+            </div>
+          </div>
+          <p class="ms-nota" style="padding:0 14px 10px">
+            Os dados vêm da consulta por RIP e servem para o analista <b>conferir se é o
+            imóvel certo</b>. A disponibilidade não vem daí: é apurada por ele.
+          </p>
+          <div class="ms-campo">
+            <span class="ms-campo__rotulo">Registro do analista <span class="ms-novo">novo</span></span>
+            <div class="ms-radio">◉ Não há imóvel disponível para oferta &nbsp;&nbsp; ○ Há imóvel a ofertar</div>
+          </div>
+          <p class="ms-nota" style="padding:0 14px 10px">
+            Fato estruturado, e não dedução. Ausência de oferta não é o mesmo que
+            inexistência de imóvel disponível — o analista pode simplesmente não ter chegado
+            lá. É este registro que libera a certidão de indisponibilidade.
+          </p>
+        </div>
+
+        <div class="ms-bloco">
+          <div class="ms-bloco__titulo">Perguntas ao requerente</div>
+          <div class="ms-item">
+            <span class="ms-item__nome"><b>Data de início da ocupação</b><br>
+              <span style="color:#6b7686">Data · obrigatória</span></span>
+            <span class="ms-item__acoes"><span class="ms-lapis">✎</span></span>
+          </div>
+          <div class="ms-item" style="background:#f2faf5">
+            <span class="ms-item__nome"><b>Oferta de imóvel</b> <span class="ms-novo">componente padronizado</span><br>
+              <span style="color:#6b7686">RIP 7519 0007788-01 — Av. Atlântica, 1.240<br>
+              pergunta incluída automaticamente · resposta única: Aceitar ou Recusar</span></span>
+            <span class="ms-item__acoes"><span class="ms-lapis">✎</span></span>
+          </div>
+          <div class="ms-campo">
+            <span class="ms-botao ms-botao--claro">Adicionar pergunta +</span>
+            <span class="ms-botao ms-botao--claro">Ofertar imóvel +</span>
+          </div>
+          <p class="ms-nota">
+            O analista adiciona o imóvel; <b>a pergunta ao requerente entra sozinha</b>, com
+            texto e opções definidos pelo sistema. Sem imóvel adicionado, nem o componente
+            nem a pergunta aparecem para o requerente.
+          </p>
+          <p class="ms-nota" style="padding-top:0">
+            Padronizada, a resposta tem significado conhecido: o sistema sabe que aquele
+            "Recusar" é a recusa de uma oferta de imóvel. É o que permite liberar a certidão
+            de recusa. Escrita à mão pelo analista, seria só um texto a mais no requerimento.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mudanca" style="margin-top:20px; border-left:3px solid #b8860b; background:#fdf8ec">
+    <h3>O componente visual da resposta ainda não está definido</h3>
+    <p>Rádio, lista ou outro: fica a critério de quem implementa. <b>A regra é o que
+    importa</b> — uma única resposta possível entre Aceitar e Recusar, gravada com data e
+    autor. Falta definir se é exigida justificativa quando o requerente recusa, e se a
+    manifestação no Portal substitui a assinatura do modelo em PDF hoje usado — esta última
+    passa pela área jurídica, porque a recusa tem efeito no processo.</p>
+  </div>
+
+  <div class="mudancas">
+    <div class="mudanca">
+      <h3>1. O pedido deixa de ser ambíguo</h3>
+      <p>Três perguntas num parágrafo viram três campos. O requerente não precisa
+      interpretar o que se espera dele.</p>
+    </div>
+    <div class="mudanca">
+      <h3>2. A resposta volta como dado</h3>
+      <p>RIP, data de ocupação e existência de edificação chegam em campo próprio —
+      consultáveis, comparáveis, transportáveis para a instrução.</p>
+    </div>
+    <div class="mudanca">
+      <h3>3. Dá para pedir informação, não só documento</h3>
+      <p>Era o que a proposta anterior pedia por outro caminho. Podendo perguntar, a
+      devolução deixa de depender de haver documento a que prendê-la.</p>
+    </div>
+    <div class="mudanca">
+      <h3>4. Menos idas e vindas</h3>
+      <p>Campo obrigatório não deixa o requerente reenviar pela metade. Cada volta
+      evitada é tempo de análise e prazo do requerente.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
