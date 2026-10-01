@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PROP-D — Integração entre o Módulo de Instrução e o Portal para complementações e encerramento</title>
+<title>PROP-D — Integração entre o Portal de Serviços e o Módulo de Instrução: entrada, complementações e encerramento</title>
 <link rel="stylesheet" href="../estilo.css">
 </head>
 <body>
@@ -22,7 +22,7 @@
 <main class="conteudo">
 <p class="volta"><a href="../index.html">Todas as propostas</a></p>
 <p class="doc-id">PROP-D</p>
-<h1>Integração entre o Módulo de Instrução e o Portal para complementações e encerramento</h1>
+<h1>Integração entre o Portal de Serviços e o Módulo de Instrução: entrada, complementações e encerramento</h1>
 <nav class="abas"><a class="aba aba--ativa" href="../propostas/PROP-D.html">Proposta e protótipo</a><a class="aba" href="../solicitacoes/PROP-D.html">Texto para a Solicitação</a></nav>
 <div class="intro"><p>O requerimento nasce no Portal, mas sua instrução ocorre em outro sistema e pode durar bastante tempo. Durante esse período, a equipe precisa sair do Módulo de Instrução para pedir documentos ou informações ao requerente. Quando a instrução termina, alguém ainda precisa voltar ao Módulo de Serviços para concluir manualmente o requerimento.</p>
 <p>Isso fragmenta o trabalho, dificulta a comunicação com o requerente e faz com que pedidos já decididos continuem aparecendo como abertos. O requerente também não recebe, de forma automática, o resultado e o documento final no mesmo local em que apresentou e acompanha o pedido.</p></div>
@@ -31,9 +31,13 @@
 <h2>Mudança proposta</h2>
 <p>Construir uma <strong>integração direta e bidirecional</strong> entre o Módulo de Instrução e o Portal de Serviços — por interface de integração própria entre os dois sistemas —, apoiada no identificador do requerimento de origem.</p>
 <p><strong>O canal do requerente continua sendo o Portal de Serviços.</strong> O que muda é de onde a equipe opera: ela inicia a comunicação no Módulo de Instrução, e a integração cria a pendência no Portal de Serviços, recebe a resposta e a devolve ao Módulo de Instrução. Entrado o requerimento na instrução, <strong>a equipe não precisa mais acessar o Portal de Serviços</strong> para pedir complementação, acompanhar respostas ou concluir o pedido.</p>
-<p>A primeira versão deve atender a três operações:</p>
-<ol><li><strong>Solicitar complementação:</strong> a equipe registra no Módulo de Instrução uma solicitação de informação ou documento. O Portal cria uma pendência, notifica o requerente e passa a exibir a situação <strong>Aguardando Requerente</strong>.</li><li><strong>Receber a resposta:</strong> o requerente responde no Portal com texto, arquivo ou ambos. O Portal encerra aquela comunicação, guarda a resposta e a envia ao Módulo de Instrução.</li><li><strong>Encerrar o requerimento:</strong> ao ocorrer destinação formalizada, indeferimento ou cancelamento, o Módulo de Instrução envia o resultado e um PDF gerado automaticamente. O Portal guarda uma cópia do documento, atualiza a situação, preserva o histórico e notifica o requerente.</li></ol>
-<p>O desenho não cria um novo canal de mensagens. Ele reaproveita o mecanismo de pendência já existente no Portal e permite operá-lo diretamente a partir do Módulo de Instrução.</p>
+<p>A primeira versão deve atender a <strong>quatro operações</strong>, e a primeira delas substitui o caminho de entrada que existe hoje:</p>
+<ol><li><strong>Enviar o requerimento à instrução:</strong> quando o requerimento entra na fase de análise técnica, o Portal de Serviços o envia ao Módulo de Instrução pela integração. <strong>Substitui a carga diária apoiada no Data Lake</strong>, que deixa de ser o caminho de entrada.</li><li><strong>Solicitar complementação:</strong> a equipe registra no Módulo de Instrução uma solicitação de informação ou documento. O Portal de Serviços cria uma pendência, notifica o requerente e passa a exibir a situação <strong>Aguardando Requerente</strong>.</li><li><strong>Receber a resposta:</strong> o requerente responde no Portal de Serviços com texto, arquivo ou ambos. O Portal de Serviços encerra aquela comunicação, guarda a resposta e a envia ao Módulo de Instrução.</li><li><strong>Encerrar o requerimento:</strong> ao ocorrer destinação formalizada, indeferimento ou cancelamento, o Módulo de Instrução envia o resultado e um PDF gerado automaticamente. O Portal de Serviços guarda uma cópia do documento, atualiza a situação, preserva o histórico e notifica o requerente.</li></ol>
+<p>O desenho não cria um novo canal de mensagens. Ele reaproveita o mecanismo de pendência já existente no Portal de Serviços e permite operá-lo diretamente a partir do Módulo de Instrução.</p>
+<p><strong>Com a entrada pela integração, passa a haver um único caminho entre os dois sistemas.</strong> Hoje são dois mecanismos distintos para o mesmo par de sistemas: uma carga de dados para entrar, e nada para o que vem depois. Unificar elimina a pergunta sobre qual deles é a fonte de verdade.</p>
+<p><strong>O ganho imediato é a latência.</strong> A carga é diária e trabalha com dados do dia anterior: entre o servidor acionar "Iniciar análise técnica" e o requerimento aparecer na instrução pode passar um dia. Pela integração, chega no ato.</p>
+<p><strong>A quarta operação nasce preparada, ainda que não seja usada desde o primeiro dia.</strong> O Módulo de Instrução ainda não produz todo o resultado final da destinação, e os gatilhos exatos serão definidos conforme novas funcionalidades forem incorporadas a ele. A integração deve nascer com a <strong>capacidade</strong> de devolver conclusão, resultado e documento.</p>
+<p><strong>Fica em aberto se o mesmo mecanismo de entrada pode servir a outros módulos</strong> que venham a precisar receber requerimentos do Portal de Serviços. Se puder, deixa de ser integração ponto a ponto, e o dimensionamento muda.</p>
 </div>
 </main>
 <script src="../site.js"></script>

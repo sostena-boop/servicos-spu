@@ -22,7 +22,7 @@
 <main class="conteudo">
 <p class="volta"><a href="../index.html">Todas as propostas</a></p>
 <p class="doc-id">PROP-D</p>
-<h1>Integração entre o Módulo de Instrução e o Portal para complementações e encerramento</h1>
+<h1>Integração entre o Portal de Serviços e o Módulo de Instrução: entrada, complementações e encerramento</h1>
 <nav class="abas"><a class="aba" href="../propostas/PROP-D.html">Proposta e protótipo</a><a class="aba aba--ativa" href="../solicitacoes/PROP-D.html">Texto para a Solicitação</a></nav>
 <div class="ficha">
 <p>Conteúdo preparado para revisão conjunta antes do preenchimento do formulário oficial.</p>
@@ -50,19 +50,26 @@ Essa separação dificulta a comunicação, multiplica ações manuais e permite
 
 A forma de exibir marcos do Módulo de Instrução na linha do tempo é ponto de decisão da primeira entrega.</code></pre>
 <h2>Descrição detalhada</h2>
-<pre><code>Construir integração bidirecional, vinculada ao identificador do requerimento do Portal, para atender a três operações.
+<pre><code>Construir integração bidirecional, vinculada ao identificador do requerimento do Portal, para atender a quatro operações.
 
-1. SOLICITAR COMPLEMENTAÇÃO — MÓDULO DE INSTRUÇÃO PARA O PORTAL
+1. ENVIAR O REQUERIMENTO À INSTRUÇÃO — PORTAL PARA O MÓDULO DE INSTRUÇÃO
+Ao ser acionado o comando "Iniciar análise técnica" no Portal, este envia o requerimento ao Módulo de Instrução pela integração, com o identificador do requerimento, o serviço solicitado, a unidade responsável, os dados do formulário, a identificação do interessado, os documentos apresentados, a data de entrada na análise técnica e o número do processo no SEI, quando houver. O Módulo de Instrução confirma o recebimento.
+
+Esta operação SUBSTITUI a carga de dados diária que hoje leva os requerimentos ao Módulo de Instrução, e que trabalha com dados do dia anterior.
+
+Indisponibilidade do Módulo de Instrução no momento do envio não deve impedir o servidor de prosseguir: o Portal registra o envio como pendente e o repete, sem duplicar o requerimento na instrução.
+
+2. SOLICITAR COMPLEMENTAÇÃO — MÓDULO DE INSTRUÇÃO PARA O PORTAL
 O Módulo de Instrução envia o identificador do requerimento, um identificador único da comunicação, texto, data, prazo e eventual arquivo de orientação. O Portal cria a pendência "Complementação solicitada durante a instrução — data", notifica o requerente e altera a situação geral para "Aguardando Requerente".
 
 O desenho desejado admite várias comunicações independentes e simultâneas. Enquanto existir ao menos uma aberta, a situação geral permanece "Aguardando Requerente".
 
-2. RECEBER RESPOSTA — PORTAL PARA O MÓDULO DE INSTRUÇÃO
+3. RECEBER RESPOSTA — PORTAL PARA O MÓDULO DE INSTRUÇÃO
 O requerente pode responder com texto, arquivo ou ambos. A resposta encerra definitivamente apenas a comunicação correspondente. O Portal guarda o conteúdo e o envia ao Módulo de Instrução com os identificadores do requerimento e da comunicação.
 
 Se o Módulo de Instrução estiver indisponível, o Portal mantém a resposta e repete a entrega, sem pedir nova ação ao requerente e sem criar duplicidade. Quando todas as comunicações estiverem respondidas ou com prazo encerrado, a situação geral retorna para "Em Análise Técnica", salvo resultado final.
 
-3. ENCERRAR O REQUERIMENTO — MÓDULO DE INSTRUÇÃO PARA O PORTAL
+4. ENCERRAR O REQUERIMENTO — MÓDULO DE INSTRUÇÃO PARA O PORTAL
 O Módulo de Instrução envia o resultado final, a data, a mensagem ao requerente e uma cópia do PDF gerado automaticamente. Os resultados previstos são destinação formalizada, indeferimento e cancelamento.
 
 Destinação formalizada só pode ser enviada após a assinatura do ato ou contrato. O Portal guarda uma cópia do PDF, atualiza a situação para "Concluído" ou "Cancelado", notifica o requerente, fecha comunicações ainda abertas, preserva o histórico e impede novas interações.

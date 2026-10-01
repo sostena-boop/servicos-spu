@@ -50,7 +50,8 @@
 
   /* operações */
   .ops { display:grid; gap:16px; grid-template-columns:1fr; margin-top:14px; }
-  @media (min-width: 980px) { .ops { grid-template-columns:repeat(3,1fr); } }
+  @media (min-width: 720px) { .ops { grid-template-columns:repeat(2,1fr); } }
+  @media (min-width: 1140px) { .ops { grid-template-columns:repeat(4,1fr); } }
   .op { background:#fff; border:1px solid #dde2ea; border-radius:6px; padding:16px 18px; }
   .op__n { display:inline-flex; align-items:center; justify-content:center;
     width:22px; height:22px; border-radius:50%; background:#1351b4; color:#fff;
@@ -90,17 +91,18 @@
     a equipe precisa <b>sair do Módulo de Instrução</b> para pedir um documento ao requerente, e
     alguém precisa <b>voltar ao Portal de Serviços</b> para concluir o pedido quando a instrução
     termina. Enquanto isso, o requerimento aparece como aberto.</p>
-    <p><b>A proposta é ligar os dois sistemas.</b> A equipe opera no Módulo de Instrução; a
-    integração cria a pendência no Portal de Serviços, traz a resposta de volta e devolve o
-    resultado final. <b>O canal do requerente continua sendo o Portal de Serviços</b> — ele não
-    muda de lugar nem precisa conhecer o Módulo de Instrução.</p>
+    <p><b>A proposta é ligar os dois sistemas por um caminho só.</b> O requerimento passa a ser
+    enviado à instrução pela integração — e não mais pela carga diária. Depois disso, a equipe
+    opera no Módulo de Instrução: a integração cria a pendência no Portal de Serviços, traz a
+    resposta de volta e devolve o resultado final. <b>O canal do requerente continua sendo o
+    Portal de Serviços</b> — ele não muda de lugar nem precisa conhecer o Módulo de Instrução.</p>
   </div>
 
   <h2 class="secao">Como a informação circula</h2>
-  <p class="sub">Três atores, quatro caminhos. O tracejado cinza é o que já existe hoje.</p>
+  <p class="sub">Três atores e quatro operações. O tracejado cinza é a entrada de hoje, que a proposta substitui.</p>
 
   <div class="mapa">
-    <svg viewBox="0 0 980 300" role="img" aria-label="Requerente e Portal de Serviços de um lado, Módulo de Instrução do outro, ligados pela integração">
+    <svg viewBox="0 0 980 330" role="img" aria-label="Requerente e Portal de Serviços de um lado, Módulo de Instrução do outro, ligados por quatro operações">
       <defs>
         <marker id="pt" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
           <path d="M0,0 L7,3 L0,6 z" fill="#1351b4"/>
@@ -110,44 +112,49 @@
         </marker>
       </defs>
 
-      <rect class="ator ator--ext" x="12" y="104" width="170" height="64" rx="7"/>
-      <text class="rot" x="28" y="132">Requerente</text>
-      <text class="sub2" x="28" y="150">responde e acompanha</text>
+      <rect class="ator ator--ext" x="12" y="128" width="170" height="64" rx="7"/>
+      <text class="rot" x="28" y="156">Requerente</text>
+      <text class="sub2" x="28" y="174">responde e acompanha</text>
 
-      <rect class="ator" x="330" y="96" width="210" height="80" rx="7"/>
-      <text class="rot" x="348" y="126">Portal de Serviços</text>
-      <text class="sub2" x="348" y="144">pendência, prazo, histórico</text>
-      <text class="sub2" x="348" y="160">e documento final</text>
+      <rect class="ator" x="320" y="92" width="220" height="136" rx="7"/>
+      <text class="rot" x="338" y="122">Portal de Serviços</text>
+      <text class="sub2" x="338" y="140">pendência, prazo,</text>
+      <text class="sub2" x="338" y="156">histórico e documento</text>
+      <text class="sub2" x="338" y="172">final</text>
 
-      <rect class="ator" x="760" y="96" width="206" height="80" rx="7"/>
-      <text class="rot" x="778" y="126">Módulo de Instrução</text>
-      <text class="sub2" x="778" y="144">a equipe trabalha aqui,</text>
-      <text class="sub2" x="778" y="160">sem sair do sistema</text>
+      <rect class="ator" x="756" y="92" width="210" height="136" rx="7"/>
+      <text class="rot" x="774" y="122">Módulo de Instrução</text>
+      <text class="sub2" x="774" y="140">a equipe trabalha aqui,</text>
+      <text class="sub2" x="774" y="156">sem sair do sistema</text>
 
-      <path class="seta" d="M330,122 L190,122" marker-end="url(#pt)"/>
-      <text class="setarot" x="196" y="114">notifica a pendência</text>
-      <path class="seta" d="M190,152 L326,152" marker-end="url(#pt)"/>
-      <text class="setarot" x="196" y="172">resposta e arquivos</text>
+      <path class="seta" d="M190,150 L316,150" marker-end="url(#pt)"/>
+      <text class="setarot" x="196" y="142">resposta e arquivos</text>
+      <path class="seta" d="M316,186 L190,186" marker-end="url(#pt)"/>
+      <text class="setarot" x="196" y="204">notifica a pendência</text>
 
-      <path class="seta" d="M756,118 L546,118" marker-end="url(#pt)"/>
-      <circle cx="650" cy="104" r="9" fill="#1351b4"/><text class="num" x="647" y="108">1</text>
-      <text class="setarot" x="568" y="138">solicitar complementação</text>
+      <path class="seta" d="M546,118 L750,118" marker-end="url(#pt)"/>
+      <circle cx="560" cy="106" r="9" fill="#1351b4"/><text class="num" x="557" y="110">1</text>
+      <text class="setarot" x="576" y="110">enviar o requerimento</text>
 
-      <path class="seta" d="M546,160 L756,160" marker-end="url(#pt)"/>
-      <circle cx="650" cy="180" r="9" fill="#1351b4"/><text class="num" x="647" y="184">2</text>
-      <text class="setarot" x="576" y="200">devolver a resposta</text>
+      <path class="seta" d="M750,152 L546,152" marker-end="url(#pt)"/>
+      <circle cx="736" cy="140" r="9" fill="#1351b4"/><text class="num" x="733" y="144">2</text>
+      <text class="setarot" x="576" y="144">solicitar complementação</text>
 
-      <path class="seta" d="M820,92 L820,54 L440,54 L440,92" marker-end="url(#pt)"/>
-      <circle cx="630" cy="54" r="9" fill="#1351b4"/><text class="num" x="627" y="58">3</text>
-      <text class="setarot" x="648" y="46">resultado final e documento</text>
+      <path class="seta" d="M546,186 L750,186" marker-end="url(#pt)"/>
+      <circle cx="560" cy="174" r="9" fill="#1351b4"/><text class="num" x="557" y="178">3</text>
+      <text class="setarot" x="576" y="178">devolver a resposta</text>
 
-      <path class="seta seta--hoje" d="M440,180 L440,246 L870,246 L870,180" marker-end="url(#pc)"/>
-      <text class="setarot setarot--hoje" x="520" y="266">hoje: carga diária leva os requerimentos para a instrução</text>
-      <text class="setarot setarot--hoje" x="520" y="282">permanece ou é substituída pela integração?</text>
+      <path class="seta" d="M750,220 L546,220" marker-end="url(#pt)"/>
+      <circle cx="736" cy="208" r="9" fill="#1351b4"/><text class="num" x="733" y="212">4</text>
+      <text class="setarot" x="576" y="212">resultado e documento</text>
+
+      <path class="seta seta--hoje" d="M430,232 L430,286 L860,286 L860,232" marker-end="url(#pc)"/>
+      <text class="setarot setarot--hoje" x="446" y="306">hoje a entrada é por carga diária, com dados do dia anterior</text>
+      <text class="setarot setarot--hoje" x="446" y="322">a proposta substitui esse caminho pela operação 1</text>
     </svg>
   </div>
 
-  <h2 class="secao">As três operações</h2>
+  <h2 class="secao">As quatro operações</h2>
   <div class="legenda">
     <span><span class="chip chip--def">regra já definida</span> entendimento do Escritório de Processos, a submeter</span>
     <span><span class="chip chip--dec">ponto de decisão</span> depende da CGATE e da DEMIN</span>
@@ -157,7 +164,29 @@
   <div class="ops">
 
     <div class="op">
-      <h3><span class="op__n">1</span> Solicitar complementação</h3>
+      <h3><span class="op__n">1</span> Enviar o requerimento</h3>
+      <ul class="passos">
+        <li>O servidor aciona <b>Iniciar análise técnica</b></li>
+        <li>O requerimento vai à instrução pela integração</li>
+        <li>Chega no ato, e não no dia seguinte</li>
+      </ul>
+      <div class="marcas">
+        <span class="chip chip--def" title="O mesmo comando que hoje autua o processo no SEI passa a enviar também ao Módulo de Instrução.">mesmo gatilho que já existe</span>
+        <span class="chip chip--def" title="A entrada deixa de depender de uma carga de dados diária. Passa a haver um caminho só entre os dois sistemas.">substitui a carga diária</span>
+        <span class="chip chip--dec" title="A virada não é instantânea: é preciso decidir se há período de convivência e o que fazer com o que já foi carregado pelo caminho antigo.">como será a virada</span>
+      </div>
+      <details>
+        <summary>detalhe</summary>
+        <ul>
+          <li>Vão os dados do requerimento, a identificação do interessado e os documentos apresentados.</li>
+          <li>Indisponibilidade do outro sistema não trava o servidor: o envio fica pendente e é repetido, sem duplicar o requerimento.</li>
+          <li>Hoje a carga é diária e trabalha com dados do dia anterior — entre o clique e a chegada pode passar um dia.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="op">
+      <h3><span class="op__n">2</span> Solicitar complementação</h3>
       <ul class="passos">
         <li>A equipe escreve o pedido no Módulo de Instrução</li>
         <li>O Portal de Serviços cria a pendência e notifica</li>
@@ -180,7 +209,7 @@
     </div>
 
     <div class="op">
-      <h3><span class="op__n">2</span> Receber a resposta</h3>
+      <h3><span class="op__n">3</span> Receber a resposta</h3>
       <ul class="passos">
         <li>O requerente responde no Portal de Serviços</li>
         <li>Texto, arquivo, ou os dois</li>
@@ -202,7 +231,7 @@
     </div>
 
     <div class="op">
-      <h3><span class="op__n">3</span> Encerrar o requerimento</h3>
+      <h3><span class="op__n">4</span> Encerrar o requerimento</h3>
       <ul class="passos">
         <li>O Módulo de Instrução envia o resultado</li>
         <li>Junto vai o documento em PDF</li>
@@ -249,11 +278,13 @@
   </div>
 
   <h2 class="secao">O que precisa ser decidido</h2>
-  <p class="sub">Sete pontos. Os três primeiros mudam o tamanho do que se pede.</p>
+  <p class="sub">Oito pontos. Os três primeiros mudam o tamanho do que se pede.</p>
   <div class="painel">
     <ul class="lista-dec">
-      <li><b>A carga de entrada permanece ou é substituída?</b>
-        <span>Hoje os requerimentos chegam ao Módulo de Instrução por carga diária. Com integração direta disponível, cabe decidir se ela continua.</span></li>
+      <li><b>Como será a virada da entrada?</b>
+        <span>A entrada passa a ser pela integração, mas a troca não é instantânea: é preciso definir se há período de convivência com a carga atual e o que acontece com os requerimentos já carregados pelo caminho antigo.</span></li>
+      <li><b>O envio é imediato ao clique ou enfileirado?</b>
+        <span>O desejado é imediato, com fila e reenvio automático — para que a indisponibilidade de um sistema não trave o trabalho do servidor no outro.</span></li>
       <li><b>O mesmo mecanismo de entrada serve a outros módulos?</b>
         <span>Se servir, deixa de ser integração ponto a ponto — e o dimensionamento muda.</span></li>
       <li><b>Quando cada resultado final é disparado?</b>
