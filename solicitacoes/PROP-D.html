@@ -53,37 +53,37 @@ A forma de exibir marcos do Módulo de Instrução na linha do tempo é ponto de
 <pre><code>Construir integração bidirecional, vinculada ao identificador do requerimento do Portal, para atender a três operações.
 
 1. SOLICITAR COMPLEMENTAÇÃO — MÓDULO DE INSTRUÇÃO PARA O PORTAL
-O Módulo envia o identificador do requerimento, um identificador único da comunicação, texto, data, prazo e eventual arquivo de orientação. O Portal cria a pendência "Complementação solicitada durante a instrução — data", notifica o requerente e altera a situação geral para "Aguardando Requerente".
+O Módulo de Instrução envia o identificador do requerimento, um identificador único da comunicação, texto, data, prazo e eventual arquivo de orientação. O Portal cria a pendência "Complementação solicitada durante a instrução — data", notifica o requerente e altera a situação geral para "Aguardando Requerente".
 
 O desenho desejado admite várias comunicações independentes e simultâneas. Enquanto existir ao menos uma aberta, a situação geral permanece "Aguardando Requerente".
 
 2. RECEBER RESPOSTA — PORTAL PARA O MÓDULO DE INSTRUÇÃO
 O requerente pode responder com texto, arquivo ou ambos. A resposta encerra definitivamente apenas a comunicação correspondente. O Portal guarda o conteúdo e o envia ao Módulo de Instrução com os identificadores do requerimento e da comunicação.
 
-Se o Módulo estiver indisponível, o Portal mantém a resposta e repete a entrega, sem pedir nova ação ao requerente e sem criar duplicidade. Quando todas as comunicações estiverem respondidas ou com prazo encerrado, a situação geral retorna para "Em Análise Técnica", salvo resultado final.
+Se o Módulo de Instrução estiver indisponível, o Portal mantém a resposta e repete a entrega, sem pedir nova ação ao requerente e sem criar duplicidade. Quando todas as comunicações estiverem respondidas ou com prazo encerrado, a situação geral retorna para "Em Análise Técnica", salvo resultado final.
 
 3. ENCERRAR O REQUERIMENTO — MÓDULO DE INSTRUÇÃO PARA O PORTAL
-O Módulo envia o resultado final, a data, a mensagem ao requerente e uma cópia do PDF gerado automaticamente. Os resultados previstos são destinação formalizada, indeferimento e cancelamento.
+O Módulo de Instrução envia o resultado final, a data, a mensagem ao requerente e uma cópia do PDF gerado automaticamente. Os resultados previstos são destinação formalizada, indeferimento e cancelamento.
 
 Destinação formalizada só pode ser enviada após a assinatura do ato ou contrato. O Portal guarda uma cópia do PDF, atualiza a situação para "Concluído" ou "Cancelado", notifica o requerente, fecha comunicações ainda abertas, preserva o histórico e impede novas interações.
 
-Resposta já aceita pelo Portal deve ser entregue ao Módulo mesmo que o resultado final chegue antes. Ela não reabre nem altera o requerimento concluído.</code></pre>
+Resposta já aceita pelo Portal deve ser entregue ao Módulo de Instrução mesmo que o resultado final chegue antes. Ela não reabre nem altera o requerimento concluído.</code></pre>
 <h2>Regras já definidas</h2>
 <pre><code>- O Módulo de Instrução guarda o identificador do requerimento do Portal.
 - Cada comunicação possui identificador técnico único.
 - Uma resposta encerra a comunicação; nova necessidade gera nova comunicação.
-- O Portal usa seu prazo padrão e informa o vencimento ao Módulo.
+- O Portal usa seu prazo padrão e informa o vencimento ao Módulo de Instrução.
 - A decisão de cancelar após o vencimento pertence ao Módulo de Instrução.
 - Destinação formalizada, indeferimento e cancelamento possuem PDF automático.
-- O Módulo mantém o original e envia uma cópia do PDF ao Portal; não se usa link temporário.
+- O Módulo de Instrução mantém o original e envia uma cópia do PDF ao Portal; não se usa link temporário.
 - Resultado final prevalece sobre comunicações abertas, sem apagar histórico nem perder resposta já aceita.
 - Requerimento concluído ou cancelado não aceita nova comunicação ou resposta.
 - Operações repetidas não podem gerar duplicidade.</code></pre>
-<h2>Pontos de decisão para CGATE e DEMIM</h2>
+<h2>Pontos de decisão para CGATE e DEMIN</h2>
 <pre><code>1. Confirmar qual prazo padrão se aplica e se a referência atual a 60 dias é geral, configurável ou específica do serviço.
 2. Confirmar que o Portal apenas informa o vencimento e que o Módulo de Instrução decide eventual cancelamento.
 3. Validar a viabilidade de várias comunicações simultâneas; se necessário, definir uma primeira entrega com uma comunicação por vez.
-4. Decidir se o Módulo pode retirar uma comunicação ainda aberta e como isso aparece no histórico.
+4. Decidir se o Módulo de Instrução pode retirar uma comunicação ainda aberta e como isso aparece no histórico.
 5. Decidir se a primeira entrega já envia para a linha do tempo os marcos ilustrativos "Análise de viabilidade", "Instrução processual" e "Formalização".
 6. Definir se o encerramento manual continua disponível no Módulo de Serviços e qual sistema será a fonte de verdade.
 7. Confirmar o tratamento da indisponibilidade do Portal: registrar envio pendente e tentar novamente sem duplicidade.</code></pre>

@@ -3,182 +3,279 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PROP-D — Fluxos da integração</title>
+<title>Integração entre o Portal de Serviços e o Módulo de Instrução</title>
 <link rel="stylesheet" href="base-portal.css">
 <style>
-  :root {
-    --azul: #1351b4; --azul-claro: #e7f0ff; --verde: #168821; --verde-claro: #e5f5e7;
-    --ambar: #b45f06; --ambar-claro: #fff4db; --cinza: #555b65; --borda: #d7dce3;
-    --texto: #1f242b; --fundo: #f5f6f8; --portal: #e8f0fe; --modulo: #e7f6ee;
-  }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--fundo); color: var(--texto); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.45; }
-  .pagina { max-width: 1320px; margin: 0 auto; padding: 28px 24px 60px; }
-  .cabecalho { display: grid; grid-template-columns: 1.5fr .8fr; gap: 28px; align-items: end; margin-bottom: 24px; }
-  .rotulo { color: var(--azul); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 6px; }
-  h1 { font-size: clamp(27px, 3.6vw, 44px); line-height: 1.08; margin: 0 0 12px; max-width: 22ch; }
-  .resumo { color: #48505c; font-size: 17px; max-width: 72ch; margin: 0; }
-  .escopo { background: #fff; border: 1px solid var(--borda); border-left: 5px solid var(--azul); border-radius: 8px; padding: 16px 18px; }
-  .escopo strong { display: block; margin-bottom: 4px; }
-  .escopo p { margin: 0; color: #48505c; font-size: 14px; }
-  .legenda { display: flex; flex-wrap: wrap; gap: 10px 18px; margin: 20px 0 14px; font-size: 13px; color: var(--cinza); }
-  .legenda span { display: inline-flex; align-items: center; gap: 7px; }
-  .ponto { width: 12px; height: 12px; border-radius: 3px; border: 1px solid; }
-  .ponto--modulo { background: var(--modulo); border-color: #74ad8c; }
-  .ponto--portal { background: var(--portal); border-color: #84a9e6; }
-  .ponto--decisao { background: var(--ambar-claro); border-color: #d49a4b; }
-  .fluxos { display: grid; gap: 18px; }
-  .fluxo { background: #fff; border: 1px solid var(--borda); border-radius: 10px; overflow: hidden; }
-  .fluxo__topo { display: flex; gap: 14px; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--borda); }
-  .numero { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--azul); color: #fff; font-weight: 800; }
-  .fluxo__topo h2 { margin: 0 0 2px; font-size: 20px; }
-  .fluxo__topo p { margin: 0; color: #59616d; font-size: 14px; }
-  .trilha { display: grid; grid-template-columns: 1fr 42px 1fr 42px 1fr; gap: 8px; align-items: stretch; padding: 20px; }
-  .passo { border: 1px solid var(--borda); border-radius: 8px; padding: 15px; min-height: 120px; }
-  .passo--modulo { background: var(--modulo); border-color: #92c2a5; }
-  .passo--portal { background: var(--portal); border-color: #9bb8e8; }
-  .passo--pessoa { background: #fff7e8; border-color: #e5bf7b; }
-  .passo__ator { display: block; color: #4b5460; font-size: 11px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 7px; }
-  .passo strong { display: block; font-size: 16px; line-height: 1.25; margin-bottom: 7px; }
-  .passo p { margin: 0; color: #4c5561; font-size: 13px; }
-  .seta { display: grid; place-items: center; color: var(--azul); font-size: 28px; font-weight: 800; }
-  .regras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0 20px 20px; }
-  .regra { border-radius: 7px; background: #f7f8fa; padding: 11px 13px; font-size: 13px; color: #454e59; }
-  .regra strong { color: #222831; }
-  .estado { margin-top: 26px; background: #fff; border: 1px solid var(--borda); border-radius: 10px; padding: 20px; }
-  .estado h2, .decisoes h2 { margin: 0 0 6px; font-size: 22px; }
-  .estado > p, .decisoes > p { margin: 0 0 18px; color: #59616d; }
-  .equacao { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 12px; }
-  .estado-card { padding: 17px; border-radius: 8px; text-align: center; border: 1px solid var(--borda); }
-  .estado-card strong { display: block; margin-bottom: 4px; }
-  .estado-card span { color: #59616d; font-size: 13px; }
-  .estado-card--espera { background: var(--ambar-claro); border-color: #d6a35c; }
-  .estado-card--analise { background: var(--azul-claro); border-color: #92afe0; }
-  .estado-card--fim { background: var(--verde-claro); border-color: #86bd8f; }
-  .operador { color: #68717d; font-size: 20px; font-weight: 800; }
-  .linha-tempo { margin-top: 26px; padding: 20px; border: 2px dashed #d39746; border-radius: 10px; background: var(--ambar-claro); }
-  .linha-tempo__topo { display: flex; justify-content: space-between; gap: 20px; align-items: start; }
-  .linha-tempo h2 { margin: 0 0 5px; font-size: 22px; }
-  .linha-tempo p { margin: 0; color: #674c27; max-width: 82ch; }
-  .selo { white-space: nowrap; background: #8a4b08; color: #fff; padding: 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 800; }
-  .marcos { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 20px; position: relative; }
-  .marcos::before { content: ""; position: absolute; top: 14px; left: 11%; right: 11%; height: 3px; background: #c48735; }
-  .marco { position: relative; text-align: center; padding-top: 36px; font-size: 13px; font-weight: 700; }
-  .marco::before { content: ""; position: absolute; top: 7px; left: calc(50% - 8px); width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 3px solid #a86313; z-index: 1; }
-  .decisoes { margin-top: 26px; }
-  .grade-decisoes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .decisao { background: #fff; border: 1px solid #e1c18c; border-left: 5px solid #c5791a; border-radius: 8px; padding: 15px 17px; }
-  .decisao strong { display: block; margin-bottom: 4px; }
-  .decisao span { color: #59616d; font-size: 13px; }
-  .rodape { margin-top: 22px; color: #646d79; font-size: 12px; }
-  @media (max-width: 900px) {
-    .cabecalho { grid-template-columns: 1fr; }
-    .trilha { grid-template-columns: 1fr; }
-    .seta { transform: rotate(90deg); height: 26px; }
-    .regras, .grade-decisoes { grid-template-columns: 1fr; }
-    .equacao { grid-template-columns: 1fr; }
-    .operador { text-align: center; }
+  body {
+    margin: 0; padding: 26px 22px 60px; background: #f2f4f7; color: #1c1c1c;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.55;
   }
-  @media (max-width: 620px) {
-    .pagina { padding: 20px 14px 40px; }
-    .marcos { grid-template-columns: 1fr; gap: 10px; }
-    .marcos::before { display: none; }
-    .marco { text-align: left; padding: 0 0 0 28px; }
-    .marco::before { top: 1px; left: 0; }
-    .linha-tempo__topo { display: block; }
-    .selo { display: inline-block; margin-top: 10px; }
-  }
+  .doc { max-width: 1180px; margin: 0 auto; }
+
+  .abertura { background:#fff; border:1px solid #dde2ea; border-left:4px solid #1351b4;
+    border-radius:6px; padding:18px 22px; margin-bottom:26px; }
+  .abertura h1 { font-size:21px; margin:0 0 8px; line-height:1.3; }
+  .abertura p { margin:0 0 8px; max-width:88ch; color:#3d4759; font-size:15px; }
+  .abertura p:last-child { margin-bottom:0; }
+  .abertura b { color:#1c1c1c; }
+
+  h2.secao { font-size:18px; margin:34px 0 4px; padding-top:20px; border-top:1px solid #dde2ea; }
+  h2.secao:first-of-type { border-top:0; padding-top:0; }
+  .sub { color:#4a5568; margin:0 0 14px; max-width:88ch; font-size:14px; }
+
+  /* legenda */
+  .legenda { display:flex; gap:18px; flex-wrap:wrap; align-items:center;
+    background:#fff; border:1px solid #dde2ea; border-radius:6px; padding:10px 16px;
+    font-size:13px; color:#4a5568; margin-bottom:22px; }
+
+  .chip { display:inline-block; font-size:12.5px; font-weight:600; padding:3px 10px;
+    border-radius:100px; white-space:nowrap; }
+  .chip--def { background:#e3f3e7; color:#17603a; border:1px solid #bfe0cb; }
+  .chip--dec { background:#fdf1d8; color:#8a6100; border:1px solid #e8cf9a; }
+
+  /* mapa */
+  .mapa { background:#fff; border:1px solid #dde2ea; border-radius:6px; padding:12px; }
+  .mapa svg { width:100%; height:auto; display:block; }
+  .ator { fill:#eef3fb; stroke:#1351b4; stroke-width:1.2; }
+  .ator--ext { fill:#f6f7f9; stroke:#6b7686; }
+  .rot { font:700 13px -apple-system, "Segoe UI", Arial; fill:#1c1c1c; }
+  .sub2 { font:11.5px -apple-system, "Segoe UI", Arial; fill:#6b7686; }
+  .num { font:700 11px -apple-system, "Segoe UI", Arial; fill:#fff; }
+  .seta { stroke:#1351b4; stroke-width:1.8; fill:none; }
+  .seta--hoje { stroke:#8c9099; stroke-dasharray:5 4; }
+  .setarot { font:12px -apple-system, "Segoe UI", Arial; fill:#3d4759; }
+  .setarot--hoje { fill:#6b7686; }
+
+  /* operações */
+  .ops { display:grid; gap:16px; grid-template-columns:1fr; margin-top:14px; }
+  @media (min-width: 980px) { .ops { grid-template-columns:repeat(3,1fr); } }
+  .op { background:#fff; border:1px solid #dde2ea; border-radius:6px; padding:16px 18px; }
+  .op__n { display:inline-flex; align-items:center; justify-content:center;
+    width:22px; height:22px; border-radius:50%; background:#1351b4; color:#fff;
+    font-size:12px; font-weight:700; margin-right:8px; }
+  .op h3 { font-size:15.5px; margin:0 0 10px; display:flex; align-items:center; }
+  .passos { list-style:none; padding:0; margin:0 0 12px; }
+  .passos li { position:relative; padding-left:18px; margin-bottom:6px; font-size:13.5px; color:#3d4759; }
+  .passos li::before { content:"→"; position:absolute; left:0; color:#1351b4; font-weight:700; }
+  .marcas { display:flex; flex-wrap:wrap; gap:6px; }
+
+  details { margin-top:10px; border-top:1px dashed #dde2ea; padding-top:8px; }
+  details summary { cursor:pointer; font-size:12.5px; color:#1351b4; font-weight:600; list-style:none; }
+  details summary::-webkit-details-marker { display:none; }
+  details summary::before { content:"+ "; font-weight:700; }
+  details[open] summary::before { content:"− "; }
+  details p, details li { font-size:13px; color:#4a5568; }
+  details ul { margin:8px 0 0; padding-left:18px; }
+
+  .painel { background:#fff; border:1px solid #dde2ea; border-radius:6px; padding:16px 20px; }
+  .lista-dec { list-style:none; padding:0; margin:0; }
+  .lista-dec > li { padding:11px 0; border-bottom:1px solid #eef1f6; }
+  .lista-dec > li:last-child { border-bottom:0; }
+  .lista-dec b { display:block; font-size:14px; margin-bottom:2px; }
+  .lista-dec span { font-size:13px; color:#4a5568; }
+
+  .nota { background:#fff; border:1px solid #dde2ea; border-left:3px solid #b8860b;
+    border-radius:6px; padding:14px 18px; margin-top:22px; font-size:13.5px; color:#4a5568; }
+  .nota b { color:#1c1c1c; }
 </style>
 </head>
 <body>
-<main class="pagina">
-  <header class="cabecalho">
-    <div>
-      <p class="rotulo">PROP-D · proposta para discussão</p>
-      <h1>Um único ciclo entre o Portal e o Módulo de Instrução</h1>
-      <p class="resumo">A equipe solicita complementações no Módulo, o requerente responde no Portal e o resultado final volta com uma cópia do PDF — sem repetir as mesmas ações nos dois sistemas.</p>
-    </div>
-    <aside class="escopo">
-      <strong>Primeira versão: três operações</strong>
-      <p>Solicitar complementação, receber resposta e encerrar o requerimento. A linha do tempo aparece abaixo como decisão explícita desta mesma etapa.</p>
-    </aside>
-  </header>
+<div class="doc">
 
-  <div class="legenda" aria-label="Legenda">
-    <span><i class="ponto ponto--modulo"></i>Módulo de Instrução</span>
-    <span><i class="ponto ponto--portal"></i>Portal / Módulo de Serviços</span>
-    <span><i class="ponto ponto--decisao"></i>Requerente ou ponto de decisão</span>
+  <div class="abertura">
+    <h1>Depois que o requerimento entra na instrução, o requerente some de vista</h1>
+    <p>O pedido nasce no Portal de Serviços e é instruído em outro sistema. Durante esse tempo,
+    a equipe precisa <b>sair do Módulo de Instrução</b> para pedir um documento ao requerente, e
+    alguém precisa <b>voltar ao Portal de Serviços</b> para concluir o pedido quando a instrução
+    termina. Enquanto isso, o requerimento aparece como aberto.</p>
+    <p><b>A proposta é ligar os dois sistemas.</b> A equipe opera no Módulo de Instrução; a
+    integração cria a pendência no Portal de Serviços, traz a resposta de volta e devolve o
+    resultado final. <b>O canal do requerente continua sendo o Portal de Serviços</b> — ele não
+    muda de lugar nem precisa conhecer o Módulo de Instrução.</p>
   </div>
 
-  <section class="fluxos" aria-label="Fluxos da primeira versão">
-    <article class="fluxo">
-      <div class="fluxo__topo"><span class="numero">1</span><div><h2>Solicitar complementação</h2><p>Do Módulo de Instrução para o requerente, usando a pendência que o Portal já possui.</p></div></div>
-      <div class="trilha">
-        <div class="passo passo--modulo"><span class="passo__ator">Módulo de Instrução</span><strong>Registra o pedido</strong><p>Texto, eventual arquivo, identificador do requerimento e identificador único da comunicação.</p></div>
-        <div class="seta">→</div>
-        <div class="passo passo--portal"><span class="passo__ator">Portal</span><strong>Cria a pendência e notifica</strong><p>Exibe “Complementação solicitada durante a instrução — data” e aplica o prazo padrão.</p></div>
-        <div class="seta">→</div>
-        <div class="passo passo--pessoa"><span class="passo__ator">Requerente</span><strong>Vê o que precisa fazer</strong><p>O requerimento passa a “Aguardando Requerente” e a solicitação fica no histórico.</p></div>
-      </div>
-      <div class="regras"><div class="regra"><strong>Várias comunicações</strong><br>O desenho desejado admite itens independentes e simultâneos.</div><div class="regra"><strong>Prazo próprio</strong><br>Cada item usa o prazo padrão do Portal.</div><div class="regra"><strong>Sem nova caixa de mensagens</strong><br>Reaproveita “Retornar pendência”.</div></div>
-    </article>
+  <h2 class="secao">Como a informação circula</h2>
+  <p class="sub">Três atores, quatro caminhos. O tracejado cinza é o que já existe hoje.</p>
 
-    <article class="fluxo">
-      <div class="fluxo__topo"><span class="numero">2</span><div><h2>Receber a resposta</h2><p>Do Portal para o Módulo, sem risco de perder o que o requerente já enviou.</p></div></div>
-      <div class="trilha">
-        <div class="passo passo--pessoa"><span class="passo__ator">Requerente</span><strong>Responde uma comunicação</strong><p>Pode enviar texto, arquivo ou ambos. Uma resposta encerra definitivamente aquele item.</p></div>
-        <div class="seta">→</div>
-        <div class="passo passo--portal"><span class="passo__ator">Portal</span><strong>Guarda antes de entregar</strong><p>Registra a resposta e, se necessário, repete a entrega sem exigir novo envio.</p></div>
-        <div class="seta">→</div>
-        <div class="passo passo--modulo"><span class="passo__ator">Módulo de Instrução</span><strong>Recebe conteúdo e documentos</strong><p>A resposta chega vinculada ao requerimento e à comunicação corretos.</p></div>
-      </div>
-      <div class="regras"><div class="regra"><strong>Uma resposta, um item</strong><br>Se ainda faltar algo, abre-se uma nova comunicação.</div><div class="regra"><strong>Estado geral</strong><br>Enquanto houver item aberto, continua “Aguardando Requerente”.</div><div class="regra"><strong>Prazo encerrado</strong><br>O Portal informa; o Módulo decide eventual cancelamento.</div></div>
-    </article>
+  <div class="mapa">
+    <svg viewBox="0 0 980 300" role="img" aria-label="Requerente e Portal de Serviços de um lado, Módulo de Instrução do outro, ligados pela integração">
+      <defs>
+        <marker id="pt" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 z" fill="#1351b4"/>
+        </marker>
+        <marker id="pc" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 z" fill="#8c9099"/>
+        </marker>
+      </defs>
 
-    <article class="fluxo">
-      <div class="fluxo__topo"><span class="numero">3</span><div><h2>Encerrar o requerimento</h2><p>Do Módulo de Instrução para o Portal, com resultado, notificação e documento final.</p></div></div>
-      <div class="trilha">
-        <div class="passo passo--modulo"><span class="passo__ator">Módulo de Instrução</span><strong>Envia o resultado e o PDF</strong><p>Destinação formalizada, indeferimento ou cancelamento. A formalização só ocorre após assinatura.</p></div>
-        <div class="seta">→</div>
-        <div class="passo passo--portal"><span class="passo__ator">Portal</span><strong>Guarda uma cópia e conclui</strong><p>Atualiza para “Concluído” ou “Cancelado”, fecha itens abertos e preserva todo o histórico.</p></div>
-        <div class="seta">→</div>
-        <div class="passo passo--pessoa"><span class="passo__ator">Requerente</span><strong>É notificado e consulta o documento</strong><p>O resultado e o PDF ficam disponíveis no mesmo canal em que o pedido começou.</p></div>
-      </div>
-      <div class="regras"><div class="regra"><strong>Cópia armazenada</strong><br>O Portal recebe o arquivo, não um link temporário.</div><div class="regra"><strong>Resultado prevalece</strong><br>Fecha comunicações abertas, mas não apaga o histórico.</div><div class="regra"><strong>Resposta em trânsito</strong><br>Ainda é entregue ao Módulo, sem reabrir o requerimento.</div></div>
-    </article>
-  </section>
+      <rect class="ator ator--ext" x="12" y="104" width="170" height="64" rx="7"/>
+      <text class="rot" x="28" y="132">Requerente</text>
+      <text class="sub2" x="28" y="150">responde e acompanha</text>
 
-  <section class="estado">
-    <h2>Como a situação geral deve reagir</h2>
-    <p>A situação resume o conjunto de comunicações; cada item conserva sua própria data e seu próprio estado.</p>
-    <div class="equacao">
-      <div class="estado-card estado-card--espera"><strong>Existe comunicação aberta</strong><span>Aguardando Requerente</span></div>
-      <div class="operador">→</div>
-      <div class="estado-card estado-card--analise"><strong>Todas respondidas ou vencidas</strong><span>Em Análise Técnica</span></div>
-      <div class="operador">→</div>
-      <div class="estado-card estado-card--fim"><strong>Resultado final recebido</strong><span>Concluído ou Cancelado</span></div>
+      <rect class="ator" x="330" y="96" width="210" height="80" rx="7"/>
+      <text class="rot" x="348" y="126">Portal de Serviços</text>
+      <text class="sub2" x="348" y="144">pendência, prazo, histórico</text>
+      <text class="sub2" x="348" y="160">e documento final</text>
+
+      <rect class="ator" x="760" y="96" width="206" height="80" rx="7"/>
+      <text class="rot" x="778" y="126">Módulo de Instrução</text>
+      <text class="sub2" x="778" y="144">a equipe trabalha aqui,</text>
+      <text class="sub2" x="778" y="160">sem sair do sistema</text>
+
+      <path class="seta" d="M330,122 L190,122" marker-end="url(#pt)"/>
+      <text class="setarot" x="196" y="114">notifica a pendência</text>
+      <path class="seta" d="M190,152 L326,152" marker-end="url(#pt)"/>
+      <text class="setarot" x="196" y="172">resposta e arquivos</text>
+
+      <path class="seta" d="M756,118 L546,118" marker-end="url(#pt)"/>
+      <circle cx="650" cy="104" r="9" fill="#1351b4"/><text class="num" x="647" y="108">1</text>
+      <text class="setarot" x="568" y="138">solicitar complementação</text>
+
+      <path class="seta" d="M546,160 L756,160" marker-end="url(#pt)"/>
+      <circle cx="650" cy="180" r="9" fill="#1351b4"/><text class="num" x="647" y="184">2</text>
+      <text class="setarot" x="576" y="200">devolver a resposta</text>
+
+      <path class="seta" d="M820,92 L820,54 L440,54 L440,92" marker-end="url(#pt)"/>
+      <circle cx="630" cy="54" r="9" fill="#1351b4"/><text class="num" x="627" y="58">3</text>
+      <text class="setarot" x="648" y="46">resultado final e documento</text>
+
+      <path class="seta seta--hoje" d="M440,180 L440,246 L870,246 L870,180" marker-end="url(#pc)"/>
+      <text class="setarot setarot--hoje" x="520" y="266">hoje: carga diária leva os requerimentos para a instrução</text>
+      <text class="setarot setarot--hoje" x="520" y="282">permanece ou é substituída pela integração?</text>
+    </svg>
+  </div>
+
+  <h2 class="secao">As três operações</h2>
+  <div class="legenda">
+    <span><span class="chip chip--def">regra já definida</span> entendimento do Escritório de Processos, a submeter</span>
+    <span><span class="chip chip--dec">ponto de decisão</span> depende da CGATE e da DEMIN</span>
+    <span style="color:#6b7686">clique em <b>+ detalhe</b> para abrir o que está por trás</span>
+  </div>
+
+  <div class="ops">
+
+    <div class="op">
+      <h3><span class="op__n">1</span> Solicitar complementação</h3>
+      <ul class="passos">
+        <li>A equipe escreve o pedido no Módulo de Instrução</li>
+        <li>O Portal de Serviços cria a pendência e notifica</li>
+        <li>A situação passa a <b>Aguardando Requerente</b></li>
+      </ul>
+      <div class="marcas">
+        <span class="chip chip--def" title="Aproveita o mecanismo de pendência que o Portal de Serviços já tem. Não se cria um canal de mensagens novo.">usa a pendência que já existe</span>
+        <span class="chip chip--def" title="Nome visível ao requerente, sem exigir que a equipe invente um título.">nome: complementação solicitada durante a instrução</span>
+        <span class="chip chip--dec" title="Confirmar se o prazo é geral, configurável ou próprio de cada serviço.">qual é o prazo padrão</span>
+        <span class="chip chip--dec" title="Decidir se a equipe pode retirar uma comunicação já enviada e como isso fica no histórico.">retirar uma comunicação aberta</span>
+      </div>
+      <details>
+        <summary>detalhe</summary>
+        <ul>
+          <li>Cada comunicação recebe um identificador próprio, e várias podem conviver.</li>
+          <li>Texto e arquivo de orientação, como já funciona hoje no Portal de Serviços.</li>
+          <li>O Portal de Serviços informa o vencimento; quem decide cancelar ou seguir é o Módulo de Instrução.</li>
+        </ul>
+      </details>
     </div>
-  </section>
 
-  <section class="linha-tempo">
-    <div class="linha-tempo__topo"><div><h2>Linha do tempo do Módulo</h2><p>É preciso decidir se estes marcos ilustrativos já entram na primeira entrega da API e como convivem com os estados do Portal. Os nomes ainda não são definitivos.</p></div><span class="selo">DECISÃO DE ESCOPO</span></div>
-    <div class="marcos"><div class="marco">Análise de viabilidade</div><div class="marco">Instrução processual</div><div class="marco">Formalização</div><div class="marco">Resultado final</div></div>
-  </section>
-
-  <section class="decisoes">
-    <h2>Pontos para decisão com CGATE e DEMIM</h2>
-    <p>O fluxo principal está definido. Estes pontos precisam ser resolvidos antes do contrato técnico definitivo.</p>
-    <div class="grade-decisoes">
-      <div class="decisao"><strong>Prazo e vencimento</strong><span>Qual é o prazo padrão? O Portal só informa o vencimento e o Módulo decide eventual cancelamento?</span></div>
-      <div class="decisao"><strong>Comunicações simultâneas</strong><span>A primeira entrega suporta várias abertas ou começa com uma por vez?</span></div>
-      <div class="decisao"><strong>Retirada de comunicação</strong><span>O Módulo pode retirar um item ainda aberto? Como isso aparece no histórico?</span></div>
-      <div class="decisao"><strong>Linha do tempo</strong><span>Os marcos da instrução entram nesta entrega? Quais eventos e datas serão enviados?</span></div>
-      <div class="decisao"><strong>Conclusão manual</strong><span>Ela permanece como contingência? Qual sistema é a fonte de verdade?</span></div>
-      <div class="decisao"><strong>Falha no envio ao Portal</strong><span>O Módulo marca “envio pendente” e tenta novamente sem duplicar a operação?</span></div>
+    <div class="op">
+      <h3><span class="op__n">2</span> Receber a resposta</h3>
+      <ul class="passos">
+        <li>O requerente responde no Portal de Serviços</li>
+        <li>Texto, arquivo, ou os dois</li>
+        <li>A resposta volta ao Módulo de Instrução</li>
+      </ul>
+      <div class="marcas">
+        <span class="chip chip--def" title="Respondido o item, ele se encerra. Faltando algo, abre-se outra comunicação.">uma resposta encerra aquele item</span>
+        <span class="chip chip--def" title="Se o Módulo de Instrução estiver fora do ar, o Portal de Serviços guarda a resposta e repete a entrega.">resposta aceita não se perde</span>
+        <span class="chip chip--dec" title="O desenho desejado admite várias; havendo limite técnico, começa-se com uma por vez.">quantas comunicações ao mesmo tempo</span>
+      </div>
+      <details>
+        <summary>detalhe</summary>
+        <ul>
+          <li>Encerradas todas as comunicações, a situação volta para <b>Em Análise Técnica</b>.</li>
+          <li>Entrega repetida não pode duplicar registro: a operação é idempotente.</li>
+          <li>Nesta primeira versão aproveita-se o campo de texto existente. Perguntas estruturadas podem vir depois, e não bloqueiam a integração.</li>
+        </ul>
+      </details>
     </div>
-  </section>
 
-  <p class="rodape">Fluxo de discussão — não representa requisito aprovado nem contrato técnico definitivo.</p>
-</main>
+    <div class="op">
+      <h3><span class="op__n">3</span> Encerrar o requerimento</h3>
+      <ul class="passos">
+        <li>O Módulo de Instrução envia o resultado</li>
+        <li>Junto vai o documento em PDF</li>
+        <li>O Portal de Serviços conclui e notifica</li>
+      </ul>
+      <div class="marcas">
+        <span class="chip chip--def" title="O original fica no Módulo de Instrução; o Portal de Serviços guarda uma cópia, sem link temporário.">o Portal guarda uma cópia do PDF</span>
+        <span class="chip chip--def" title="Destinação formalizada só depois da assinatura do ato ou contrato. Enviar para assinatura não conclui.">formalizada só após assinatura</span>
+        <span class="chip chip--dec" title="O Módulo de Instrução ainda não produz todo o resultado da destinação. A capacidade nasce pronta; o disparo acompanha a evolução do módulo.">quando cada resultado é disparado</span>
+      </div>
+      <details>
+        <summary>detalhe</summary>
+        <ul>
+          <li>Resultados previstos: destinação formalizada, indeferimento e cancelamento.</li>
+          <li>O resultado fecha as comunicações abertas, impede novas e preserva o histórico.</li>
+          <li>Resposta já aceita pelo Portal de Serviços é entregue mesmo que o resultado chegue antes — e não reabre o requerimento.</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <h2 class="secao">A situação que o requerente enxerga</h2>
+  <p class="sub">Regra simples, e é o que evita o requerimento parado sem explicação.</p>
+  <div class="painel">
+    <p style="margin:0 0 6px"><span class="chip chip--def">regra já definida</span>
+      &nbsp;Havendo <b>qualquer</b> comunicação aberta: <b>Aguardando Requerente</b>.</p>
+    <p style="margin:0 0 6px"><span class="chip chip--def">regra já definida</span>
+      &nbsp;Sem comunicação aberta: volta para <b>Em Análise Técnica</b>.</p>
+    <p style="margin:0"><span class="chip chip--def">regra já definida</span>
+      &nbsp;Concluído ou cancelado: não aceita nova comunicação nem nova resposta.</p>
+  </div>
+
+  <h2 class="secao">O que o requerente vê do andamento</h2>
+  <p class="sub">Comunicam-se <b>decisões</b>, não as atividades internas da equipe.</p>
+  <div class="painel">
+    <p style="margin:0 0 10px">As atividades internas do Módulo de Instrução são operacionais e
+    não precisam ser reproduzidas para quem pediu o imóvel. O que vale levar ao Portal de
+    Serviços é a decisão, em linguagem que o requerente entenda — por exemplo, ao fim da
+    análise de viabilidade: <i>a destinação foi considerada viável</i>.</p>
+    <p style="margin:0"><span class="chip chip--dec">ponto de decisão</span>
+      &nbsp;Quais decisões relevantes viajam, e com que texto. A terminologia fica aberta
+      enquanto as funcionalidades estão sendo construídas — fechar agora transformaria tarefa
+      interna em marco externo.</p>
+  </div>
+
+  <h2 class="secao">O que precisa ser decidido</h2>
+  <p class="sub">Sete pontos. Os três primeiros mudam o tamanho do que se pede.</p>
+  <div class="painel">
+    <ul class="lista-dec">
+      <li><b>A carga de entrada permanece ou é substituída?</b>
+        <span>Hoje os requerimentos chegam ao Módulo de Instrução por carga diária. Com integração direta disponível, cabe decidir se ela continua.</span></li>
+      <li><b>O mesmo mecanismo de entrada serve a outros módulos?</b>
+        <span>Se servir, deixa de ser integração ponto a ponto — e o dimensionamento muda.</span></li>
+      <li><b>Quando cada resultado final é disparado?</b>
+        <span>A capacidade nasce pronta; os gatilhos acompanham a evolução do Módulo de Instrução.</span></li>
+      <li><b>Qual é o prazo padrão da comunicação?</b>
+        <span>Geral, configurável ou próprio de cada serviço.</span></li>
+      <li><b>Quem decide depois do vencimento?</b>
+        <span>O Portal de Serviços informa; o Módulo de Instrução decide cancelar ou seguir.</span></li>
+      <li><b>Quantas comunicações simultâneas na primeira entrega?</b>
+        <span>O desejado é várias. Havendo limite técnico, começa-se com uma por vez.</span></li>
+      <li><b>O encerramento manual continua disponível?</b>
+        <span>Contingência e fonte de verdade, depois que a instrução começa.</span></li>
+    </ul>
+  </div>
+
+  <div class="nota">
+    <b>Dois cuidados que atravessam tudo.</b> Operação repetida não pode duplicar pendência,
+    resposta ou conclusão — e toda falha precisa ser rastreável e reprocessável. E, como
+    <b>documentos do requerente passam a circular entre os dois sistemas</b>, as regras de
+    acesso e de guarda desses arquivos precisam ser definidas.
+  </div>
+
+</div>
 </body>
 </html>
