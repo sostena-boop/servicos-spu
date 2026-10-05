@@ -99,10 +99,10 @@
   </div>
 
   <h2 class="secao">Como a informação circula</h2>
-  <p class="sub">Três atores e quatro operações. O tracejado cinza é a entrada de hoje, que a proposta substitui.</p>
+  <p class="sub">Tudo começa com o requerente apresentando o requerimento no Portal de Serviços. As quatro operações numeradas são o que esta proposta cria. O tracejado cinza é a entrada de hoje, que a operação 1 substitui.</p>
 
   <div class="mapa">
-    <svg viewBox="0 0 980 330" role="img" aria-label="Requerente e Portal de Serviços de um lado, Módulo de Instrução do outro, ligados por quatro operações">
+    <svg viewBox="0 0 980 330" role="img" aria-label="O requerente apresenta o requerimento no Portal de Serviços; quatro operações ligam o Portal ao Módulo de Instrução">
       <defs>
         <marker id="pt" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
           <path d="M0,0 L7,3 L0,6 z" fill="#1351b4"/>
@@ -112,45 +112,50 @@
         </marker>
       </defs>
 
-      <rect class="ator ator--ext" x="12" y="128" width="170" height="64" rx="7"/>
-      <text class="rot" x="28" y="156">Requerente</text>
-      <text class="sub2" x="28" y="174">responde e acompanha</text>
+      <rect class="ator ator--ext" x="12" y="110" width="150" height="100" rx="7"/>
+      <text class="rot" x="26" y="140">Requerente</text>
+      <text class="sub2" x="26" y="158">apresenta, responde</text>
+      <text class="sub2" x="26" y="174">e acompanha</text>
 
-      <rect class="ator" x="320" y="92" width="220" height="136" rx="7"/>
-      <text class="rot" x="338" y="122">Portal de Serviços</text>
-      <text class="sub2" x="338" y="140">pendência, prazo,</text>
-      <text class="sub2" x="338" y="156">histórico e documento</text>
-      <text class="sub2" x="338" y="172">final</text>
+      <rect class="ator" x="340" y="92" width="210" height="136" rx="7"/>
+      <text class="rot" x="356" y="122">Portal de Serviços</text>
+      <text class="sub2" x="356" y="140">pendência, prazo,</text>
+      <text class="sub2" x="356" y="156">histórico e documento</text>
+      <text class="sub2" x="356" y="172">final</text>
 
       <rect class="ator" x="756" y="92" width="210" height="136" rx="7"/>
-      <text class="rot" x="774" y="122">Módulo de Instrução</text>
-      <text class="sub2" x="774" y="140">a equipe trabalha aqui,</text>
-      <text class="sub2" x="774" y="156">sem sair do sistema</text>
+      <text class="rot" x="772" y="122">Módulo de Instrução</text>
+      <text class="sub2" x="772" y="140">a equipe trabalha aqui,</text>
+      <text class="sub2" x="772" y="156">sem sair do sistema</text>
 
-      <path class="seta" d="M190,150 L316,150" marker-end="url(#pt)"/>
-      <text class="setarot" x="196" y="142">resposta e arquivos</text>
-      <path class="seta" d="M316,186 L190,186" marker-end="url(#pt)"/>
-      <text class="setarot" x="196" y="204">notifica a pendência</text>
+      <path class="seta" d="M170,130 L332,130" marker-end="url(#pt)"/>
+      <text class="setarot" x="176" y="122">apresenta o requerimento</text>
 
-      <path class="seta" d="M546,118 L750,118" marker-end="url(#pt)"/>
-      <circle cx="560" cy="106" r="9" fill="#1351b4"/><text class="num" x="557" y="110">1</text>
-      <text class="setarot" x="576" y="110">enviar o requerimento</text>
+      <path class="seta" d="M332,166 L170,166" marker-end="url(#pt)"/>
+      <text class="setarot" x="176" y="158">notifica a pendência</text>
 
-      <path class="seta" d="M750,152 L546,152" marker-end="url(#pt)"/>
-      <circle cx="736" cy="140" r="9" fill="#1351b4"/><text class="num" x="733" y="144">2</text>
-      <text class="setarot" x="576" y="144">solicitar complementação</text>
+      <path class="seta" d="M170,198 L332,198" marker-end="url(#pt)"/>
+      <text class="setarot" x="176" y="190">responde e anexa arquivos</text>
 
-      <path class="seta" d="M546,186 L750,186" marker-end="url(#pt)"/>
-      <circle cx="560" cy="174" r="9" fill="#1351b4"/><text class="num" x="557" y="178">3</text>
-      <text class="setarot" x="576" y="178">devolver a resposta</text>
+      <path class="seta" d="M558,118 L748,118" marker-end="url(#pt)"/>
+      <circle cx="572" cy="106" r="9" fill="#1351b4"/><text class="num" x="569" y="110">1</text>
+      <text class="setarot" x="588" y="110">enviar o requerimento</text>
 
-      <path class="seta" d="M750,220 L546,220" marker-end="url(#pt)"/>
-      <circle cx="736" cy="208" r="9" fill="#1351b4"/><text class="num" x="733" y="212">4</text>
-      <text class="setarot" x="576" y="212">resultado e documento</text>
+      <path class="seta" d="M748,152 L558,152" marker-end="url(#pt)"/>
+      <circle cx="734" cy="140" r="9" fill="#1351b4"/><text class="num" x="731" y="144">2</text>
+      <text class="setarot" x="588" y="144">solicitar complementação</text>
 
-      <path class="seta seta--hoje" d="M430,232 L430,286 L860,286 L860,232" marker-end="url(#pc)"/>
-      <text class="setarot setarot--hoje" x="446" y="306">hoje a entrada é por carga diária, com dados do dia anterior</text>
-      <text class="setarot setarot--hoje" x="446" y="322">a proposta substitui esse caminho pela operação 1</text>
+      <path class="seta" d="M558,186 L748,186" marker-end="url(#pt)"/>
+      <circle cx="572" cy="174" r="9" fill="#1351b4"/><text class="num" x="569" y="178">3</text>
+      <text class="setarot" x="588" y="178">devolver a resposta</text>
+
+      <path class="seta" d="M748,220 L558,220" marker-end="url(#pt)"/>
+      <circle cx="734" cy="208" r="9" fill="#1351b4"/><text class="num" x="731" y="212">4</text>
+      <text class="setarot" x="588" y="212">resultado e documento</text>
+
+      <path class="seta seta--hoje" d="M445,232 L445,286 L860,286 L860,232" marker-end="url(#pc)"/>
+      <text class="setarot setarot--hoje" x="460" y="306">hoje a entrada é por carga diária, com dados do dia anterior</text>
+      <text class="setarot setarot--hoje" x="460" y="322">a proposta substitui esse caminho pela operação 1</text>
     </svg>
   </div>
 
