@@ -45,6 +45,10 @@
   .num { font:700 11px -apple-system, "Segoe UI", Arial; fill:#fff; }
   .seta { stroke:#1351b4; stroke-width:1.8; fill:none; }
   .seta--hoje { stroke:#8c9099; stroke-dasharray:5 4; }
+  .seta--lake { stroke:#8c9099; stroke-dasharray:6 4; }
+  .chip--lake { background:#eef1f6; color:#4a5568; border:1px solid #cfd6e0; }
+  .op--lake { background:#fafbfc; border-style:dashed; }
+  .op--lake .op__n { background:#8c9099; }
   .setarot { font:12px -apple-system, "Segoe UI", Arial; fill:#3d4759; }
   .setarot--hoje { fill:#6b7686; }
 
@@ -91,18 +95,23 @@
     a equipe precisa <b>sair do Módulo de Instrução</b> para pedir um documento ao requerente, e
     alguém precisa <b>voltar ao Portal de Serviços</b> para concluir o pedido quando a instrução
     termina. Enquanto isso, o requerimento aparece como aberto.</p>
-    <p><b>A proposta é ligar os dois sistemas por um caminho só.</b> O requerimento passa a ser
-    enviado à instrução pela integração — e não mais pela carga diária. Depois disso, a equipe
-    opera no Módulo de Instrução: a integração cria a pendência no Portal de Serviços, traz a
-    resposta de volta e devolve o resultado final. <b>O canal do requerente continua sendo o
-    Portal de Serviços</b> — ele não muda de lugar nem precisa conhecer o Módulo de Instrução.</p>
+    <p><b>Metade do caminho já existe.</b> O requerimento chega à instrução por uma carga
+    diária apoiada no Data Lake, e é por ela que as respostas do requerente podem voltar.
+    <b>O que não existe é o caminho de volta</b>: o que a equipe escreve no Módulo de Instrução
+    não chega ao Portal de Serviços.</p>
+    <p><b>Pede-se construir só esse caminho</b> — criar a pendência e concluir o requerimento.
+    A regra que organiza o desenho: <b>o que o Módulo de Instrução precisa ler vem pelo Data
+    Lake; o que ele precisa escrever vem pela integração.</b> Réplica de dados serve para ler
+    um fato; não serve para criar pendência nem para concluir pedido.</p>
+    <p><b>O canal do requerente continua sendo o Portal de Serviços</b> — ele não muda de lugar
+    nem precisa conhecer o Módulo de Instrução.</p>
   </div>
 
   <h2 class="secao">Como a informação circula</h2>
-  <p class="sub">Tudo começa com o requerente apresentando o requerimento no Portal de Serviços. As quatro operações numeradas são o que esta proposta cria. O tracejado cinza é a entrada de hoje, que a operação 1 substitui.</p>
+  <p class="sub">Tudo começa com o requerente apresentando o requerimento no Portal de Serviços. Das quatro passagens entre os sistemas, <b>só duas são pedidas</b> — as azuis. As cinzas já correm pela carga diária.</p>
 
   <div class="mapa">
-    <svg viewBox="0 0 980 330" role="img" aria-label="O requerente apresenta o requerimento no Portal de Serviços; quatro operações ligam o Portal ao Módulo de Instrução">
+    <svg viewBox="0 0 980 300" role="img" aria-label="O requerente apresenta o requerimento no Portal de Serviços; duas passagens correm pelo Data Lake e duas pela integração a construir">
       <defs>
         <marker id="pt" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
           <path d="M0,0 L7,3 L0,6 z" fill="#1351b4"/>
@@ -137,55 +146,54 @@
       <path class="seta" d="M170,198 L332,198" marker-end="url(#pt)"/>
       <text class="setarot" x="176" y="190">responde e anexa arquivos</text>
 
-      <path class="seta" d="M558,118 L748,118" marker-end="url(#pt)"/>
-      <circle cx="572" cy="106" r="9" fill="#1351b4"/><text class="num" x="569" y="110">1</text>
-      <text class="setarot" x="588" y="110">enviar o requerimento</text>
+      <path class="seta seta--lake" d="M558,118 L748,118" marker-end="url(#pc)"/>
+      <circle cx="572" cy="106" r="9" fill="#8c9099"/><text class="num" x="569" y="110">1</text>
+      <text class="setarot setarot--hoje" x="588" y="110">entrada · pelo Data Lake</text>
 
       <path class="seta" d="M748,152 L558,152" marker-end="url(#pt)"/>
       <circle cx="734" cy="140" r="9" fill="#1351b4"/><text class="num" x="731" y="144">2</text>
       <text class="setarot" x="588" y="144">solicitar complementação</text>
 
-      <path class="seta" d="M558,186 L748,186" marker-end="url(#pt)"/>
-      <circle cx="572" cy="174" r="9" fill="#1351b4"/><text class="num" x="569" y="178">3</text>
-      <text class="setarot" x="588" y="178">devolver a resposta</text>
+      <path class="seta seta--lake" d="M558,186 L748,186" marker-end="url(#pc)"/>
+      <circle cx="572" cy="174" r="9" fill="#8c9099"/><text class="num" x="569" y="178">3</text>
+      <text class="setarot setarot--hoje" x="588" y="178">resposta · pelo Data Lake</text>
 
       <path class="seta" d="M748,220 L558,220" marker-end="url(#pt)"/>
       <circle cx="734" cy="208" r="9" fill="#1351b4"/><text class="num" x="731" y="212">4</text>
-      <text class="setarot" x="588" y="212">resultado e documento</text>
+      <text class="setarot" x="588" y="212">encerrar o requerimento</text>
 
-      <path class="seta seta--hoje" d="M445,232 L445,286 L860,286 L860,232" marker-end="url(#pc)"/>
-      <text class="setarot setarot--hoje" x="460" y="306">hoje a entrada é por carga diária, com dados do dia anterior</text>
-      <text class="setarot setarot--hoje" x="460" y="322">a proposta substitui esse caminho pela operação 1</text>
+      <text class="setarot" x="558" y="260" style="font-weight:700; fill:#1351b4">azul: o que se pede construir</text>
+      <text class="setarot setarot--hoje" x="558" y="278">cinza tracejado: já existe, pela carga diária</text>
     </svg>
   </div>
 
-  <h2 class="secao">As quatro operações</h2>
+  <h2 class="secao">O ciclo, passagem a passagem</h2>
   <div class="legenda">
     <span><span class="chip chip--def">regra já definida</span> entendimento do Escritório de Processos, a submeter</span>
     <span><span class="chip chip--dec">ponto de decisão</span> depende da CGATE e da DEMIN</span>
+    <span><span class="chip chip--lake">pelo Data Lake</span> já existe, não é objeto do pedido</span>
     <span style="color:#6b7686">clique em <b>+ detalhe</b> para abrir o que está por trás</span>
   </div>
 
   <div class="ops">
 
-    <div class="op">
-      <h3><span class="op__n">1</span> Enviar o requerimento</h3>
+    <div class="op op--lake">
+      <h3><span class="op__n">1</span> Entrada do requerimento</h3>
       <ul class="passos">
         <li>O servidor aciona <b>Iniciar análise técnica</b></li>
-        <li>O requerimento vai à instrução pela integração</li>
-        <li>Chega no ato, e não no dia seguinte</li>
+        <li>A carga diária leva o requerimento à instrução</li>
+        <li>Nada muda aqui</li>
       </ul>
       <div class="marcas">
-        <span class="chip chip--def" title="O mesmo comando que hoje autua o processo no SEI passa a enviar também ao Módulo de Instrução.">mesmo gatilho que já existe</span>
-        <span class="chip chip--def" title="A entrada deixa de depender de uma carga de dados diária. Passa a haver um caminho só entre os dois sistemas.">substitui a carga diária</span>
-        <span class="chip chip--dec" title="A virada não é instantânea: é preciso decidir se há período de convivência e o que fazer com o que já foi carregado pelo caminho antigo.">como será a virada</span>
+        <span class="chip chip--lake" title="O caminho de entrada já existe e continua como está. Não faz parte do que se pede construir.">pelo Data Lake, como hoje</span>
+        <span class="chip chip--def" title="Manter o que já funciona é o que permite entregar antes e construir menos.">mantido por celeridade e economia</span>
       </div>
       <details>
         <summary>detalhe</summary>
         <ul>
           <li>Vão os dados do requerimento, a identificação do interessado e os documentos apresentados.</li>
-          <li>Indisponibilidade do outro sistema não trava o servidor: o envio fica pendente e é repetido, sem duplicar o requerimento.</li>
-          <li>Hoje a carga é diária e trabalha com dados do dia anterior — entre o clique e a chegada pode passar um dia.</li>
+          <li>A carga é diária e trabalha com dados do dia anterior: entre o clique e a chegada pode passar um dia.</li>
+          <li>Substituir essa entrada pela integração continua sendo o desenho desejado, mas não tem prazo e não condiciona esta proposta.</li>
         </ul>
       </details>
     </div>
@@ -201,36 +209,37 @@
         <span class="chip chip--def" title="Aproveita o mecanismo de pendência que o Portal de Serviços já tem. Não se cria um canal de mensagens novo.">usa a pendência que já existe</span>
         <span class="chip chip--def" title="Nome visível ao requerente, sem exigir que a equipe invente um título.">nome: complementação solicitada durante a instrução</span>
         <span class="chip chip--dec" title="Confirmar se o prazo é geral, configurável ou próprio de cada serviço.">qual é o prazo padrão</span>
-        <span class="chip chip--dec" title="Decidir se a equipe pode retirar uma comunicação já enviada e como isso fica no histórico.">retirar uma comunicação aberta</span>
+        <span class="chip chip--dec" title="Decidir se a equipe pode retirar uma pendência já enviada e como isso fica no histórico.">retirar uma pendência aberta</span>
       </div>
       <details>
         <summary>detalhe</summary>
         <ul>
-          <li>Cada comunicação recebe um identificador próprio, e várias podem conviver.</li>
+          <li>A pendência chega ao requerente <b>no ato</b>: é escrita no Portal de Serviços, e escrita não cabe em réplica de dados.</li>
           <li>Texto e arquivo de orientação, como já funciona hoje no Portal de Serviços.</li>
-          <li>O Portal de Serviços informa o vencimento; quem decide cancelar ou seguir é o Módulo de Instrução.</li>
+          <li>O Portal de Serviços informa o vencimento pela carga; quem decide cancelar ou seguir é o Módulo de Instrução.</li>
         </ul>
       </details>
     </div>
 
     <div class="op">
-      <h3><span class="op__n">3</span> Receber a resposta</h3>
+      <h3><span class="op__n">3</span> Resposta do requerente</h3>
       <ul class="passos">
         <li>O requerente responde no Portal de Serviços</li>
         <li>Texto, arquivo, ou os dois</li>
-        <li>A resposta volta ao Módulo de Instrução</li>
+        <li>A carga diária leva a resposta à instrução</li>
       </ul>
       <div class="marcas">
-        <span class="chip chip--def" title="Respondido o item, ele se encerra. Faltando algo, abre-se outra comunicação.">uma resposta encerra aquele item</span>
-        <span class="chip chip--def" title="Se o Módulo de Instrução estiver fora do ar, o Portal de Serviços guarda a resposta e repete a entrega.">resposta aceita não se perde</span>
-        <span class="chip chip--dec" title="O desenho desejado admite várias; havendo limite técnico, começa-se com uma por vez.">quantas comunicações ao mesmo tempo</span>
+        <span class="chip chip--lake" title="O Data Lake transporta dados e arquivos. A carga passa a trazer, todo dia, as respostas dos requerimentos já carregados.">pelo Data Lake, com a carga ampliada</span>
+        <span class="chip chip--def" title="Quem conduz a instrução lê as respostas e verifica a que perguntas se referem. Dentro do Portal de Serviços o vínculo entre pendência e resposta continua existindo.">a quem instrui cabe associar</span>
+        <span class="chip chip--def" title="Sem isso, pendência respondida e pendência vencida chegam iguais — e são desfechos diferentes.">a carga informa se venceu sem resposta</span>
       </div>
       <details>
         <summary>detalhe</summary>
         <ul>
-          <li>Encerradas todas as comunicações, a situação volta para <b>Em Análise Técnica</b>.</li>
-          <li>Entrega repetida não pode duplicar registro: a operação é idempotente.</li>
-          <li>Nesta primeira versão aproveita-se o campo de texto existente. Perguntas estruturadas podem vir depois, e não bloqueiam a integração.</li>
+          <li>Não há identificador de pendência atravessando os sistemas: a chave é o <b>número do requerimento</b>.</li>
+          <li>É a <b>data e hora</b> de cada resposta que diz ao Módulo de Instrução o que ainda não foi lido.</li>
+          <li>Encerradas as pendências, a situação volta para <b>Em Análise Técnica</b>.</li>
+          <li>Aproveita-se o campo de texto existente. Perguntas estruturadas podem vir depois, e não bloqueiam a integração.</li>
         </ul>
       </details>
     </div>
@@ -245,7 +254,7 @@
       <div class="marcas">
         <span class="chip chip--def" title="O original fica no Módulo de Instrução; o Portal de Serviços guarda uma cópia, sem link temporário.">o Portal guarda uma cópia do PDF</span>
         <span class="chip chip--def" title="Destinação formalizada só depois da assinatura do ato ou contrato. Enviar para assinatura não conclui.">formalizada só após assinatura</span>
-        <span class="chip chip--dec" title="O Módulo de Instrução ainda não produz todo o resultado da destinação. A capacidade nasce pronta; o disparo acompanha a evolução do módulo.">quando cada resultado é disparado</span>
+        <span class="chip chip--dec" title="Que situação final da instrução gera conclusão, indeferimento ou cancelamento. A integração é construída antes; o de-para vem conforme as funcionalidades existirem.">o de-para das situações finais</span>
       </div>
       <details>
         <summary>detalhe</summary>
@@ -283,33 +292,25 @@
   </div>
 
   <h2 class="secao">O que precisa ser decidido</h2>
-  <p class="sub">Oito pontos. Os três primeiros mudam o tamanho do que se pede.</p>
+  <p class="sub">Cinco pontos. O primeiro é o que liga a quarta passagem ao mundo real.</p>
   <div class="painel">
     <ul class="lista-dec">
-      <li><b>Como será a virada da entrada?</b>
-        <span>A entrada passa a ser pela integração, mas a troca não é instantânea: é preciso definir se há período de convivência com a carga atual e o que acontece com os requerimentos já carregados pelo caminho antigo.</span></li>
-      <li><b>O envio é imediato ao clique ou enfileirado?</b>
-        <span>O desejado é imediato, com fila e reenvio automático — para que a indisponibilidade de um sistema não trave o trabalho do servidor no outro.</span></li>
-      <li><b>O mesmo mecanismo de entrada serve a outros módulos?</b>
-        <span>Se servir, deixa de ser integração ponto a ponto — e o dimensionamento muda.</span></li>
-      <li><b>Quando cada resultado final é disparado?</b>
-        <span>A capacidade nasce pronta; os gatilhos acompanham a evolução do Módulo de Instrução.</span></li>
+      <li><b>Qual é o de-para entre as situações finais da instrução e os desfechos do Portal de Serviços?</b>
+        <span>Que situação do Módulo de Instrução gera conclusão, indeferimento ou cancelamento. A integração é construída antes; o de-para vem conforme as funcionalidades existirem.</span></li>
       <li><b>Qual é o prazo padrão da comunicação?</b>
         <span>Geral, configurável ou próprio de cada serviço.</span></li>
       <li><b>Quem decide depois do vencimento?</b>
         <span>O Portal de Serviços informa; o Módulo de Instrução decide cancelar ou seguir.</span></li>
-      <li><b>Quantas comunicações simultâneas na primeira entrega?</b>
-        <span>O desejado é várias. Havendo limite técnico, começa-se com uma por vez.</span></li>
       <li><b>O encerramento manual continua disponível?</b>
         <span>Contingência e fonte de verdade, depois que a instrução começa.</span></li>
     </ul>
   </div>
 
   <div class="nota">
-    <b>Dois cuidados que atravessam tudo.</b> Operação repetida não pode duplicar pendência,
-    resposta ou conclusão — e toda falha precisa ser rastreável e reprocessável. E, como
-    <b>documentos do requerente passam a circular entre os dois sistemas</b>, as regras de
-    acesso e de guarda desses arquivos precisam ser definidas.
+    <b>Dois cuidados que atravessam tudo.</b> Operação repetida não pode duplicar pendência nem
+    conclusão, e releitura da carga não pode reprocessar resposta já tratada — toda falha
+    precisa ser rastreável. E, como <b>documentos do requerente circulam entre os dois
+    sistemas</b>, as regras de acesso e de guarda desses arquivos precisam ser definidas.
   </div>
 
 </div>
